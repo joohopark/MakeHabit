@@ -162,13 +162,6 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		9325DF8420B59CD7003C790D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		9325DF8520B59D5F003C790D /* Chart */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +176,13 @@
 				9325DF8920B59DF7003C790D /* HabitViewController.swift */,
 			);
 			path = Habit;
+			sourceTree = "<group>";
+		};
+		9325DF8B20B5A926003C790D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		937771EC20B587730022D82C = {
@@ -212,7 +212,7 @@
 			children = (
 				937771F820B587730022D82C /* AppDelegate.swift */,
 				9377720420B587740022D82C /* Info.plist */,
-				9325DF8420B59CD7003C790D /* Model */,
+				9325DF8B20B5A926003C790D /* Model */,
 				9325DF8220B59C68003C790D /* Controller */,
 				9325DF8020B59B81003C790D /* Resource */,
 				9325DF7F20B59B71003C790D /* StoryBoard */,
