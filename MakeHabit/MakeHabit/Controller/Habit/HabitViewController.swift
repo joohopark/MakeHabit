@@ -8,6 +8,10 @@
 
 import UIKit
 
+// 습관 생성 뷰 - 1
+// 1. 습관을 설정하고 카테고리 설정을 진행한다. -> 카테고리는 사전에 우리가 편의를 위해 제공할 습관 카테고리임.
+
+
 class HabitViewController: BaseViewController {
 
     override func viewDidLoad() {
@@ -16,20 +20,5 @@ class HabitViewController: BaseViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
