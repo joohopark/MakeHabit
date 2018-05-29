@@ -11,23 +11,29 @@ import UIKit
 class PromissDetailViewController: BaseViewController {
   
   //MARK: - Property
+    // IBOutlet Hook up
   @IBOutlet var tap: UITapGestureRecognizer!
-  @IBOutlet weak var goalTitle: UILabel!
+  @IBOutlet weak var goalTitle: UILabel!// 목표 제목
   @IBOutlet weak var goalDetailTextField: UITextField!
+    
   @IBOutlet weak var startTitle: UILabel!
   @IBOutlet weak var startTextField: UITextField!
+    
   @IBOutlet weak var endTitle: UILabel!
   @IBOutlet weak var endTextField: UITextField!
+    
   @IBOutlet weak var scheduleTitle: UILabel!
   @IBOutlet weak var scheduleDay: UILabel!
   @IBOutlet weak var scheduleDayDetail: UILabel!
+    
   @IBOutlet weak var alarmTitle: UILabel!
   @IBOutlet weak var alarmTextField: UITextField!
   
-  //MARK: - Model
+  //MARK: - View UI 로직
   var picker: UIDatePicker = {
     let picker = UIDatePicker()
     let today = Date()
+    // 이전일은 시작일로 작성 되지 않도록 지정.
     picker.minimumDate = today
     picker.datePickerMode = .date
     picker.backgroundColor = UIColor.darkGray
@@ -66,10 +72,48 @@ class PromissDetailViewController: BaseViewController {
     timeFormatter.locale = loc
     return timeFormatter
   }()
+    
   //MARK: - Action
+    // 저장 버튼( 추가 구현되야 하는것)
+    // 1. Realm에 TextField에 있는 값을 저장.
+    // 2. 알람 TextField에 있는 값을 기준으로 알람 시간 설정.( 알람 설정.)
   @IBAction func saveButton(_ sender: UIButton) {
+    
+    guard let goalStr = goalDetailTextField.text, let startStr = startTextField.text,
+        let endStr = endTextField.text,let scheduleStr = scheduleDay.text  ,let alarmStr = alarmTextField.text else {
+            print("TextField의 값이 제대로 안들어 감.")
+            return
+    }
+
+    
+    // 1. Realm(Habit object)에 TextField에 있는 값을 저장.
+    // 시작일과 종료일을 통해 일수를 계산 해야함.
+    // 총 약속 일수 -> 총 알람 횟수임.
+    // 종료일이 입력되는 시점에
+    
+    // 1-1. 시작일과 종료일을 통해 목표일수와 10일 미만에 대한 계산을 통해 String, Bool 값을 반환 받는다.
+    HabitManager.getScheduledDay(startDay: startStr, endDay: endStr)
+    
+//    HabitManager.add(addedHabit: HabitManager.init(goalStr,
+//                                                   totalCount: scheduleStr.startIndex,
+//                                                   currentCount: 0,
+//                                                   planedPiriod: String("\(startStr)~\(endStr)"),
+//                                                   sucessPromiss: false,
+//                                                   alarmTime: alarmStr)) { (result) in
+//                                                    switch result{
+//                                                    case .sucess(let value):
+//                                                        print(value)
+//                                                    case .error(let error):
+//                                                        print(error)
+//                                                    }
+//    }
+    
+    
+    // 2. 알람 TextField에 있는 값을 기준으로 알람 시간 설정.( 알람 설정.)
+    
     self.dismiss(animated: true, completion: nil)
   }
+    
   //MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -77,31 +121,129 @@ class PromissDetailViewController: BaseViewController {
     createDatePicker()
   }
 }
-// MARK: - Extension
-extension PromissDetailViewController: UITextFieldDelegate {
-  func createDatePicker() {
-    // Toolbar
-    let toolbar = UIToolbar()
-    toolbar.sizeToFit()
+
+
+extension PromissDetailViewController{
+    enum ToolbarType{
+        case start
+        case end
+        case alarm
+    }
     
-    // Done button
-    let done = UIBarButtonItem(title: "done", style: .done, target: nil, action: #selector(doneTouchAction))
-    toolbar.setItems([done], animated: false)
+    func createDatePicker() {
+        
+        // TextField input toolbar/picker
+        // Toolbar에 맞는 picker를 text Field에 set
+        // -> tf별 objc 함수를 만드는것 보다 낳은 방법...?
+        startTextField.inputAccessoryView = makeToolbar(toolType: PromissDetailViewController.ToolbarType.start)
+        startTextField.inputView = picker
+        endTextField.inputAccessoryView = makeToolbar(toolType: PromissDetailViewController.ToolbarType.end)
+        endTextField.inputView = picker
+        alarmTextField.inputAccessoryView = makeToolbar(toolType: PromissDetailViewController.ToolbarType.alarm)
+        alarmTextField.inputView = timePicker
+    }
     
-    // TextField input toolbar/picker
-    startTextField.inputAccessoryView = toolbar
-    startTextField.inputView = picker
-    endTextField.inputAccessoryView = toolbar
-    endTextField.inputView = picker
-    alarmTextField.inputAccessoryView = toolbar
-    alarmTextField.inputView = timePicker
-  }
-  
-  @objc func doneTouchAction() {
-    let dateString = dateFormatter.string(from: picker.date)
-    let timeString = timeFormatter.string(from: timePicker.date)
+    // enum type을 기준으로 toolbar 아이템을 생성하여 반환.
+    func makeToolbar(toolType: ToolbarType) -> UIToolbar{
+        // Toolbar 생성.
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        // toolbar 아이템 추가.
+        var done: UIBarButtonItem
+        switch toolType {
+        case .start:
+            done = UIBarButtonItem(title: "Done", style: .done, target: nil, action: #selector(didPushDoneButtonOnStart))
+        case .end:
+            done = UIBarButtonItem(title: "Done", style: .done, target: nil, action: #selector(didPushDoneButtonOnEnd))
+        case .alarm:
+            done = UIBarButtonItem(title: "Done", style: .done, target: nil, action: #selector(didPushDoneButtonOnAlarm))
+        }
+        
+        let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: #selector(didPushCancelButton))
+        toolbar.setItems([done, cancel], animated: false)
+        
+        return toolbar
+    }
     
-    self.view.endEditing(true)
-  }
+    // bar button cacel 눌렀을때.
+    @objc func didPushCancelButton(_ sender: UIBarButtonItem){
+        self.view.endEditing(true)
+    }
+    
+    //MARK:- done button action
+    
+    // 시작일 에 대한 엑션
+    @objc func didPushDoneButtonOnStart() {
+        let dateString = dateFormatter.string(from: picker.date)
+        startTextField.text = dateString
+        self.view.endEditing(true)
+    }
+    
+    // 종료일 에 대한 엑션
+    @objc func didPushDoneButtonOnEnd(){
+        let dateString = dateFormatter.string(from: picker.date)
+        endTextField.text = dateString
+        self.view.endEditing(true)
+    }
+    
+    // 알람 에 대한 엑션
+    @objc func didPushDoneButtonOnAlarm(){
+        let timeString = timeFormatter.string(from: timePicker.date)
+        alarmTextField.text = timeString
+        self.view.endEditing(true)
+    }
+    
+    
+    //MARK:- Remain Job
+    
+    // 1. 사용자 유도 :  목표 -> 시작일 -> 종료일 -> 알람 설정 -> 저장 버튼을 누르도록 알랏을 띄워 줘야함.
+    // 1-1. 값 체크 후 알랏 호출을 하도록 해야함.
 }
+
+
+
+// MARK: - UITextFieldDelegate Extension
+extension PromissDetailViewController: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField.tag == 0 {
+            print(444444)
+        } else if textField.tag == 1 {
+            print(2332323)
+        } else if textField.tag == 2 {
+            print(121212)
+        }
+        return true
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

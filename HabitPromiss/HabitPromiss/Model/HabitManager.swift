@@ -18,14 +18,15 @@ enum RealmResult<T>{
 protocol HabitManagerServiceType {
     associatedtype T: Object
     // 처음에 개체에 값 추가 하는 메소드.
-    static func add(addedHabit: HabitManager , in realm: Realm, completion: @escaping (RealmResult<T>) -> ())
+    static func add(addedHabit: T , in realm: Realm, completion: @escaping (RealmResult<T>) -> ())
     // 알림 울렸을때 currentCount에 값이 추가되는 메소드
     // 알람 메소드
-//    static func setAlarmInMyPhone()
+    // static func setAlarmInMyPhone()
 }
 
 class HabitManager: Object, HabitManagerServiceType{
     typealias T = HabitManager
+    
     enum Property: String{
         case id, habitName, totalCount, currentCount, planedPiriod, sucessPromiss, alarmTime
     }
@@ -90,7 +91,7 @@ extension HabitManager{
         }
     }
     
-    // 알람 시간( 사용자 설정 알람 시간) : Realm에 있을걸 가져올거임.
+    // 알람 시간( 사용자 설정 알람 시간) : Realm에 있는걸 가져올거임.
     // completion
     
 //    static func setAlarmInMyPhone() {
@@ -128,6 +129,31 @@ extension HabitManager{
 //        app.scheduleLocalNotification(notifyAlarm)
 //    }
     
+    static func getScheduledDay(startDay: String, endDay: String) -> (String, Bool){
+        
+        let startSeparateList: [String] = startDay.components(separatedBy: ".")
+        let endSeparateList:[String] = endDay.components(separatedBy: ".")
+        
+        var totalStartDay = 0
+        var totalEndDay = 0
+        
+        // 달이 다를 경우를 대비해서 아싸리 일단위로 계산하자
+        // 연이 틀릴경우에는 ??
+    
+        
+        
+        return ("", false)
+    }
+    
+//    func getTotalDay(month: Int, day: Int) -> Int{
+//        switch month {
+//        case 2:
+//            return 28
+//        default:
+//            <#code#>
+//        }
+//        return 0
+//    }
 }
 
 

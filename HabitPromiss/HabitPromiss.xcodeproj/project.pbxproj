@@ -140,7 +140,6 @@
 				9373E9C520BD4F0A001204E7 /* Model */,
 				98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */,
 				98AE8F5E20BBD390001AA1EA /* ClearListCell.swift */,
-				9343E02320B6E5C3006CCED8 /* BaseViewController.swift */,
 				9343DFFB20B6E54E006CCED8 /* Assets.xcassets */,
 				9343DFFD20B6E54E006CCED8 /* LaunchScreen.storyboard */,
 				9343E00020B6E54E006CCED8 /* Info.plist */,
@@ -187,6 +186,7 @@
 		9373E9CC20BD4F5A001204E7 /* scene */ = {
 			isa = PBXGroup;
 			children = (
+				93BCCD0220BD542B005AFB73 /* base */,
 				9343E02220B6E57D006CCED8 /* View */,
 				9343E02520B6E614006CCED8 /* PromissListViewController.swift */,
 				98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */,
@@ -194,6 +194,14 @@
 				9343E02920B6E675006CCED8 /* SettingsViewController.swift */,
 			);
 			path = scene;
+			sourceTree = "<group>";
+		};
+		93BCCD0220BD542B005AFB73 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				9343E02320B6E5C3006CCED8 /* BaseViewController.swift */,
+			);
+			path = base;
 			sourceTree = "<group>";
 		};
 		A06B86EFC985946DA844999C /* Frameworks */ = {
