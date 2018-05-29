@@ -18,6 +18,9 @@
 		9343E02620B6E614006CCED8 /* PromissListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9343E02520B6E614006CCED8 /* PromissListViewController.swift */; };
 		9343E02820B6E640006CCED8 /* ClearListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9343E02720B6E640006CCED8 /* ClearListViewController.swift */; };
 		9343E02A20B6E675006CCED8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9343E02920B6E675006CCED8 /* SettingsViewController.swift */; };
+		98AE8F5B20BBC713001AA1EA /* PromissListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */; };
+		98AE8F5D20BBC88F001AA1EA /* PromissDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */; };
+		98AE8F5F20BBD390001AA1EA /* ClearListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AE8F5E20BBD390001AA1EA /* ClearListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		9343E02520B6E614006CCED8 /* PromissListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromissListViewController.swift; sourceTree = "<group>"; };
 		9343E02720B6E640006CCED8 /* ClearListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearListViewController.swift; sourceTree = "<group>"; };
 		9343E02920B6E675006CCED8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromissListCell.swift; sourceTree = "<group>"; };
+		98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromissDetailViewController.swift; sourceTree = "<group>"; };
+		98AE8F5E20BBD390001AA1EA /* ClearListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +114,11 @@
 				9343DFF420B6E54D006CCED8 /* AppDelegate.swift */,
 				9343DFF620B6E54D006CCED8 /* ViewController.swift */,
 				9343E02520B6E614006CCED8 /* PromissListViewController.swift */,
+				98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */,
 				9343E02720B6E640006CCED8 /* ClearListViewController.swift */,
 				9343E02920B6E675006CCED8 /* SettingsViewController.swift */,
+				98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */,
+				98AE8F5E20BBD390001AA1EA /* ClearListCell.swift */,
 				9343E02320B6E5C3006CCED8 /* BaseViewController.swift */,
 				9343E02220B6E57D006CCED8 /* View */,
 				9343DFFB20B6E54E006CCED8 /* Assets.xcassets */,
@@ -277,11 +286,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9343DFF720B6E54D006CCED8 /* ViewController.swift in Sources */,
+				98AE8F5D20BBC88F001AA1EA /* PromissDetailViewController.swift in Sources */,
 				9343DFF520B6E54D006CCED8 /* AppDelegate.swift in Sources */,
 				9343E02620B6E614006CCED8 /* PromissListViewController.swift in Sources */,
 				9343E02820B6E640006CCED8 /* ClearListViewController.swift in Sources */,
 				9343E02420B6E5C3006CCED8 /* BaseViewController.swift in Sources */,
+				98AE8F5B20BBC713001AA1EA /* PromissListCell.swift in Sources */,
 				9343E02A20B6E675006CCED8 /* SettingsViewController.swift in Sources */,
+				98AE8F5F20BBD390001AA1EA /* ClearListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,7 +467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V4LDP442XN;
+				DEVELOPMENT_TEAM = M979J82YX7;
 				INFOPLIST_FILE = HabitPromiss/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -473,7 +485,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V4LDP442XN;
+				DEVELOPMENT_TEAM = M979J82YX7;
 				INFOPLIST_FILE = HabitPromiss/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
