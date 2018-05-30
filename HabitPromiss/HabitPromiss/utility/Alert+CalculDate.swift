@@ -30,3 +30,19 @@ func inputUserAlert(title: String, message: String? = nil,  callBack: @escaping 
     root?.present(alertController, animated: true, completion: nil)
     
 }
+
+// 문자열로 되어있는 연월일에 대한 리스트를 받아서 총 일수를 반환해줌.
+func calculateTotalDate(dateList: [String]) -> Int{
+    // leaf yaer 고려 안했음...!
+    let yearDayByMonthList: [Int] = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    var resVal = 0
+    print(dateList)
+    // 입력 월-1 인덱스 만큼 결과 일에 누적
+    for index in 0..<Int(dateList[1])!-1{
+        resVal += yearDayByMonthList[index]
+    }
+    
+    
+    return resVal+Int(dateList[2].components(separatedBy: ".")[0])! // 월 누적일 + 일
+}
+

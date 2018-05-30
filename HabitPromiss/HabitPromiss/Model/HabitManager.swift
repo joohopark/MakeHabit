@@ -131,18 +131,17 @@ extension HabitManager{
     
     static func getScheduledDay(startDay: String, endDay: String) -> (String, Bool){
         
-        let startSeparateList: [String] = startDay.components(separatedBy: ".")
-        let endSeparateList:[String] = endDay.components(separatedBy: ".")
-        
-        var totalStartDay = 0
-        var totalEndDay = 0
-        
+        let startSeparateList: [String] = startDay.components(separatedBy: ". ")
+        let endSeparateList:[String] = endDay.components(separatedBy: ". ")
         // 달이 다를 경우를 대비해서 아싸리 일단위로 계산하자
+        let totalStartDay = calculateTotalDate(dateList: startSeparateList)
+        let totalEndDay = calculateTotalDate(dateList: endSeparateList)
+        
         // 연이 틀릴경우에는 ??
-    
+        // MARK:- Remain Job
         
-        
-        return ("", false)
+        // 결과값, 결과값이 10일 미만일 경우..
+        return ("\(totalEndDay-totalStartDay)", totalEndDay-totalStartDay < 10 ? false : true)
     }
     
 //    func getTotalDay(month: Int, day: Int) -> Int{

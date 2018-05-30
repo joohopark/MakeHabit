@@ -92,21 +92,26 @@ class PromissDetailViewController: BaseViewController {
     // 종료일이 입력되는 시점에
     
     // 1-1. 시작일과 종료일을 통해 목표일수와 10일 미만에 대한 계산을 통해 String, Bool 값을 반환 받는다.
-    HabitManager.getScheduledDay(startDay: startStr, endDay: endStr)
+    let (goalDay, isUpperTenDay) = HabitManager.getScheduledDay(startDay: startStr, endDay: endStr)
+    // 목표일수 정해짐. 이 값은 종료일 입력 후 변경되야 함. 시점 변경 필요.
+    if isUpperTenDay{
+        scheduleDay.text = goalDay
+    }
     
-//    HabitManager.add(addedHabit: HabitManager.init(goalStr,
-//                                                   totalCount: scheduleStr.startIndex,
-//                                                   currentCount: 0,
-//                                                   planedPiriod: String("\(startStr)~\(endStr)"),
-//                                                   sucessPromiss: false,
-//                                                   alarmTime: alarmStr)) { (result) in
-//                                                    switch result{
-//                                                    case .sucess(let value):
-//                                                        print(value)
-//                                                    case .error(let error):
-//                                                        print(error)
-//                                                    }
-//    }
+    // 알람값 Date로 넘겨줘야됨.
+    HabitManager.add(addedHabit: HabitManager.init(goalStr,
+                                                   totalCount: Int(goalDay)!,
+                                                   currentCount: 0,
+                                                   planedPiriod: String("\(startStr)~\(endStr)"),
+                                                   sucessPromiss: false,
+                                                   alarmTime: Date())) { (result) in
+                                                    switch result{
+                                                    case .sucess(let value):
+                                                        print(value)
+                                                    case .error(let error):
+                                                        print(error)
+                                                    }
+    }
     
     
     // 2. 알람 TextField에 있는 값을 기준으로 알람 시간 설정.( 알람 설정.)
