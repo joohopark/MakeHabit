@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		12F31D9073AB4E69C5B61626 /* Pods_HabitPromissTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039DFA5EF51E1313DF22D483 /* Pods_HabitPromissTests.framework */; };
 		4DA57C19CF7366B21C29974F /* Pods_HabitPromissUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE4DE891AC237F15389007C /* Pods_HabitPromissUITests.framework */; };
+		933D745C20BEDC7C0006DD24 /* Alert+CalculDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933D745B20BEDC7C0006DD24 /* Alert+CalculDate.swift */; };
 		9343DFF520B6E54D006CCED8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9343DFF420B6E54D006CCED8 /* AppDelegate.swift */; };
 		9343DFF720B6E54D006CCED8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9343DFF620B6E54D006CCED8 /* ViewController.swift */; };
 		9343DFFA20B6E54D006CCED8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9343DFF820B6E54D006CCED8 /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 		1CDAFE0BDF0862F3693C0B4F /* Pods-HabitPromissUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitPromissUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabitPromissUITests/Pods-HabitPromissUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		89D8ADB784418097E036F2B2 /* Pods-HabitPromissTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitPromissTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HabitPromissTests/Pods-HabitPromissTests.release.xcconfig"; sourceTree = "<group>"; };
 		91E1C09AF9AFBDA163496A1B /* Pods-HabitPromiss.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitPromiss.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabitPromiss/Pods-HabitPromiss.debug.xcconfig"; sourceTree = "<group>"; };
+		933D745B20BEDC7C0006DD24 /* Alert+CalculDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+CalculDate.swift"; sourceTree = "<group>"; };
 		9343DFF120B6E54D006CCED8 /* HabitPromiss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitPromiss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9343DFF420B6E54D006CCED8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9343DFF620B6E54D006CCED8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		933D745820BEDC060006DD24 /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				933D745B20BEDC7C0006DD24 /* Alert+CalculDate.swift */,
+			);
+			path = utility;
+			sourceTree = "<group>";
+		};
+		933D745920BEDC1B0006DD24 /* PromissListView */ = {
+			isa = PBXGroup;
+			children = (
+				98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */,
+				9343E02520B6E614006CCED8 /* PromissListViewController.swift */,
+			);
+			path = PromissListView;
+			sourceTree = "<group>";
+		};
+		933D745A20BEDC3F0006DD24 /* ClearListView */ = {
+			isa = PBXGroup;
+			children = (
+				98AE8F5E20BBD390001AA1EA /* ClearListCell.swift */,
+				9343E02720B6E640006CCED8 /* ClearListViewController.swift */,
+			);
+			path = ClearListView;
+			sourceTree = "<group>";
+		};
 		9343DFE820B6E54D006CCED8 = {
 			isa = PBXGroup;
 			children = (
@@ -138,8 +166,7 @@
 				9343DFF620B6E54D006CCED8 /* ViewController.swift */,
 				9373E9CC20BD4F5A001204E7 /* scene */,
 				9373E9C520BD4F0A001204E7 /* Model */,
-				98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */,
-				98AE8F5E20BBD390001AA1EA /* ClearListCell.swift */,
+				933D745820BEDC060006DD24 /* utility */,
 				9343DFFB20B6E54E006CCED8 /* Assets.xcassets */,
 				9343DFFD20B6E54E006CCED8 /* LaunchScreen.storyboard */,
 				9343E00020B6E54E006CCED8 /* Info.plist */,
@@ -188,10 +215,10 @@
 			children = (
 				93BCCD0220BD542B005AFB73 /* base */,
 				9343E02220B6E57D006CCED8 /* View */,
-				9343E02520B6E614006CCED8 /* PromissListViewController.swift */,
+				933D745920BEDC1B0006DD24 /* PromissListView */,
 				98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */,
-				9343E02720B6E640006CCED8 /* ClearListViewController.swift */,
 				9343E02920B6E675006CCED8 /* SettingsViewController.swift */,
+				933D745A20BEDC3F0006DD24 /* ClearListView */,
 			);
 			path = scene;
 			sourceTree = "<group>";
@@ -443,6 +470,7 @@
 			files = (
 				9343DFF720B6E54D006CCED8 /* ViewController.swift in Sources */,
 				98AE8F5D20BBC88F001AA1EA /* PromissDetailViewController.swift in Sources */,
+				933D745C20BEDC7C0006DD24 /* Alert+CalculDate.swift in Sources */,
 				9343DFF520B6E54D006CCED8 /* AppDelegate.swift in Sources */,
 				9373E9CA20BD4F42001204E7 /* ChartManager.swift in Sources */,
 				9373E9CB20BD4F42001204E7 /* UserInfo.swift in Sources */,
