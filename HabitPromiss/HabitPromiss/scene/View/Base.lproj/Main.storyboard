@@ -84,12 +84,27 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="chartDetailView" destination="ZgN-Sy-ndF" id="sXD-8T-g1r"/>
+                        <outlet property="pieChart" destination="PPq-mA-olj" id="RvQ-0s-y1M"/>
                         <outlet property="promissTableView" destination="sJo-nC-Idc" id="wz8-yX-EZT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="ZgN-Sy-ndF">
+                    <rect key="frame" x="0.0" y="0.0" width="376" height="319"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="PieChartView" translatesAutoresizingMaskIntoConstraints="NO" id="PPq-mA-olj" customClass="PieChartView" customModule="Charts">
+                            <rect key="frame" x="16" y="68" width="344" height="231"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <viewLayoutGuide key="safeArea" id="6Tw-W8-69C"/>
+                </view>
             </objects>
-            <point key="canvasLocation" x="647.20000000000005" y="610.34482758620697"/>
+            <point key="canvasLocation" x="662" y="925"/>
         </scene>
         <!--Promiss Detail View Controller-->
         <scene sceneID="z0B-fD-X7m">
@@ -267,7 +282,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="648.79999999999995" y="1350.6746626686659"/>
+            <point key="canvasLocation" x="663" y="1613"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Exu-MU-EWz">

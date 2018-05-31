@@ -6,9 +6,13 @@
 //  Copyright © 2018년 주호박. All rights reserved.
 
 import UIKit
+import Charts
+import RealmSwift
 
 class PromissListViewController: BaseViewController {
   
+  @IBOutlet var chartDetailView: UIView!
+  @IBOutlet weak var pieChart: PieChartView!
   @IBOutlet weak var promissTableView: UITableView!
   private var promissCellIdentifier: String = "promissCell"
   var array = ["1","2","1","2","1","2","1","2"]{
@@ -56,6 +60,24 @@ extension PromissListViewController: UITableViewDelegate {
 }
 
 extension PromissListViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if tableView.tag == 0 {
+      self.chartDetailView.frame = CGRect(x: 0, y: 100, width: 375, height: 500)
+      self.chartDetailView.alpha = 0.6
+      chartDetailView.backgroundColor = UIColor.darkGray
+      self.promissTableView.addSubview(chartDetailView)
+      ChartManager.makePieChart(indexPath: indexPath.row) { (result) in
+        switch result {
+        case .sucess(let value):
+          self.pieChart.data = value
+          self.chartDetailView.addSubview(self.pieChart)
+        case .error(let error):
+          print(error.localizedDescription)
+        }
+      }
+      
+    }
+  }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     

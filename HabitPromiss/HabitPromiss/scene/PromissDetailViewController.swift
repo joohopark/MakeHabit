@@ -110,7 +110,7 @@ class PromissDetailViewController: BaseViewController {
                                                    alarmTime: Util.convertTo24Hour(beforeConvertTime: alarmStr))) { (result) in
                                                     switch result{
                                                     case .sucess(let value):
-                                                        print(value)
+                                                      print(value)
                                                     case .error(let error):
                                                         print(error)
                                                     }
