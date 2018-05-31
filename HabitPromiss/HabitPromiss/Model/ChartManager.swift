@@ -44,7 +44,7 @@ class ChartManager: ChartManagerType{
     static func getCurrentCountDataBase(indexPath: Int) -> T{
         do {
             let realm = try Realm()
-            return realm.objects(HabitManager.self).first!
+            return realm.objects(HabitManager.self)[indexPath]
         } catch let error as NSError {
             fatalError(error.localizedDescription)
         }
