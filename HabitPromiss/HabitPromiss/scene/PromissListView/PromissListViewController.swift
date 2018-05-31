@@ -11,6 +11,7 @@ import RealmSwift
 
 class PromissListViewController: BaseViewController {
   
+  
   @IBOutlet var chartDetailView: UIView!
   @IBOutlet weak var pieChart: PieChartView!
   @IBOutlet weak var promissTableView: UITableView!
@@ -80,8 +81,8 @@ extension PromissListViewController: UITableViewDelegate {
 extension PromissListViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if tableView.tag == 0 {
-      self.chartDetailView.frame = CGRect(x: 0, y: 100, width: 375, height: 500)
-      self.chartDetailView.alpha = 0.6
+      self.chartDetailView.frame = self.view.bounds
+      self.chartDetailView.alpha = 1
       chartDetailView.backgroundColor = UIColor.darkGray
       self.promissTableView.addSubview(chartDetailView)
       ChartManager.makePieChart(indexPath: indexPath.row) { (result) in
@@ -93,7 +94,20 @@ extension PromissListViewController: UITableViewDataSource {
           print(error.localizedDescription)
         }
       }
+      self.chartDetailView.alpha = 0
+      self.pieChart.transform = CGAffineTransform(translationX: 0.2, y: 0.2)
       
+      UIView.animate(withDuration: 0.5) {
+        self.chartDetailView.alpha = 1
+        self.pieChart.transform = CGAffineTransform.identity
+      }
+    }
+  }
+  @IBAction func backBtn(_ sender: UIButton) {
+    UIView.animate(withDuration: 0.4, animations: {
+      self.chartDetailView.alpha = 0
+    }) { (status) in
+      self.chartDetailView.removeFromSuperview()
     }
   }
   
