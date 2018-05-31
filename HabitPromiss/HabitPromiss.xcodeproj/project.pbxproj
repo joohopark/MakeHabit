@@ -23,6 +23,7 @@
 		9373E9C920BD4F42001204E7 /* HabitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9373E9C620BD4F41001204E7 /* HabitManager.swift */; };
 		9373E9CA20BD4F42001204E7 /* ChartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9373E9C720BD4F42001204E7 /* ChartManager.swift */; };
 		9373E9CB20BD4F42001204E7 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9373E9C820BD4F42001204E7 /* UserInfo.swift */; };
+		988B845A20BFBDF60090C135 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988B845920BFBDF60090C135 /* Animation.swift */; };
 		98AE8F5B20BBC713001AA1EA /* PromissListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */; };
 		98AE8F5D20BBC88F001AA1EA /* PromissDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */; };
 		98AE8F5F20BBD390001AA1EA /* ClearListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AE8F5E20BBD390001AA1EA /* ClearListCell.swift */; };
@@ -72,6 +73,7 @@
 		9373E9C620BD4F41001204E7 /* HabitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitManager.swift; sourceTree = "<group>"; };
 		9373E9C720BD4F42001204E7 /* ChartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartManager.swift; sourceTree = "<group>"; };
 		9373E9C820BD4F42001204E7 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		988B845920BFBDF60090C135 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromissListCell.swift; sourceTree = "<group>"; };
 		98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromissDetailViewController.swift; sourceTree = "<group>"; };
 		98AE8F5E20BBD390001AA1EA /* ClearListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearListCell.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */,
 				9343E02720B6E640006CCED8 /* ClearListViewController.swift */,
 				9343E02920B6E675006CCED8 /* SettingsViewController.swift */,
+				988B845920BFBDF60090C135 /* Animation.swift */,
 			);
 			path = scene;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				9343E02820B6E640006CCED8 /* ClearListViewController.swift in Sources */,
 				9343E02420B6E5C3006CCED8 /* BaseViewController.swift in Sources */,
 				98AE8F5B20BBC713001AA1EA /* PromissListCell.swift in Sources */,
+				988B845A20BFBDF60090C135 /* Animation.swift in Sources */,
 				9343E02A20B6E675006CCED8 /* SettingsViewController.swift in Sources */,
 				98AE8F5F20BBD390001AA1EA /* ClearListCell.swift in Sources */,
 			);
