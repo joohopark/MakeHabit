@@ -80,7 +80,6 @@ class HabitManager: Object, HabitManagerServiceType{
 extension HabitManager{
     
     static func add(addedHabit: T , in realm: Realm = try! Realm(), completion: @escaping (RealmResult<T>) -> ()){
-        
         do{
             try realm.write {
                 realm.add(addedHabit)
@@ -91,6 +90,9 @@ extension HabitManager{
         }
     }
     
+    static func getRealmObjectList(filterStr: String, sortedBy: Property, in realm: Realm = try! Realm()) -> Results<T>{
+        return realm.objects(T.self).filter(filterStr).sorted(byKeyPath: sortedBy.rawValue)
+    }
     // 알람 시간( 사용자 설정 알람 시간) : Realm에 있는걸 가져올거임.
     // completion
     

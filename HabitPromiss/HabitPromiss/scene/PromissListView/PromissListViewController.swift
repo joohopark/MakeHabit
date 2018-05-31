@@ -15,12 +15,12 @@ class PromissListViewController: BaseViewController {
   @IBOutlet weak var pieChart: PieChartView!
   @IBOutlet weak var promissTableView: UITableView!
   private var promissCellIdentifier: String = "promissCell"
-  var array = ["1","2","1","2","1","2","1","2"]{
-    didSet{
-      self.refresControl.endRefreshing()
-    }
-  }
-  
+    
+    // HabitManager 램 개체 컬렉션
+    var habitList: Results<HabitManager>?
+    // reload에 사용될 노티 토큰
+    var reactivecHabitListToken: NotificationToken?
+    
   
   var refresControl: UIRefreshControl = {
     let refresControl = UIRefreshControl()
@@ -33,15 +33,8 @@ class PromissListViewController: BaseViewController {
     
     let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "PromissDetailViewController") as! PromissDetailViewController
     self.present(nextViewController, animated: true, completion: nil)
-    self.promissTableView.reloadData()
-    let deadline = DispatchTime.now() + .milliseconds(500)
-    DispatchQueue.main.asyncAfter(deadline: deadline) {
-      self.array.append("3")
-      self.refresControl.endRefreshing()
-      self.promissTableView.reloadData()
-    }
-    
   }
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -50,7 +43,32 @@ class PromissListViewController: BaseViewController {
     } else{
       self.promissTableView.addSubview(self.refresControl)
     }
+    
+    // 뷰가 처음 띄워 질때 Habit Realm Object를 불러온다.
+    habitList = HabitManager.getRealmObjectList(filterStr: "sucessPromiss == false", sortedBy: HabitManager.Property.sucessPromiss)
+    
   }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // 뷰가 다시 띄워질때 테이블 뷰를 리로드 한다.
+        // 리프레시 컨트롤을 끝낸다.
+        // 불러와진 램 개체를 불러와 출력. 에러일때는 에러 출력.
+        reactivecHabitListToken = habitList?.observe({ [weak self](changeResult) in
+            guard let `self` = self else { return }
+            switch changeResult{
+            case .initial:
+                self.promissTableView.reloadData()
+                self.refresControl.endRefreshing()
+                print(self.habitList ?? "realm Habit object Load failed")
+            case .update(_,let deletions, let insertions, let modifications):
+                break
+            case .error(let err):
+                print("reactive Habit List Token occur err : \(err)")
+            }
+        })
+    }
 }
 
 extension PromissListViewController: UITableViewDelegate {
@@ -81,12 +99,12 @@ extension PromissListViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
-    return array.count
+    return (habitList?.count)!
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: promissCellIdentifier, for: indexPath) as! PromissListCell
-    cell.promissListText.text = array[indexPath.row]
+    cell.promissListText.text = habitList?[indexPath.row].habitName
     return cell
   }
 }
