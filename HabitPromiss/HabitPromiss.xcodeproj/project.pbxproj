@@ -220,7 +220,7 @@
 				933D745920BEDC1B0006DD24 /* PromissListView */,
 				98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */,
 				9343E02920B6E675006CCED8 /* SettingsViewController.swift */,
-				#933D745A20BEDC3F0006DD24 /* ClearListView */,
+				/*933D745A20BEDC3F0006DD24  ClearListView ,*/
 				988B845920BFBDF60090C135 /* Animation.swift */,
 			);
 			path = scene;
