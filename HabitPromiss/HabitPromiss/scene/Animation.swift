@@ -35,3 +35,9 @@ extension UITextField {
     })
   }
 }
+
+extension UIView {
+  func animationView() {
+    
+  }
+}

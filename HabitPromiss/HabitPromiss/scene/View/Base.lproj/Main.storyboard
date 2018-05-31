@@ -91,20 +91,39 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="ZgN-Sy-ndF">
-                    <rect key="frame" x="0.0" y="0.0" width="376" height="319"/>
+                    <rect key="frame" x="0.0" y="0.0" width="376" height="403"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="PieChartView" translatesAutoresizingMaskIntoConstraints="NO" id="PPq-mA-olj" customClass="PieChartView" customModule="Charts">
-                            <rect key="frame" x="16" y="68" width="344" height="231"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view contentMode="scaleToFill" restorationIdentifier="PieChartView" translatesAutoresizingMaskIntoConstraints="NO" id="PPq-mA-olj" customClass="PieChartView" customModule="Charts">
+                            <rect key="frame" x="0.0" y="0.0" width="376" height="403"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1a9-zF-Zdi">
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="403"/>
+                                    <connections>
+                                        <action selector="backBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MJB-wZ-puY"/>
+                                    </connections>
+                                </button>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="1a9-zF-Zdi" firstAttribute="leading" secondItem="PPq-mA-olj" secondAttribute="leading" id="Nkr-Dn-MiS"/>
+                                <constraint firstAttribute="trailing" secondItem="1a9-zF-Zdi" secondAttribute="trailing" id="Nnj-Qm-x8p"/>
+                                <constraint firstAttribute="bottom" secondItem="1a9-zF-Zdi" secondAttribute="bottom" id="bhb-5c-tBH"/>
+                                <constraint firstItem="1a9-zF-Zdi" firstAttribute="top" secondItem="PPq-mA-olj" secondAttribute="top" id="tQi-dx-sDX"/>
+                            </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="PPq-mA-olj" firstAttribute="centerX" secondItem="6Tw-W8-69C" secondAttribute="centerX" id="6eE-66-ykK"/>
+                        <constraint firstItem="PPq-mA-olj" firstAttribute="height" secondItem="ZgN-Sy-ndF" secondAttribute="height" id="96o-MY-FqC"/>
+                        <constraint firstItem="PPq-mA-olj" firstAttribute="width" secondItem="ZgN-Sy-ndF" secondAttribute="width" id="ZZZ-ak-Cxr"/>
+                        <constraint firstItem="PPq-mA-olj" firstAttribute="centerY" secondItem="6Tw-W8-69C" secondAttribute="centerY" id="mQV-Te-Xk1"/>
+                    </constraints>
                     <viewLayoutGuide key="safeArea" id="6Tw-W8-69C"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="662" y="925"/>
+            <point key="canvasLocation" x="294" y="912"/>
         </scene>
         <!--Promiss Detail View Controller-->
         <scene sceneID="z0B-fD-X7m">
@@ -491,7 +510,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ptp-Ld-6oD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-292" y="610.34482758620697"/>
+            <point key="canvasLocation" x="-1039" y="605"/>
         </scene>
     </scenes>
     <resources>
