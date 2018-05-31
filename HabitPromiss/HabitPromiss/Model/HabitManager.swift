@@ -78,7 +78,7 @@ class HabitManager: Object, HabitManagerServiceType{
 }
 
 extension HabitManager{
-    
+    // 램 개체에 값을 쓴다.( 추가한다)
     static func add(addedHabit: T , in realm: Realm = try! Realm(), completion: @escaping (RealmResult<T>) -> ()){
         do{
             try realm.write {
@@ -90,46 +90,20 @@ extension HabitManager{
         }
     }
     
+    // 필터에 해당하는 램 개체의 모든 필드를 정렬하여 반환
     static func getRealmObjectList(filterStr: String, sortedBy: Property, in realm: Realm = try! Realm()) -> Results<T>{
         return realm.objects(T.self).filter(filterStr).sorted(byKeyPath: sortedBy.rawValue)
     }
-    // 알람 시간( 사용자 설정 알람 시간) : Realm에 있는걸 가져올거임.
-    // completion
     
-//    static func setAlarmInMyPhone() {
-//
-//        let app = UIApplication.shared
-//        let notificationSettings = UIUserNotificationSettings(types: [.alert, .sound], categories: nil)
-//        app.registerUserNotificationSettings(notificationSettings)
-//
-//        let time : TimeZone = TimeZone(identifier: "Asia/Yakutsk")!
-//        let date = Date(timeIntervalSinceNow: Double(time.secondsFromGMT()))
-//        let calendar = Calendar.current
-//        let components = calendar.dateComponents([.hour, .minute, .second], from: date)
-//
-//        let currentTimeTransSeconds = (components.hour!+15)*3600 + components.minute!*60 + components.second!
-//        let alarmTime = (SettingViewController.hour) * 3600 + SettingViewController.min * 60
-//        var alertTime: NSDate = NSDate()
-//        if currentTimeTransSeconds  > aramTime{// 현재시각 보다 알람시간이 작을때 -> 다음날 울림
-//            alertTime = NSDate().addingTimeInterval(TimeInterval((86400-currentTimeTransSeconds)+aramTime))
-//            print(currentTimeTransSeconds, aramTime,"- 값이 나옴니다 \(TimeInterval((86400-currentTimeTransSeconds)+aramTime))")
-//        }else{// 알람시각이 현재시각보다 클때 -> 두 시각의 차 이후에 울림.
-//            alertTime = NSDate().addingTimeInterval(TimeInterval(aramTime - currentTimeTransSeconds))
-//            print(TimeInterval(aramTime-currentTimeTransSeconds))
-//        }
-//        //        alertTime = NSDate().addingTimeInterval(TimeInterval(alarmTime - currentTimeTransSeconds))
-//        dump(alarmTime-currentTimeTransSeconds)
-//
-//        dump("알람 시간 : \(alertTime)")
-//
-//        let notifyAlarm = UILocalNotification()
-//
-//        notifyAlarm.fireDate = alertTime as Date
-//        notifyAlarm.timeZone = NSTimeZone.default
-//        notifyAlarm.soundName = "bell_tree.mp3"
-//        notifyAlarm.alertBody = "일기쓸 시간입니다."
-//        app.scheduleLocalNotification(notifyAlarm)
-//    }
+    
+    
+    // 알람시간을 초로 바꿔 반환한다. ------------ 안씀.
+    static func alarmTimeConvertSecond(inSeconds: String) -> Double{
+        let inSecondsList = inSeconds.components(separatedBy: ":")
+        let hour = Double(inSecondsList[0])
+        let min = Double(inSecondsList[1])
+        return hour!*3600+min!*60
+    }
     
     static func getScheduledDay(startDay: String, endDay: String) -> (String, Bool){
         

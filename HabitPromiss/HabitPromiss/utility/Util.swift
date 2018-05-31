@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 enum SomethingResult<T>{
     
@@ -50,6 +51,7 @@ class Util {
         return resVal+Int(dateList[2].components(separatedBy: ".")[0])! // 월 누적일 + 일
     }
 
+    // 오전 8:30 과 같은 String을 받아 24시간 형식의 문자열로 변경 반환 함수
     static func convertTo24Hour(beforeConvertTime: String) -> String{
         var separatedTimeStrList = beforeConvertTime.components(separatedBy: " ")
         if separatedTimeStrList[0] != "오전"{
@@ -57,6 +59,29 @@ class Util {
                 + ":\(separatedTimeStrList[1].components(separatedBy: ":")[1])"
         }
         return separatedTimeStrList[1]
+    }
+    
+    // inSeconds 초 이후에 울리도록 알람을 설정한다. X
+    // DateComponents 에 알람을 울리게 설정
+    // 알람 설정에 성공하면 completion으로 true를
+    // 실패하면 false
+    static func timedNotification(date: DateComponents,identifierForAlarm: String, completion: @escaping (_ Sucess: Bool) -> ()){
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: inSeconds, repeats: true)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+        let content = UNMutableNotificationContent()
+        
+        content.title = "티끌모아 습관"
+        content.subtitle = "오늘의 티끌을 모아보세요!"
+        content.body = "영~차! 영~차!"
+        
+        let request = UNNotificationRequest(identifier: identifierForAlarm, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if error != nil{
+                completion(false)
+            }
+            completion(true)
+        }
     }
 }
 
