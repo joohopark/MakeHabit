@@ -11,25 +11,25 @@ import UIKit
 class PromissDetailViewController: BaseViewController {
   
   //MARK: - Property
-    // IBOutlet Hook up
+  // IBOutlet Hook up
   @IBOutlet var tap: UITapGestureRecognizer!
   @IBOutlet weak var goalTitle: UILabel!// 목표 제목
   @IBOutlet weak var goalDetailTextField: UITextField!
-    
+  
   @IBOutlet weak var startTitle: UILabel!
   @IBOutlet weak var startTextField: UITextField!
-    
+  
   @IBOutlet weak var endTitle: UILabel!
   @IBOutlet weak var endTextField: UITextField!
-    
+  
   @IBOutlet weak var scheduleTitle: UILabel!
   @IBOutlet weak var scheduleDay: UILabel!
   @IBOutlet weak var scheduleDayDetail: UILabel!
-    
+  
   @IBOutlet weak var alarmTitle: UILabel!
   @IBOutlet weak var alarmTextField: UITextField!
   
-    
+  
   //MARK: - View UI 로직
   var picker: UIDatePicker = {
     let picker = UIDatePicker()
@@ -73,22 +73,22 @@ class PromissDetailViewController: BaseViewController {
     timeFormatter.locale = loc
     return timeFormatter
   }()
-    
+  
   //MARK: - Action
-    // 저장 버튼( 추가 구현되야 하는것)
-    // 1. Realm에 TextField에 있는 값을 저장.
-    // 2. 알람 TextField에 있는 값을 기준으로 알람 시간 설정.( 알람 설정.)
+  // 저장 버튼( 추가 구현되야 하는것)
+  // 1. Realm에 TextField에 있는 값을 저장.
+  // 2. 알람 TextField에 있는 값을 기준으로 알람 시간 설정.( 알람 설정.)
   @IBAction func saveButton(_ sender: UIButton) {
     
     guard let goalStr = goalDetailTextField.text, let startStr = startTextField.text,
-        let endStr = endTextField.text,
-        let alarmStr = alarmTextField.text else {
-            // Alert 넣어주면 좋을듯.
-            print("TextField의 값이 제대로 안들어 감.")
-            return
+      let endStr = endTextField.text,
+      let alarmStr = alarmTextField.text else {
+        // Alert 넣어주면 좋을듯.
+        print("TextField의 값이 제대로 안들어 감.")
+        return
     }
-
-//    Optional("오후 4:41")
+    
+    //    Optional("오후 4:41")
     
     
     // 1. Realm(Habit object)에 TextField에 있는 값을 저장.
@@ -100,22 +100,22 @@ class PromissDetailViewController: BaseViewController {
     let (goalDay, isUpperTenDay) = HabitManager.getScheduledDay(startDay: startStr, endDay: endStr)
     // 목표일수 정해짐. 이 값은 종료일 입력 후 변경되야 함. 시점 변경 필요.
     if !isUpperTenDay{
-     
-    // 알람값 오후일경우 + 12로 넘겨줘야됨.
-    HabitManager.add(addedHabit: HabitManager.init(goalStr,
-                                                   totalCount: Int(goalDay)!,
-                                                   currentCount: 0,
-                                                   planedPiriod: String("\(startStr)~\(endStr)"),
-                                                   sucessPromiss: false,
-                                                   alarmTime: Util.convertTo24Hour(beforeConvertTime: alarmStr))) { (result) in
-                                                    switch result{
-                                                    case .sucess(let value):
-                                                      print(value)
-                                                    case .error(let error):
+      
+      // 알람값 오후일경우 + 12로 넘겨줘야됨.
+      HabitManager.add(addedHabit: HabitManager.init(goalStr,
+                                                     totalCount: Int(goalDay)!,
+                                                     currentCount: 0,
+                                                     planedPiriod: String("\(startStr)~\(endStr)"),
+                                                     sucessPromiss: false,
+                                                     alarmTime: Util.convertTo24Hour(beforeConvertTime: alarmStr))) { (result) in
+                                                      switch result{
+                                                      case .sucess(let value):
+                                                        print(value)
+                                                      case .error(let error):
                                                         print(error)
-                                                    }
-        }
-        
+                                                      }
+      }
+      
     }
     
     
@@ -123,139 +123,146 @@ class PromissDetailViewController: BaseViewController {
     
     self.dismiss(animated: true, completion: nil)
   }
-    
+  
   //MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
     self.hideKeyboardWhenTappedAround()
     createDatePicker()
   }
+  
+  override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+    self.startTextField.borderBottom(height: 0.5, color: .black)
+    self.endTextField.borderBottom(height: 0.5, color: .black)
+    self.alarmTextField.borderBottom(height: 0.5, color: .black)
+  }
 }
 
 
 extension PromissDetailViewController{
-    enum ToolbarType{
-        case start
-        case end
-        case alarm
+  enum ToolbarType{
+    case start
+    case end
+    case alarm
+  }
+  
+  func createDatePicker() {
+    
+    // TextField input toolbar/picker
+    // Toolbar에 맞는 picker를 text Field에 set
+    // -> tf별 objc 함수를 만드는것 보다 낳은 방법...?
+    startTextField.inputAccessoryView = makeToolbar(toolType: PromissDetailViewController.ToolbarType.start)
+    startTextField.inputView = picker
+    endTextField.inputAccessoryView = makeToolbar(toolType: PromissDetailViewController.ToolbarType.end)
+    endTextField.inputView = picker
+    alarmTextField.inputAccessoryView = makeToolbar(toolType: PromissDetailViewController.ToolbarType.alarm)
+    alarmTextField.inputView = timePicker
+  }
+  
+  // enum type을 기준으로 toolbar 아이템을 생성하여 반환.
+  func makeToolbar(toolType: ToolbarType) -> UIToolbar{
+    // Toolbar 생성.
+    let toolbar = UIToolbar()
+    toolbar.sizeToFit()
+    
+    // toolbar 아이템 추가.
+    var done: UIBarButtonItem
+    switch toolType {
+    case .start:
+      done = UIBarButtonItem(title: "Done", style: .done, target: nil, action: #selector(didPushDoneButtonOnStart))
+    case .end:
+      done = UIBarButtonItem(title: "Done", style: .done, target: nil, action: #selector(didPushDoneButtonOnEnd))
+    case .alarm:
+      done = UIBarButtonItem(title: "Done", style: .done, target: nil, action: #selector(didPushDoneButtonOnAlarm))
     }
     
-    func createDatePicker() {
-        
-        // TextField input toolbar/picker
-        // Toolbar에 맞는 picker를 text Field에 set
-        // -> tf별 objc 함수를 만드는것 보다 낳은 방법...?
-        startTextField.inputAccessoryView = makeToolbar(toolType: PromissDetailViewController.ToolbarType.start)
-        startTextField.inputView = picker
-        endTextField.inputAccessoryView = makeToolbar(toolType: PromissDetailViewController.ToolbarType.end)
-        endTextField.inputView = picker
-        alarmTextField.inputAccessoryView = makeToolbar(toolType: PromissDetailViewController.ToolbarType.alarm)
-        alarmTextField.inputView = timePicker
-    }
+    let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: #selector(didPushCancelButton))
+    toolbar.setItems([done, cancel], animated: false)
     
-    // enum type을 기준으로 toolbar 아이템을 생성하여 반환.
-    func makeToolbar(toolType: ToolbarType) -> UIToolbar{
-        // Toolbar 생성.
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        
-        // toolbar 아이템 추가.
-        var done: UIBarButtonItem
-        switch toolType {
-        case .start:
-            done = UIBarButtonItem(title: "Done", style: .done, target: nil, action: #selector(didPushDoneButtonOnStart))
-        case .end:
-            done = UIBarButtonItem(title: "Done", style: .done, target: nil, action: #selector(didPushDoneButtonOnEnd))
-        case .alarm:
-            done = UIBarButtonItem(title: "Done", style: .done, target: nil, action: #selector(didPushDoneButtonOnAlarm))
+    return toolbar
+  }
+  
+  // bar button cacel 눌렀을때.
+  @objc func didPushCancelButton(_ sender: UIBarButtonItem){
+    self.view.endEditing(true)
+  }
+  
+  //MARK:- done button action
+  
+  // 시작일 에 대한 엑션
+  @objc func didPushDoneButtonOnStart() {
+    let dateString = dateFormatter.string(from: picker.date)
+    startTextField.text = dateString
+    self.view.endEditing(true)
+  }
+  
+  // 종료일 에 대한 엑션
+  @objc func didPushDoneButtonOnEnd(){
+    
+    let dateString = dateFormatter.string(from: picker.date)
+    // 시작일에 값이 들어 가있는지 체크
+    // 값이 없을 경우 시작일 텍스트 필드로 포커스를 옮긴다.
+    if let startStr = startTextField.text{
+      if startStr == ""{
+        self.startTextField.shake()
+        self.startTextField.becomeFirstResponder()
+        Util.toNotifyUserAlert(title: "입력 오류",
+                               message: "시작일 입력을 해야 합니다", parentController: self)
+        return
+      }else{
+        endTextField.text = dateString
+        if let endStr = endTextField.text{
+          //약속 저장 일수에 대한 입력이 들어가야하는 시점,
+          let (goalDay, isUpperTenDay) = HabitManager.getScheduledDay(startDay: startStr, endDay: endStr)
+          // 시작일도 입력되고, 종료일도 입력된 시점.
+          print(goalDay, isUpperTenDay)
+          if !isUpperTenDay{
+            scheduleDayDetail.text = goalDay
+          }else{
+            self.startTextField.shake()
+            self.startTextField.becomeFirstResponder()
+            Util.toNotifyUserAlert(title: "기간 설정 오류", message: "기간을 10일이상으로 설정해주세요",
+                                   parentController: self)
+          }
         }
-        
-        let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: #selector(didPushCancelButton))
-        toolbar.setItems([done, cancel], animated: false)
-        
-        return toolbar
+      }
     }
-    
-    // bar button cacel 눌렀을때.
-    @objc func didPushCancelButton(_ sender: UIBarButtonItem){
-        self.view.endEditing(true)
-    }
-    
-    //MARK:- done button action
-    
-    // 시작일 에 대한 엑션
-    @objc func didPushDoneButtonOnStart() {
-        let dateString = dateFormatter.string(from: picker.date)
-        startTextField.text = dateString
-        self.view.endEditing(true)
-    }
-    
-    // 종료일 에 대한 엑션
-    @objc func didPushDoneButtonOnEnd(){
-        
-        let dateString = dateFormatter.string(from: picker.date)
-        // 시작일에 값이 들어 가있는지 체크
-        // 값이 없을 경우 시작일 텍스트 필드로 포커스를 옮긴다.
-        if let startStr = startTextField.text{
-            if startStr == ""{
-                Util.toNotifyUserAlert(title: "입력 오류",
-                                       message: "시작일 입력을 해야 합니다", parentController: self) {
-                                        self.startTextField.becomeFirstResponder()
-                }
-                return
-            }else{
-                endTextField.text = dateString
-                if let endStr = endTextField.text{
-                    //약속 저장 일수에 대한 입력이 들어가야하는 시점,
-                    let (goalDay, isUpperTenDay) = HabitManager.getScheduledDay(startDay: startStr, endDay: endStr)
-                    // 시작일도 입력되고, 종료일도 입력된 시점.
-                                            print(goalDay, isUpperTenDay)
-                    if !isUpperTenDay{
-                        scheduleDayDetail.text = goalDay
-                    }else{
-                        Util.toNotifyUserAlert(title: "기간 설정 오류", message: "기간을 10일이상으로 설정해주세요",
-                        parentController: self) {
-                            self.startTextField.becomeFirstResponder()
-                        }
-                    }
-                }
-            }
-        }
-        self.view.endEditing(true)
-        
-        
-}
-    
-    // 알람 에 대한 엑션
-    @objc func didPushDoneButtonOnAlarm(){
-        let timeString = timeFormatter.string(from: timePicker.date)
-        alarmTextField.text = timeString
-        self.view.endEditing(true)
-    }
+    self.view.endEditing(true)
     
     
-    //MARK:- Remain Job
-    
-    // 1. 사용자 유도 :  목표 -> 시작일 -> 종료일 -> 알람 설정 -> 저장 버튼을 누르도록 알랏을 띄워 줘야함.
-    // 1-1. 값 체크 후 알랏 호출을 하도록 해야함.
+  }
+  
+  // 알람 에 대한 엑션
+  @objc func didPushDoneButtonOnAlarm(){
+    let timeString = timeFormatter.string(from: timePicker.date)
+    alarmTextField.text = timeString
+    self.view.endEditing(true)
+  }
+  
+  
+  //MARK:- Remain Job
+  
+  // 1. 사용자 유도 :  목표 -> 시작일 -> 종료일 -> 알람 설정 -> 저장 버튼을 누르도록 알랏을 띄워 줘야함.
+  // 1-1. 값 체크 후 알랏 호출을 하도록 해야함.
 }
 
 
 
 // MARK: - UITextFieldDelegate Extension
-extension PromissDetailViewController: UITextFieldDelegate {
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField.tag == 0 {
-            print(444444)
-        } else if textField.tag == 1 {
-            print(2332323)
-        } else if textField.tag == 2 {
-            print(121212)
-        }
-        return true
-    }
-}
+//extension PromissDetailViewController: UITextFieldDelegate {
+//
+//  func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//    if textField.tag == 0 {
+//      print(444444)
+//    } else if textField.tag == 1 {
+//      print(2332323)
+//    } else if textField.tag == 2 {
+//      print(121212)
+//    }
+//    return true
+//  }
+//}
 
 
 

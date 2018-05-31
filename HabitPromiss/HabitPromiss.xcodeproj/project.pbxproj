@@ -28,6 +28,8 @@
 		988B845A20BFBDF60090C135 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988B845920BFBDF60090C135 /* Animation.swift */; };
 		98AE8F5B20BBC713001AA1EA /* PromissListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */; };
 		98AE8F5D20BBC88F001AA1EA /* PromissDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */; };
+		98F50E6B20C064C400307BDD /* calendar+PromissListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F50E6A20C064C400307BDD /* calendar+PromissListViewController.swift */; };
+		98FC8C1620C0773600D11108 /* UITableView+PromissListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FC8C1520C0773600D11108 /* UITableView+PromissListViewController.swift */; };
 		A9F634B39460CEC3DEBEAB8A /* Pods_HabitPromiss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7D1738F7379C8369754D4B8 /* Pods_HabitPromiss.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +81,8 @@
 		988B845920BFBDF60090C135 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromissListCell.swift; sourceTree = "<group>"; };
 		98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromissDetailViewController.swift; sourceTree = "<group>"; };
+		98F50E6A20C064C400307BDD /* calendar+PromissListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "calendar+PromissListViewController.swift"; sourceTree = "<group>"; };
+		98FC8C1520C0773600D11108 /* UITableView+PromissListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+PromissListViewController.swift"; sourceTree = "<group>"; };
 		ABE4DE891AC237F15389007C /* Pods_HabitPromissUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabitPromissUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAA8DEEF0F1AD16984DFA0E5 /* Pods-HabitPromissTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitPromissTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabitPromissTests/Pods-HabitPromissTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7D1738F7379C8369754D4B8 /* Pods_HabitPromiss.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabitPromiss.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				933D745B20BEDC7C0006DD24 /* Util.swift */,
+				98F50E6A20C064C400307BDD /* calendar+PromissListViewController.swift */,
+				98FC8C1520C0773600D11108 /* UITableView+PromissListViewController.swift */,
 			);
 			path = utility;
 			sourceTree = "<group>";
@@ -269,6 +275,7 @@
 				9343DFEE20B6E54D006CCED8 /* Frameworks */,
 				9343DFEF20B6E54D006CCED8 /* Resources */,
 				98239FB96076FD25218BEA40 /* [CP] Embed Pods Frameworks */,
+				C4B6BC67B12E0CED1E1B488F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -287,6 +294,8 @@
 				9343E00120B6E54E006CCED8 /* Sources */,
 				9343E00220B6E54E006CCED8 /* Frameworks */,
 				9343E00320B6E54E006CCED8 /* Resources */,
+				FB3EFB97ACE3D2EE810579C2 /* [CP] Embed Pods Frameworks */,
+				50E77624BE62EBDB7F58325D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -306,6 +315,8 @@
 				9343E00C20B6E54E006CCED8 /* Sources */,
 				9343E00D20B6E54E006CCED8 /* Frameworks */,
 				9343E00E20B6E54E006CCED8 /* Resources */,
+				73CDAF9A438FE60961C76206 /* [CP] Embed Pods Frameworks */,
+				C62DB3BABD91E5C33B6C189D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -406,6 +417,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		50E77624BE62EBDB7F58325D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabitPromissTests/Pods-HabitPromissTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5EE426D304A38B6DB1CB004D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -424,6 +450,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		73CDAF9A438FE60961C76206 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabitPromissUITests/Pods-HabitPromissUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		98239FB96076FD25218BEA40 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -432,18 +473,50 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HabitPromiss/Pods-HabitPromiss-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabitPromiss/Pods-HabitPromiss-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4B6BC67B12E0CED1E1B488F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabitPromiss/Pods-HabitPromiss-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C62DB3BABD91E5C33B6C189D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabitPromissUITests/Pods-HabitPromissUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D98F7A2B1C4F35004AD50A3F /* [CP] Check Pods Manifest.lock */ = {
@@ -464,6 +537,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FB3EFB97ACE3D2EE810579C2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabitPromissTests/Pods-HabitPromissTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -473,6 +561,7 @@
 			files = (
 				9343DFF720B6E54D006CCED8 /* ViewController.swift in Sources */,
 				98359C5E20C006E200F6C659 /* ClearListCell.swift in Sources */,
+				98F50E6B20C064C400307BDD /* calendar+PromissListViewController.swift in Sources */,
 				98AE8F5D20BBC88F001AA1EA /* PromissDetailViewController.swift in Sources */,
 				933D745C20BEDC7C0006DD24 /* Util.swift in Sources */,
 				9343DFF520B6E54D006CCED8 /* AppDelegate.swift in Sources */,
@@ -480,6 +569,7 @@
 				9373E9CB20BD4F42001204E7 /* UserInfo.swift in Sources */,
 				9343E02620B6E614006CCED8 /* PromissListViewController.swift in Sources */,
 				9373E9C920BD4F42001204E7 /* HabitManager.swift in Sources */,
+				98FC8C1620C0773600D11108 /* UITableView+PromissListViewController.swift in Sources */,
 				98359C5D20C006E200F6C659 /* ClearListViewController.swift in Sources */,
 				9343E02420B6E5C3006CCED8 /* BaseViewController.swift in Sources */,
 				98AE8F5B20BBC713001AA1EA /* PromissListCell.swift in Sources */,
@@ -659,8 +749,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M979J82YX7;
 				INFOPLIST_FILE = HabitPromiss/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -680,8 +770,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M979J82YX7;
 				INFOPLIST_FILE = HabitPromiss/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

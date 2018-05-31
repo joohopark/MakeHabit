@@ -6,6 +6,7 @@ target 'HabitPromiss' do
   use_frameworks!
   pod 'RealmSwift'
   pod 'Charts'
+  pod 'FSCalendar'
   # Pods for HabitPromiss
 
   target 'HabitPromissTests' do

@@ -7,19 +7,30 @@
 //
 
 import UIKit
-
+import FSCalendar
 class PromissListCell: UITableViewCell {
-
+  
+  @IBOutlet weak var tableCellCalendar: FSCalendar!
   @IBOutlet weak var promissListText: UILabel!
+  
+  //calendar dateFormatter 로직
+  let gregorian = Calendar(identifier: .gregorian)
+  let formatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd"
+    return formatter
+  }()
+  
   override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    super.awakeFromNib()
+    
+    tableCellCalendar.delegate = self
+    tableCellCalendar.dataSource = self
+    tableCellCalendar.scrollDirection = .horizontal//calendar scroll
+    tableCellCalendar.swipeToChooseGesture.isEnabled = true
+    tableCellCalendar.allowsMultipleSelection = true
+    tableCellCalendar.tintColor = UIColor.green
+    
+    self.tableCellCalendar.accessibilityIdentifier = "FSCalendar"
+  }
 }

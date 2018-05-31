@@ -16,15 +16,13 @@ enum SomethingResult<T>{
 class Util {
     // 제목, 내용을 받아 alert를 띄우는데 호출 시점에 Alert 오키 누른 시점에서 수행될 코드를 넣을수 있는 함수
     static func toNotifyUserAlert(title: String, message: String? = nil,
-                           parentController: UIViewController ,  callBack: @escaping () -> Void) {
+                           parentController: UIViewController) {
         
         let alertController: UIAlertController = UIAlertController(title: title,
                                                                    message: message,
                                                                    preferredStyle: .alert)
         
-        let alertAction: UIAlertAction = UIAlertAction(title: "확인", style: .default) { _ in
-            callBack()
-        }
+        let alertAction: UIAlertAction = UIAlertAction(title: "확인", style: .default)
         
         alertController.addAction(alertAction)
         
