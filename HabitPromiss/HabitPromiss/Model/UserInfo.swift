@@ -74,6 +74,10 @@ extension UserInfo{
             
         }
     }
+    
+    static func getRealmObjectList( sortedBy: Property, in realm: Realm = try! Realm()) -> Results<T>{
+        return realm.objects(T.self).sorted(byKeyPath: sortedBy.rawValue)
+    }
 }
 
 

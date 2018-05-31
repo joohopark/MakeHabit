@@ -88,8 +88,6 @@ class PromissDetailViewController: BaseViewController {
             return
     }
 
-//    Optional("오후 4:41")
-    
     
     // 1. Realm(Habit object)에 TextField에 있는 값을 저장.
     // 시작일과 종료일을 통해 일수를 계산 해야함. -  했고
@@ -120,7 +118,20 @@ class PromissDetailViewController: BaseViewController {
     
     
     // 2. 알람 TextField에 있는 값을 기준으로 알람 시간 설정.( 알람 설정.)
-    
+    let alarmStrList = Util.convertTo24Hour(beforeConvertTime: alarmStr).components(separatedBy: ":")
+    // DateComponents 를 사용하여 알람을 설정
+    var dateComponent = DateComponents()
+    dateComponent.hour = Int(alarmStrList[0])
+    dateComponent.minute = Int(alarmStrList[1])
+    Util.timedNotification(date: dateComponent, identifierForAlarm: goalStr ) { (result) in
+        switch result{
+        case true:
+            print("매일 \(goalStr)에 대한 알람이\(Util.convertTo24Hour(beforeConvertTime: alarmStr))에 울립니다.")
+        case false:
+            print("===UserNotification Add fail===")
+        }
+        
+    }
     self.dismiss(animated: true, completion: nil)
   }
     
