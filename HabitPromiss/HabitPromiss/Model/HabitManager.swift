@@ -57,11 +57,11 @@ class HabitManager: Object, HabitManagerServiceType{
     
     // 사용자 지정 알람 시간
     // picker를 통해 입력된 사용자 알림 시간임
-    @objc dynamic var alarmTime: Date = Date()
+    @objc dynamic var alarmTime: String = ""
     
     
     convenience init(_ habitName: String, totalCount: Int, currentCount: Int,
-                     planedPiriod: String = "", sucessPromiss: Bool = false, alarmTime: Date = Date()) {
+                     planedPiriod: String = "", sucessPromiss: Bool = false, alarmTime: String = "") {
         self.init()
         self.habitName = habitName
         self.totalCount = totalCount
@@ -134,25 +134,17 @@ extension HabitManager{
         let startSeparateList: [String] = startDay.components(separatedBy: ". ")
         let endSeparateList:[String] = endDay.components(separatedBy: ". ")
         // 달이 다를 경우를 대비해서 아싸리 일단위로 계산하자
-        let totalStartDay = calculateTotalDate(dateList: startSeparateList)
-        let totalEndDay = calculateTotalDate(dateList: endSeparateList)
+        let totalStartDay = Util.calculateTotalDate(dateList: startSeparateList)
+        let totalEndDay = Util.calculateTotalDate(dateList: endSeparateList)
         
+        print(totalStartDay, totalEndDay)
         // 연이 틀릴경우에는 ??
         // MARK:- Remain Job
         
         // 결과값, 결과값이 10일 미만일 경우..
-        return ("\(totalEndDay-totalStartDay)", totalEndDay-totalStartDay < 10 ? false : true)
+        return ("\(totalEndDay-totalStartDay)", totalEndDay-totalStartDay < 10 ? true : false)
     }
-    
-//    func getTotalDay(month: Int, day: Int) -> Int{
-//        switch month {
-//        case 2:
-//            return 28
-//        default:
-//            <#code#>
-//        }
-//        return 0
-//    }
+
 }
 
 
