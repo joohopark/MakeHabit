@@ -17,7 +17,8 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        let user = UserInfo.getRealmObjectList(sortedBy: UserInfo.Property.nickName)
+        
+	let user = UserInfo.getRealmObjectList(sortedBy: UserInfo.Property.nickName)
         if user != nil && user[0].nickName != ""{
             userTextField.text = user[0].nickName
         }

@@ -21,9 +21,11 @@ extension PromissListViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if tableView.tag == 0 {
       //promissTableView에 addSubview
+      let tableCell = PromissListCell()
       self.chartDetailView.alpha = 1
       chartDetailView.backgroundColor = UIColor.darkGray
-      self.promissTableView.addSubview(chartDetailView)
+      tableCell.bringSubview(toFront: chartDetailView)
+//      self.promissTableView.addSubview(chartDetailView)
       //pieChart Data 만들기
       ChartManager.makePieChart(indexPath: indexPath.row) { (result) in
         switch result {
@@ -43,6 +45,7 @@ extension PromissListViewController: UITableViewDataSource {
       }
     }
   }
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return (habitList?.count)!
   }

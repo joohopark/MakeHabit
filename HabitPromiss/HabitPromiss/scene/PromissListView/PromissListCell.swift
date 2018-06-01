@@ -29,6 +29,7 @@ class PromissListCell: UITableViewCell {
     tableCellCalendar.scrollDirection = .horizontal//calendar scroll
     tableCellCalendar.swipeToChooseGesture.isEnabled = true
     tableCellCalendar.allowsMultipleSelection = true
+    tableCellCalendar.clipsToBounds = true
     tableCellCalendar.tintColor = UIColor.green
     
     self.tableCellCalendar.accessibilityIdentifier = "FSCalendar"
