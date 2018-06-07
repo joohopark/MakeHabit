@@ -25,7 +25,8 @@ class CelldetailViewController: BaseViewController {
   
   // HabitManager 램 개체 컬렉션
   var selectHabit: HabitManager!
-  
+    var reactiveHabitChartToken: NotificationToken?
+    
   var chart:PieChartData!
   
   //calendar dateFormatter 로직
@@ -46,6 +47,27 @@ class CelldetailViewController: BaseViewController {
     super.viewDidLoad()
     drowCalendar()
     drowPieChart()
+    reactiveHabitChartToken = try! Realm().objects(HabitManager.self).observe({ (change) in
+        switch change {
+        case .initial:
+                self.drowPieChart()
+        case .update(_,let deletions, let insertions, let modifications):
+            self.drowPieChart()
+            self.pieChart.data?.notifyDataChanged()
+            print("차트 업뎃 탓어")
+            ChartManager.makePieChart(indexPath: self.nowTableIndex!, completion: { (result) in
+                switch result{
+                case .sucess(let val):
+                    self.chart = val as! PieChartData
+                case .error(let err):
+                    print(err)
+                }
+            })
+        case .error:
+            break
+        }
+    })
+    
   }
 }
 
@@ -62,7 +84,7 @@ extension CelldetailViewController {
   //Chart를 불러올때 설정해주는 부분
   func drowPieChart() {
     pieChart.data = chart
-    pieChart.backgroundColor = UIColor(named: "iosColor")
+//    pieChart.backgroundColor = UIColor(named: "iosColor")
     pieChart.entryLabelFont = UIFont(name: "NanumPen", size: 16)
     pieChart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .linear)
     self.pieChart.data?.notifyDataChanged()

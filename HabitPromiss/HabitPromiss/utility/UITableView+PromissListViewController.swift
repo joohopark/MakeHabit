@@ -15,7 +15,7 @@ import Charts
 //UITableViewDelegate
 extension PromissListViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 100
+    return 80
   }
 }
 
@@ -28,6 +28,8 @@ extension PromissListViewController: UITableViewDataSource {
       let selectCell = tableView.cellForRow(at: indexPath)!
       selectCell.selectionStyle = .none
     
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd"
         
       //pieChart Data 만들기
       ChartManager.makePieChart(indexPath: indexPath.row) { (result) in
@@ -38,6 +40,15 @@ extension PromissListViewController: UITableViewDataSource {
           vc.selectHabit = self.habitList![indexPath.row]
           vc.firstDate = self.habitList?[indexPath.row].startDate
           vc.lastDate = self.habitList?[indexPath.row].endDate
+
+          for goalDate in (self.habitList?[indexPath.row].goalDate)!{
+            vc.goalDateList.append(formatter.date(from: goalDate)!)
+          }
+          
+          for promissDate in (self.habitList?[indexPath.row].promissDate)!{
+            vc.passDayList.append(formatter.date(from: promissDate)!)
+          }
+          
           vc.nowTableIndex = indexPath.row
           self.present(vc, animated: true, completion: nil)
         case .error(let error):
@@ -55,6 +66,20 @@ extension PromissListViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "promissCell", for: indexPath) as! PromissListCell
     cell.promissListText.text = habitList?[indexPath.row].habitName
+    cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
+    
+    switch habitList?[indexPath.row].iConNo.components(separatedBy: "_")[0] {
+    case "0":
+        cell.imgView.image = UIImage(named: "health_\(habitList?[indexPath.row].iConNo.components(separatedBy: "_")[1] ?? "0")")
+        
+    case "1":
+        cell.imgView.image = UIImage(named: "study_\(habitList?[indexPath.row].iConNo.components(separatedBy: "_")[1] ?? "0")")
+    case "2":
+        cell.imgView.image = UIImage(named: "etc_\(habitList?[indexPath.row].iConNo.components(separatedBy: "_")[1] ?? "0")")
+    default:
+        print("cannot present img ...")
+    }
+    cell.imgView.layer.cornerRadius = cell.imgView.frame.height/2
     return cell
   }
 }

@@ -113,7 +113,7 @@ class PromissDetailViewController: BaseViewController {
                                                      endDay: endStr,
                                                      sucessPromiss: false,
                                                      alarmTime: Util.convertTo24Hour(beforeConvertTime: alarmStr),
-                                                     iConNo: "\(iconVC?.selectCategoryNo ?? 0)_\(iconVC?.selectItemNo ?? 0)")) { (result) in
+                                                     iConNo: "\(iconVC?.selectCategoryNo ?? 0)_\((iconVC?.selectItemNo)!+1)")) { (result) in
                                                       switch result{
                                                       case .sucess(let value):
                                                         print(value)

@@ -27,15 +27,15 @@ class ChartManager: ChartManagerType{
         let currentCount = getCurrentCountDataBase(indexPath: indexPath)
         
         let dataEntry = PieChartDataEntry(value: Double(currentCount.promissDate.count))
-        dataEntry.label = "현재 수행 횟수"
+        dataEntry.label = "현재까지의 습관 이행 횟수"
         
         let totalDataEntery = PieChartDataEntry(value: Double(currentCount.totalCount))
-        totalDataEntery.label = "총 수행 횟수"
+        totalDataEntery.label = "총 목표 횟수"
         
         dataEntries.append(contentsOf: [dataEntry, totalDataEntery])
         
         let chartDataSet = PieChartDataSet(values: dataEntries, label: "\(currentCount.habitName)")// 여기에 무슨 약속에 대한 내용인지가 들어가면 좋을것 같다.
-        let colors = [UIColor.yellow, UIColor.brown]
+        let colors = [UIColor.red, UIColor.blue]
         chartDataSet.colors = colors
         let chartData = PieChartData(dataSet: chartDataSet)
         completion(.sucess(chartData))

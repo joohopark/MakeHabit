@@ -11,7 +11,8 @@ import FSCalendar
 class PromissListCell: UITableViewCell {
   
   @IBOutlet weak var promissListText: UILabel!
-  
+    @IBOutlet weak var cellView: UIView!
+    
     @IBOutlet weak var imgView: UIImageView!
     
   override func awakeFromNib() {

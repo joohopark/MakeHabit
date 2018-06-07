@@ -111,22 +111,49 @@ extension CelldetailViewController: FSCalendarDelegateAppearance{
   func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
     let startDay = self.convertDate.date(from: firstDate!)!
     let endDay = self.convertDate.date(from: lastDate!)!
-    
+
     switch date {
     case startDay...endDay:
-      goalDateList.append(date)
+        if goalDateList.contains(date){
+
+        }else{
+            goalDateList.append(date)
+        }
     default:
       print("약속 날짜 어펜드 완료")
     }
-    
+
     if goalDateList.contains(date){// 전체 날짜
       return UIColor.lightGray
     }else if passDayList.contains(date){// 약속지킨 날짜
-      return UIColor.darkGray
+      return UIColor.black
     }else{
       return nil
     }
   }
+    
+//    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+//        let startDay = self.convertDate.date(from: firstDate!)!
+//        let endDay = self.convertDate.date(from: lastDate!)!
+//
+//        switch date {
+//        case startDay...endDay:
+//            if goalDateList.contains(date){
+//
+//            }else{
+//                goalDateList.append(date)
+//            }
+//        default:
+//            print("약속 날짜 어펜드 완료")
+//        }
+//
+//        if goalDateList.contains(date){// 전체 날짜
+//            return UIColor.darkGray
+//        }else {
+//            return nil
+//        }
+//    }
+
 }
 
 
