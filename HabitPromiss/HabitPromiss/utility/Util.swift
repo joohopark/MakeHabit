@@ -81,6 +81,32 @@ class Util {
             completion(true)
         }
     }
+    
+    // 엡 처음 실행시 nickName을 설정
+    static func userInputAlert(_ title: String, text: String? = nil,
+                               parentController: UIViewController) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        alert.addTextField(configurationHandler: { field in
+            field.text = text
+        })
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            if let text = alert.textFields?.first?.text{
+                if !text.isEmpty{// 텍스트 필드에 닉넴 입력 했으면..
+                    UserInfo.setUserNickName(nickName: text, completion: { (result) in
+                        switch result{
+                        case .sucess(let user):
+                            print("first operating User : \(user)")
+                        case .error(let err):
+                            print("Realm cannot write User!!!!! err :\(err)")
+                        }
+                    })
+                }
+            }
+        }))
+        
+        parentController.present(alert, animated: true, completion: nil)
+    }
 }
 
 

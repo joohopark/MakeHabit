@@ -51,6 +51,9 @@ class HabitManager: Object, HabitManagerServiceType{
     //사용자가 date picker를 통해 입력
     @objc dynamic var planedPiriod: String = ""
     
+    @objc dynamic var startDate: String = ""
+    @objc dynamic var endDate: String = ""
+    
     // 약속 -> 성공 뷰로 넘어갈지에 대한 여부
     // totalCount == currentCount 가 될경우 true
     @objc dynamic var sucessPromiss: Bool = false
@@ -59,16 +62,35 @@ class HabitManager: Object, HabitManagerServiceType{
     // picker를 통해 입력된 사용자 알림 시간임
     @objc dynamic var alarmTime: String = ""
     
+    // 사용자가 지정한 Icon 번호
+    // 컬렉션뷰를 선택했을때의 item No
+    @objc dynamic var iConNo: String = ""
+    
+    // 사용자가 선택한 켈린더의 날짜
+    // 켈린더 컬렉션 뷰의 데이터 들의 [Date]
+    // Date를 그냥 때려 박진 못함 Realm은 primitive type만을 원한다...
+    var promissDate =  List<String>()// 사용자들이 켈린더에서 선택한 날짜 목록
+    // 렘에서 리스트는 여기서 초기화를 해주고 따로 init등에서 작업을 안해줘도 된다.
+    
+    var goalDate = List<String>()
     
     convenience init(_ habitName: String, totalCount: Int, currentCount: Int,
-                     planedPiriod: String = "", sucessPromiss: Bool = false, alarmTime: String = "") {
+                     planedPiriod: String = "", startDay: String = "", endDay: String = "",sucessPromiss: Bool = false, alarmTime: String = "",
+                     iConNo: String = "") {
         self.init()
         self.habitName = habitName
         self.totalCount = totalCount
         self.currentCount = currentCount
         self.planedPiriod = planedPiriod
+        self.startDate = startDay
+        self.endDate = endDay
         self.sucessPromiss = sucessPromiss
         self.alarmTime = alarmTime
+        // icon 번호는 CollectionView를 눌렀을때만 확인이 가능한다.
+        self.iConNo = iConNo
+        
+//        promissDate =
+        
     }
     
     override static func primaryKey() -> String? {
@@ -117,10 +139,50 @@ extension HabitManager{
         // 연이 틀릴경우에는 ??
         // MARK:- Remain Job
         
-        // 결과값, 결과값이 10일 미만일 경우..
-        return ("\(totalEndDay-totalStartDay)", totalEndDay-totalStartDay < 10 ? true : false)
+        // 결과값, 결과값이 30일 초과일 경우..
+        return ("\(totalEndDay-totalStartDay)", totalEndDay-totalStartDay > 30 ? true : false)
+    }
+    
+    static func shouldPerFormAppendDatePromissList(index: Int, passDateList: [Date], goalDateList: [Date],in realm: Realm = try! Realm()){
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        let list = realm.objects(T.self)[index]
+        do{
+        try realm.write {
+            list.goalDate.removeAll()
+                for date in goalDateList{// 다 지우고 들어온애들을 다시 넣어줘
+                   list.goalDate.append(formatter.string(from: date))
+                }
+            list.promissDate.removeAll()
+            for date in passDateList{
+                list.promissDate.append(formatter.string(from: date))
+            }
+            
+            }
+        }catch let error{
+            print(error.localizedDescription)
+        }
     }
 
+//    static func shouldPerFormRemoveDatePromissList(index: Int, passDate: Date, goalDateList: [Date],in realm: Realm = try! Realm()){
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy-MM-dd"
+//        let list = realm.objects(T.self)[index]
+//        do{
+//            try realm.write {
+//                list.goalDate.removeAll()
+//                for date in goalDateList{
+//                    list.goalDate.append(formatter.string(from: date))
+//                }
+//                list.promissDate.removeAll()
+//                list.promissDate.append(formatter.string(from: passDate))
+//            }
+//        }catch let error{
+//            print(error.localizedDescription)
+//        }
+//
+//    }
 }
 
 

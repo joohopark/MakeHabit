@@ -37,7 +37,15 @@ extension PromissListViewController: UITableViewDataSource {
         }
       }
     }
+    
+    let detailView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CelldetailViewController") as! CelldetailViewController
+    detailView.selectHabit = self.habitList![indexPath.row]
+    detailView.firstDate = self.habitList?[indexPath.row].startDate
+    detailView.lastDate = self.habitList?[indexPath.row].endDate
+    detailView.nowTableIndex = indexPath.row
+    self.present(detailView, animated: true, completion: nil)
   }
+    
   //tableView section 표시
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return (habitList?.count)!

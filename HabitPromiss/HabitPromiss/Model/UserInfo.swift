@@ -75,6 +75,19 @@ extension UserInfo{
         }
     }
     
+    static func setUserNickName(nickName: String, in realm: Realm = try! Realm(), completion: @escaping (RealmResult<T>) -> ()){
+        let item = UserInfo(nickName)
+        item.alarmNeeded = true
+        do {
+            try realm.write {
+                realm.add(item)
+            }
+            completion(.sucess(item))
+        } catch {
+            completion(.error(error as! Realm.Error))
+        }
+    }
+    
     static func getRealmObjectList( sortedBy: Property, in realm: Realm = try! Realm()) -> Results<T>{
         return realm.objects(T.self).sorted(byKeyPath: sortedBy.rawValue)
     }

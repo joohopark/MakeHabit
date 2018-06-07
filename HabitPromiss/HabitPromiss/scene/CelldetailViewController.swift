@@ -16,10 +16,18 @@ class CelldetailViewController: BaseViewController {
   @IBOutlet weak var pieChart: PieChartView!
   @IBOutlet weak var calendarView: FSCalendar!
   
-  var firstDate: String = "2018-06-10"
-  var testsouce: String = "2018-06-20"
-  var testList: [String] = ["2018-06-10","2018-06-11","2018-06-12","2018-06-13","2018-06-14"]
-  
+
+  var firstDate: String?
+  var lastDate: String?
+    var nowTableIndex: Int?
+    
+    var goalDateList: [Date] = []
+    var passDayList:[Date] = []
+    
+    // HabitManager 램 개체 컬렉션
+    var selectHabit: HabitManager!
+
+    
   //calendar dateFormatter 로직
   let gregorian = Calendar(identifier: .gregorian)
   let formatter: DateFormatter = {
@@ -28,8 +36,17 @@ class CelldetailViewController: BaseViewController {
     return formatter
   }()
   
+    let convertDate: DateFormatter = {
+        let f = DateFormatter()
+        f.dateFormat = "yyyy. MM. dd."
+        return f
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+        
       calendarView.scrollDirection = .horizontal//calendar scroll
       calendarView.swipeToChooseGesture.isEnabled = true
       calendarView.allowsMultipleSelection = true
@@ -40,6 +57,3 @@ class CelldetailViewController: BaseViewController {
     }
 }
 
-extension CelldetailViewController {
-  
-}

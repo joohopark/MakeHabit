@@ -29,7 +29,8 @@ class PromissDetailViewController: BaseViewController {
   @IBOutlet weak var alarmTitle: UILabel!
   @IBOutlet weak var alarmTextField: UITextField!
   
-  
+          var embededCollectionView: IconCollectionViewController?
+    
   //MARK: - View UI 로직
   var picker: UIDatePicker = {
     let picker = UIDatePicker()
@@ -74,6 +75,9 @@ class PromissDetailViewController: BaseViewController {
     return timeFormatter
   }()
   
+    
+
+    
   //MARK: - Action
   // 저장 버튼( 추가 구현되야 하는것)
   // 1. Realm에 TextField에 있는 값을 저장.
@@ -103,6 +107,8 @@ class PromissDetailViewController: BaseViewController {
                                                      totalCount: Int(goalDay)!,
                                                      currentCount: 0,
                                                      planedPiriod: String("\(startStr)~\(endStr)"),
+                                                     startDay: startStr,
+                                                     endDay: endStr,
                                                      sucessPromiss: false,
                                                      alarmTime: Util.convertTo24Hour(beforeConvertTime: alarmStr))) { (result) in
                                                       switch result{
@@ -224,15 +230,15 @@ extension PromissDetailViewController{
         endTextField.text = dateString
         if let endStr = endTextField.text{
           //약속 저장 일수에 대한 입력이 들어가야하는 시점,
-          let (goalDay, isUpperTenDay) = HabitManager.getScheduledDay(startDay: startStr, endDay: endStr)
+          let (goalDay, isUpper30Day) = HabitManager.getScheduledDay(startDay: startStr, endDay: endStr)
           // 시작일도 입력되고, 종료일도 입력된 시점.
-          print(goalDay, isUpperTenDay)
-          if !isUpperTenDay{
+          print(goalDay, isUpper30Day)
+          if !isUpper30Day{
             scheduleDayDetail.text = goalDay
           }else{
             self.startTextField.shake()
             self.startTextField.becomeFirstResponder()
-            Util.toNotifyUserAlert(title: "기간 설정 오류", message: "기간을 10일이상으로 설정해주세요",
+            Util.toNotifyUserAlert(title: "기간 설정 오류", message: "기간을 30일 미만만로 설정해주세요",
                                    parentController: self)
           }
         }

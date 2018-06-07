@@ -19,16 +19,20 @@
 		9343E02420B6E5C3006CCED8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9343E02320B6E5C3006CCED8 /* BaseViewController.swift */; };
 		9343E02620B6E614006CCED8 /* PromissListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9343E02520B6E614006CCED8 /* PromissListViewController.swift */; };
 		9343E02A20B6E675006CCED8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9343E02920B6E675006CCED8 /* SettingsViewController.swift */; };
+		93547FE320C9205800CE6775 /* IconCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93547FE020C9205800CE6775 /* IconCategoryHeaderView.swift */; };
+		93547FE420C9205800CE6775 /* IconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93547FE120C9205800CE6775 /* IconCell.xib */; };
+		93547FE520C9205800CE6775 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93547FE220C9205800CE6775 /* IconCell.swift */; };
 		9373E9C920BD4F42001204E7 /* HabitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9373E9C620BD4F41001204E7 /* HabitManager.swift */; };
 		9373E9CA20BD4F42001204E7 /* ChartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9373E9C720BD4F42001204E7 /* ChartManager.swift */; };
 		9373E9CB20BD4F42001204E7 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9373E9C820BD4F42001204E7 /* UserInfo.swift */; };
+		93E71CBA20C925900027BAD5 /* IconCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E71CB920C925900027BAD5 /* IconCollectionViewController.swift */; };
 		981B31B120C9088B002E8F27 /* CelldetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981B31B020C9088B002E8F27 /* CelldetailViewController.swift */; };
 		98359C5D20C006E200F6C659 /* ClearListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98359C5B20C006E100F6C659 /* ClearListViewController.swift */; };
 		98359C5E20C006E200F6C659 /* ClearListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98359C5C20C006E100F6C659 /* ClearListCell.swift */; };
 		988B845A20BFBDF60090C135 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988B845920BFBDF60090C135 /* Animation.swift */; };
 		98AE8F5B20BBC713001AA1EA /* PromissListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */; };
 		98AE8F5D20BBC88F001AA1EA /* PromissDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */; };
-		98F50E6B20C064C400307BDD /* calendar+PromissListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F50E6A20C064C400307BDD /* calendar+PromissListViewController.swift */; };
+		98F50E6B20C064C400307BDD /* calendar+CelldetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F50E6A20C064C400307BDD /* calendar+CelldetailViewController.swift */; };
 		98FC8C1620C0773600D11108 /* UITableView+PromissListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FC8C1520C0773600D11108 /* UITableView+PromissListViewController.swift */; };
 		A9F634B39460CEC3DEBEAB8A /* Pods_HabitPromiss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7D1738F7379C8369754D4B8 /* Pods_HabitPromiss.framework */; };
 /* End PBXBuildFile section */
@@ -72,16 +76,20 @@
 		9343E02320B6E5C3006CCED8 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		9343E02520B6E614006CCED8 /* PromissListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromissListViewController.swift; sourceTree = "<group>"; };
 		9343E02920B6E675006CCED8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		93547FE020C9205800CE6775 /* IconCategoryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCategoryHeaderView.swift; sourceTree = "<group>"; };
+		93547FE120C9205800CE6775 /* IconCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconCell.xib; sourceTree = "<group>"; };
+		93547FE220C9205800CE6775 /* IconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
 		9373E9C620BD4F41001204E7 /* HabitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitManager.swift; sourceTree = "<group>"; };
 		9373E9C720BD4F42001204E7 /* ChartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartManager.swift; sourceTree = "<group>"; };
 		9373E9C820BD4F42001204E7 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		93E71CB920C925900027BAD5 /* IconCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCollectionViewController.swift; sourceTree = "<group>"; };
 		981B31B020C9088B002E8F27 /* CelldetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelldetailViewController.swift; sourceTree = "<group>"; };
 		98359C5B20C006E100F6C659 /* ClearListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearListViewController.swift; sourceTree = "<group>"; };
 		98359C5C20C006E100F6C659 /* ClearListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearListCell.swift; sourceTree = "<group>"; };
 		988B845920BFBDF60090C135 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromissListCell.swift; sourceTree = "<group>"; };
 		98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromissDetailViewController.swift; sourceTree = "<group>"; };
-		98F50E6A20C064C400307BDD /* calendar+PromissListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "calendar+PromissListViewController.swift"; sourceTree = "<group>"; };
+		98F50E6A20C064C400307BDD /* calendar+CelldetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "calendar+CelldetailViewController.swift"; sourceTree = "<group>"; };
 		98FC8C1520C0773600D11108 /* UITableView+PromissListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+PromissListViewController.swift"; sourceTree = "<group>"; };
 		ABE4DE891AC237F15389007C /* Pods_HabitPromissUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabitPromissUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAA8DEEF0F1AD16984DFA0E5 /* Pods-HabitPromissTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitPromissTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabitPromissTests/Pods-HabitPromissTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -121,7 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				933D745B20BEDC7C0006DD24 /* Util.swift */,
-				98F50E6A20C064C400307BDD /* calendar+PromissListViewController.swift */,
+				988B845920BFBDF60090C135 /* Animation.swift */,
+				98F50E6A20C064C400307BDD /* calendar+CelldetailViewController.swift */,
 				98FC8C1520C0773600D11108 /* UITableView+PromissListViewController.swift */,
 			);
 			path = utility;
@@ -186,6 +195,9 @@
 			children = (
 				9343DFF820B6E54D006CCED8 /* Main.storyboard */,
 				98359C5C20C006E100F6C659 /* ClearListCell.swift */,
+				93547FE020C9205800CE6775 /* IconCategoryHeaderView.swift */,
+				93547FE220C9205800CE6775 /* IconCell.swift */,
+				93547FE120C9205800CE6775 /* IconCell.xib */,
 				98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */,
 			);
 			path = View;
@@ -208,10 +220,10 @@
 				9343E02220B6E57D006CCED8 /* View */,
 				98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */,
 				9343E02520B6E614006CCED8 /* PromissListViewController.swift */,
+				93E71CB920C925900027BAD5 /* IconCollectionViewController.swift */,
 				981B31B020C9088B002E8F27 /* CelldetailViewController.swift */,
 				9343E02920B6E675006CCED8 /* SettingsViewController.swift */,
-				98359C5A20C006E100F6C659 /* ClearListView */,
-				988B845920BFBDF60090C135 /* Animation.swift */,
+				98359C5B20C006E100F6C659 /* ClearListViewController.swift */,
 			);
 			path = scene;
 			sourceTree = "<group>";
@@ -222,14 +234,6 @@
 				9343E02320B6E5C3006CCED8 /* BaseViewController.swift */,
 			);
 			path = base;
-			sourceTree = "<group>";
-		};
-		98359C5A20C006E100F6C659 /* ClearListView */ = {
-			isa = PBXGroup;
-			children = (
-				98359C5B20C006E100F6C659 /* ClearListViewController.swift */,
-			);
-			path = ClearListView;
 			sourceTree = "<group>";
 		};
 		A06B86EFC985946DA844999C /* Frameworks */ = {
@@ -370,6 +374,7 @@
 			files = (
 				9343DFFF20B6E54E006CCED8 /* LaunchScreen.storyboard in Resources */,
 				9343DFFC20B6E54E006CCED8 /* Assets.xcassets in Resources */,
+				93547FE420C9205800CE6775 /* IconCell.xib in Resources */,
 				9343DFFA20B6E54D006CCED8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -552,10 +557,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				98359C5E20C006E200F6C659 /* ClearListCell.swift in Sources */,
-				98F50E6B20C064C400307BDD /* calendar+PromissListViewController.swift in Sources */,
+				98F50E6B20C064C400307BDD /* calendar+CelldetailViewController.swift in Sources */,
+				93547FE520C9205800CE6775 /* IconCell.swift in Sources */,
 				98AE8F5D20BBC88F001AA1EA /* PromissDetailViewController.swift in Sources */,
 				933D745C20BEDC7C0006DD24 /* Util.swift in Sources */,
 				9343DFF520B6E54D006CCED8 /* AppDelegate.swift in Sources */,
+				93E71CBA20C925900027BAD5 /* IconCollectionViewController.swift in Sources */,
 				9373E9CA20BD4F42001204E7 /* ChartManager.swift in Sources */,
 				9373E9CB20BD4F42001204E7 /* UserInfo.swift in Sources */,
 				9343E02620B6E614006CCED8 /* PromissListViewController.swift in Sources */,
@@ -563,6 +570,7 @@
 				98FC8C1620C0773600D11108 /* UITableView+PromissListViewController.swift in Sources */,
 				98359C5D20C006E200F6C659 /* ClearListViewController.swift in Sources */,
 				981B31B120C9088B002E8F27 /* CelldetailViewController.swift in Sources */,
+				93547FE320C9205800CE6775 /* IconCategoryHeaderView.swift in Sources */,
 				9343E02420B6E5C3006CCED8 /* BaseViewController.swift in Sources */,
 				98AE8F5B20BBC713001AA1EA /* PromissListCell.swift in Sources */,
 				988B845A20BFBDF60090C135 /* Animation.swift in Sources */,

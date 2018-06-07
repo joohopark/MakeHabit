@@ -16,7 +16,5 @@ class PromissListCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
-//    tableCellCalendar.delegate = self
-//    tableCellCalendar.dataSource = self
   }
 }

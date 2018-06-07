@@ -43,6 +43,8 @@ class PromissListViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    // 사용자 이름 없으면 ... 알랏으로 결정
+    initializeUserInfoRealm()
     //버전별 refresControl addSubView
     if #available(iOS 10.0, *){
       promissTableView.refreshControl = refresControl
@@ -75,4 +77,16 @@ class PromissListViewController: BaseViewController {
       }
     })
   }
+    
+    private func initializeUserInfoRealm() {
+        let realm = try! Realm()
+        let checkEmptyUserIfo = UserInfo.getRealmObjectList(sortedBy: UserInfo.Property.nickName)
+        switch checkEmptyUserIfo.count {
+        case 0:// 사용자가 app에 지정 안되어있을경우
+            Util.userInputAlert("사용자 이름을 입력해주세요.", parentController: self)
+        default:
+            print("처음 실행이 아님.")
+        }
+        
+    }
 }
