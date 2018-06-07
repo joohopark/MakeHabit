@@ -9,7 +9,7 @@
 import UIKit
 
 class PromissDetailViewController: BaseViewController {
-  
+
   //MARK: - Property
   // IBOutlet Hook up
   @IBOutlet var tap: UITapGestureRecognizer!
@@ -29,7 +29,8 @@ class PromissDetailViewController: BaseViewController {
   @IBOutlet weak var alarmTitle: UILabel!
   @IBOutlet weak var alarmTextField: UITextField!
   
-          var embededCollectionView: IconCollectionViewController?
+// container View Property
+  var iconVC: IconCollectionViewController?
     
   //MARK: - View UI 로직
   var picker: UIDatePicker = {
@@ -92,6 +93,7 @@ class PromissDetailViewController: BaseViewController {
         return
     }
     
+
     // 1. Realm(Habit object)에 TextField에 있는 값을 저장.
     // 시작일과 종료일을 통해 일수를 계산 해야함. -  했고
     // 총 약속 일수 -> 총 알람 횟수임. - 했고
@@ -110,7 +112,8 @@ class PromissDetailViewController: BaseViewController {
                                                      startDay: startStr,
                                                      endDay: endStr,
                                                      sucessPromiss: false,
-                                                     alarmTime: Util.convertTo24Hour(beforeConvertTime: alarmStr))) { (result) in
+                                                     alarmTime: Util.convertTo24Hour(beforeConvertTime: alarmStr),
+                                                     iConNo: "\(iconVC?.selectCategoryNo ?? 0)_\(iconVC?.selectItemNo ?? 0)")) { (result) in
                                                       switch result{
                                                       case .sucess(let value):
                                                         print(value)
@@ -118,7 +121,7 @@ class PromissDetailViewController: BaseViewController {
                                                         print(error)
                                                       }
       }
-      
+        
     }
     
     
@@ -145,6 +148,7 @@ class PromissDetailViewController: BaseViewController {
     super.viewDidLoad()
     self.hideKeyboardWhenTappedAround()
     createDatePicker()
+
   }
   
   override func viewWillLayoutSubviews() {
@@ -256,29 +260,15 @@ extension PromissDetailViewController{
     self.view.endEditing(true)
   }
   
-  
+
   //MARK:- Remain Job
-  
-  // 1. 사용자 유도 :  목표 -> 시작일 -> 종료일 -> 알람 설정 -> 저장 버튼을 누르도록 알랏을 띄워 줘야함.
-  // 1-1. 값 체크 후 알랏 호출을 하도록 해야함.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? IconCollectionViewController{
+            iconVC = vc
+        }
+    }
 }
 
-
-
-// MARK: - UITextFieldDelegate Extension
-//extension PromissDetailViewController: UITextFieldDelegate {
-//
-//  func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//    if textField.tag == 0 {
-//      print(444444)
-//    } else if textField.tag == 1 {
-//      print(2332323)
-//    } else if textField.tag == 2 {
-//      print(121212)
-//    }
-//    return true
-//  }
-//}
 
 
 

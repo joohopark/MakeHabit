@@ -67,6 +67,7 @@ extension CelldetailViewController: FSCalendarDelegate {
             
             
         HabitManager.shouldPerFormAppendDatePromissList(index: self.nowTableIndex!, passDateList: self.passDayList, goalDateList: self.goalDateList)
+            
             print("promiss cancel : \(passDayList),,,,,, \(goalDateList)")
             return true// 오늘을 제외하면 선택되지 않는다.
         default:
@@ -81,7 +82,6 @@ extension CelldetailViewController: FSCalendarDataSource {
     // 목표일로 잡은 주기
   //calendar 날짜가 시작되는 시점
   func minimumDate(for calendar: FSCalendar) -> Date {
-
     return self.convertDate.date(from: firstDate!)!
   }
   //MARK: TodayMaximumDate

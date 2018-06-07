@@ -9,7 +9,9 @@
 import UIKit
 
 //MARK:- Description
-
+//protocol IconCollectionViewType:class {
+//    func setIconNo(selectCategory: Int, selectItem: Int)
+//}
 //PromissDetailViewController 가 부모인 Container View ,
 // CollectionView를 부모 위에 올리기위해 만듦.
 class IconCollectionViewController: BaseViewController {
@@ -52,6 +54,9 @@ class IconCollectionViewController: BaseViewController {
     ]
     
     
+    var selectCategoryNo = 0
+    var selectItemNo = 0
+    
     //MARK:- View LifeCycle
     
     override func viewDidLoad() {
@@ -63,6 +68,9 @@ class IconCollectionViewController: BaseViewController {
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionHeadersPinToVisibleBounds = true
     }
+    
+    
+
     
 }
 
@@ -105,8 +113,6 @@ extension IconCollectionViewController: UICollectionViewDataSource{
     // 헤더도 재사용을 합니다. 컬렉션 뷰는..
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-//        switch kind {
-//        case UICollectionElementKindSectionHeader:
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "IconCategoryHeaderView", for: indexPath) as! IconCategoryHeaderView
         var headerName = "", headerImageName = ""
         switch indexPath.section {
@@ -124,12 +130,33 @@ extension IconCollectionViewController: UICollectionViewDataSource{
         header.headerName.text = headerName
             print("여길 타긴함????")
             return header
-//        default:
-//            return UICollectionReusableView()
-//        }
+
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // section, item 을 통해 iconNo를 표시해야한다.
+        selectCategoryNo = indexPath.section
+        selectItemNo = indexPath.row
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! IconCell
+        cell.isSelected = true
+//        cell.backgroundColor = UIColor.blue
+        cell.imgView.alpha = 0.3
+
+        
+        print(indexPath)
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        selectCategoryNo = 0
+        selectItemNo = 0
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! IconCell
+        cell.isSelected = false
+//        cell.backgroundColor = UIColor.clear
+        cell.imgView.alpha = 1
+        print(indexPath)
+    }
     
 }
 
@@ -184,7 +211,6 @@ private struct Metric {
     static let itemSpacing: CGFloat = 5.0
     static let lineSpacing: CGFloat = 5.0
 }
-
 
 
 

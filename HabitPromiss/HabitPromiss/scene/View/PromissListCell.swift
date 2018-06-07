@@ -12,7 +12,8 @@ class PromissListCell: UITableViewCell {
   
   @IBOutlet weak var promissListText: UILabel!
   
-  
+    @IBOutlet weak var imgView: UIImageView!
+    
   override func awakeFromNib() {
     super.awakeFromNib()
     

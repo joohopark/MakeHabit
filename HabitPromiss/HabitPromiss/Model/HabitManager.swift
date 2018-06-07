@@ -76,7 +76,7 @@ class HabitManager: Object, HabitManagerServiceType{
     
     convenience init(_ habitName: String, totalCount: Int, currentCount: Int,
                      planedPiriod: String = "", startDay: String = "", endDay: String = "",sucessPromiss: Bool = false, alarmTime: String = "",
-                     iConNo: String = "") {
+                     iConNo: String) {
         self.init()
         self.habitName = habitName
         self.totalCount = totalCount

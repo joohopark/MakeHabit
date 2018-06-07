@@ -23,29 +23,30 @@ extension PromissListViewController: UITableViewDelegate {
 extension PromissListViewController: UITableViewDataSource {
   //cell이 선택된 이후
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if tableView.tag == 0 {
+
       //tableView Cell을 선택했을 때 선택 스타일
       let selectCell = tableView.cellForRow(at: indexPath)!
       selectCell.selectionStyle = .none
+    
+        
       //pieChart Data 만들기
       ChartManager.makePieChart(indexPath: indexPath.row) { (result) in
         switch result {
         case .sucess(let value):
           let vc = self.storyboard?.instantiateViewController(withIdentifier: "CelldetailViewController") as! CelldetailViewController
           vc.chart = value as! PieChartData
+          vc.selectHabit = self.habitList![indexPath.row]
+          vc.firstDate = self.habitList?[indexPath.row].startDate
+          vc.lastDate = self.habitList?[indexPath.row].endDate
+          vc.nowTableIndex = indexPath.row
           self.present(vc, animated: true, completion: nil)
         case .error(let error):
           print(error.localizedDescription)
         }
       }
-    }
+
     
-    let detailView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CelldetailViewController") as! CelldetailViewController
-    detailView.selectHabit = self.habitList![indexPath.row]
-    detailView.firstDate = self.habitList?[indexPath.row].startDate
-    detailView.lastDate = self.habitList?[indexPath.row].endDate
-    detailView.nowTableIndex = indexPath.row
-    self.present(detailView, animated: true, completion: nil)
+
   }
 
   //tableView section 표시

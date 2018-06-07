@@ -42,7 +42,8 @@ class SettingsViewController: UITableViewController {
             // 그래서 map을 써서 아싸리 한번에 HabitManager 모델 컬렉션 개체로 만들어서 사용한다.
             let habitList = HabitManager.getRealmObjectList(filterStr: "sucessPromiss == false", sortedBy: HabitManager.Property.sucessPromiss).map { HabitManager.init($0.habitName,
                                                                                                                                                                         totalCount: $0.totalCount,
-                                                                                                                                                                        currentCount: $0.currentCount, planedPiriod: $0.planedPiriod, sucessPromiss: $0.sucessPromiss, alarmTime: $0.alarmTime)
+                                                                                                                                                                        currentCount: $0.currentCount, planedPiriod: $0.planedPiriod, sucessPromiss: $0.sucessPromiss, alarmTime: $0.alarmTime,
+                                                                                                                                        iConNo: $0.iConNo)
             }
             
 
