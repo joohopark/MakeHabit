@@ -9,22 +9,40 @@
 import Foundation
 import FSCalendar
 
-extension PromissListCell: FSCalendarDelegate{
+
+extension CelldetailViewController: FSCalendarDelegate {
+  
   //calendar가 실행되기 전
   func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
-    print(date)
+    let test = self.formatter.date(from: testsouce)!
+    let test2 = self.formatter.date(from: firstDate)!
+    for i in testList {
+      let list = self.formatter.date(from: i)!
+      if date == list {
+        cell.isSelected = true
+        cell.performSelecting()
+      }
+    }
+    cell.isSelected = false
   }
 }
 
-extension PromissListCell: FSCalendarDataSource {
+extension CelldetailViewController: FSCalendarDataSource {
+  //calendar 날짜가 시작되는 시점
   func minimumDate(for calendar: FSCalendar) -> Date {
-    return Date()
+    let test = self.formatter.date(from: firstDate)!
+    
+    return test
   }
   //MARK: TodayMaximumDate
   //maximumDate 부분
-  //PromissDetailViewController에서 종료일을 입력하면 이곳으로 데이터가 입력...
+  //calendar 마지막날짜 표시
   func maximumDate(for calendar: FSCalendar) -> Date {
-    let threeMonthFromNow = self.gregorian.date(byAdding: .month, value: 2, to: Date(), wrappingComponents: true)
-    return threeMonthFromNow!
+    let test = self.formatter.date(from: testsouce)!
+    return test
+    
   }
 }
+
+
+
