@@ -39,6 +39,7 @@ class ChartManager: ChartManagerType{
         chartDataSet.colors = colors
         let chartData = PieChartData(dataSet: chartDataSet)
         completion(.sucess(chartData))
+      
     }
     
     static func getCurrentCountDataBase(indexPath: Int) -> T{

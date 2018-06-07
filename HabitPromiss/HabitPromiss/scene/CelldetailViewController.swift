@@ -18,15 +18,14 @@ class CelldetailViewController: BaseViewController {
   
   var firstDate: String?
   var lastDate: String?
-    var nowTableIndex: Int?
-    
-    var goalDateList: [Date] = []
-    var passDayList:[Date] = []
-    
-    // HabitManager 램 개체 컬렉션
-    var selectHabit: HabitManager!
-
-
+  var nowTableIndex: Int?
+  
+  var goalDateList: [Date] = []
+  var passDayList:[Date] = []
+  
+  // HabitManager 램 개체 컬렉션
+  var selectHabit: HabitManager!
+  
   var chart:PieChartData!
   
   //calendar dateFormatter 로직
@@ -37,28 +36,17 @@ class CelldetailViewController: BaseViewController {
     return formatter
   }()
   
-    let convertDate: DateFormatter = {
-        let f = DateFormatter()
-        f.dateFormat = "yyyy. MM. dd."
-        return f
-    }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-
-        
-      calendarView.scrollDirection = .horizontal//calendar scroll
-      calendarView.swipeToChooseGesture.isEnabled = true
-      calendarView.allowsMultipleSelection = true
-      calendarView.clipsToBounds = true
-      calendarView.tintColor = UIColor.green
-      calendarView.accessibilityIdentifier = "FSCalendar"
-      calendarView.reloadData()
-      
-      drowCalendar()
-      drowPieChart()
-    }
+  let convertDate: DateFormatter = {
+    let f = DateFormatter()
+    f.dateFormat = "yyyy. MM. dd."
+    return f
+  }()
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    drowCalendar()
+    drowPieChart()
+  }
 }
 
 
@@ -77,6 +65,8 @@ extension CelldetailViewController {
     pieChart.backgroundColor = UIColor(named: "iosColor")
     pieChart.entryLabelFont = UIFont(name: "NanumPen", size: 16)
     pieChart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .linear)
+    self.pieChart.data?.notifyDataChanged()
+    
   }
 }
 

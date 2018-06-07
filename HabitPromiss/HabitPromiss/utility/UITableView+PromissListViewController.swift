@@ -33,19 +33,16 @@ extension PromissListViewController: UITableViewDataSource {
         case .sucess(let value):
           let vc = self.storyboard?.instantiateViewController(withIdentifier: "CelldetailViewController") as! CelldetailViewController
           vc.chart = value as! PieChartData
+          vc.selectHabit = self.habitList![indexPath.row]
+          vc.firstDate = self.habitList?[indexPath.row].startDate
+          vc.lastDate = self.habitList?[indexPath.row].endDate
+          vc.nowTableIndex = indexPath.row
           self.present(vc, animated: true, completion: nil)
         case .error(let error):
           print(error.localizedDescription)
         }
       }
     }
-    
-    let detailView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CelldetailViewController") as! CelldetailViewController
-    detailView.selectHabit = self.habitList![indexPath.row]
-    detailView.firstDate = self.habitList?[indexPath.row].startDate
-    detailView.lastDate = self.habitList?[indexPath.row].endDate
-    detailView.nowTableIndex = indexPath.row
-    self.present(detailView, animated: true, completion: nil)
   }
 
   //tableView section 표시
