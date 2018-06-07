@@ -12,9 +12,11 @@ import RealmSwift
 import FSCalendar
 
 class CelldetailViewController: BaseViewController {
-
+  
   @IBOutlet weak var pieChart: PieChartView!
   @IBOutlet weak var calendarView: FSCalendar!
+  
+  var chart:PieChartData!
   
   var firstDate: String = "2018-06-10"
   var testsouce: String = "2018-06-20"
@@ -28,18 +30,26 @@ class CelldetailViewController: BaseViewController {
     return formatter
   }()
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      calendarView.scrollDirection = .horizontal//calendar scroll
-      calendarView.swipeToChooseGesture.isEnabled = true
-      calendarView.allowsMultipleSelection = true
-      calendarView.clipsToBounds = true
-      calendarView.tintColor = UIColor.green
-      calendarView.accessibilityIdentifier = "FSCalendar"
-      calendarView.reloadData()
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    drowCalendar()
+    drowPieChart()
+  }
 }
 
 extension CelldetailViewController {
-  
+  //Calendar를 불러올때 설정해주는 부분
+  func drowCalendar() {
+    calendarView.scrollDirection = .vertical//calendar scroll
+    calendarView.allowsMultipleSelection = true
+    calendarView.clipsToBounds = true
+  }
+  //Chart를 불러올때 설정해주는 부분
+  func drowPieChart() {
+    pieChart.data = chart
+    pieChart.backgroundColor = UIColor(named: "iosColor")
+    pieChart.entryLabelFont = UIFont(name: "NanumPen", size: 16)
+    pieChart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .linear)
+  }
 }
+

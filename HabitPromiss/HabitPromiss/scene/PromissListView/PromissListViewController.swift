@@ -20,6 +20,7 @@ class PromissListViewController: BaseViewController {
   // reload에 사용될 노티 토큰
   var reactivecHabitListToken: NotificationToken?
   
+  
   //MARK: - View UI 로직
   //refresControl View UI 로직
   var refresControl: UIRefreshControl = {
@@ -54,6 +55,8 @@ class PromissListViewController: BaseViewController {
     habitList = HabitManager.getRealmObjectList(filterStr: "sucessPromiss == false", sortedBy: HabitManager.Property.sucessPromiss)
     
   }
+
+  
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -75,4 +78,5 @@ class PromissListViewController: BaseViewController {
       }
     })
   }
+  
 }

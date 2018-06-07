@@ -203,7 +203,7 @@ extension PromissDetailViewController{
   // 시작일 에 대한 엑션
   @objc func didPushDoneButtonOnStart() {
     let dateString = dateFormatter.string(from: picker.date)
-    startTextField.text = dateString
+    startTextField.text = dateString    
     self.view.endEditing(true)
   }
   
