@@ -19,6 +19,7 @@
 		9343E02420B6E5C3006CCED8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9343E02320B6E5C3006CCED8 /* BaseViewController.swift */; };
 		9343E02620B6E614006CCED8 /* PromissListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9343E02520B6E614006CCED8 /* PromissListViewController.swift */; };
 		9343E02A20B6E675006CCED8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9343E02920B6E675006CCED8 /* SettingsViewController.swift */; };
+		934517A120C9B62B00DF629A /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934517A020C9B62B00DF629A /* FinishViewController.swift */; };
 		93547FE320C9205800CE6775 /* IconCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93547FE020C9205800CE6775 /* IconCategoryHeaderView.swift */; };
 		93547FE420C9205800CE6775 /* IconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93547FE120C9205800CE6775 /* IconCell.xib */; };
 		93547FE520C9205800CE6775 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93547FE220C9205800CE6775 /* IconCell.swift */; };
@@ -33,8 +34,6 @@
 		98AE8F5B20BBC713001AA1EA /* PromissListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */; };
 		98AE8F5D20BBC88F001AA1EA /* PromissDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */; };
 		98F50E6B20C064C400307BDD /* calendar+CelldetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F50E6A20C064C400307BDD /* calendar+CelldetailViewController.swift */; };
-		//98E28A3D20C962D100F28A4D /* NanumPen.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98E28A3C20C962D100F28A4D /* NanumPen.ttf */; };
-		//98F50E6B20C064C400307BDD /* calendar+PromissListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F50E6A20C064C400307BDD /* calendar+PromissListViewController.swift */; };
 		98FC8C1620C0773600D11108 /* UITableView+PromissListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FC8C1520C0773600D11108 /* UITableView+PromissListViewController.swift */; };
 		A9F634B39460CEC3DEBEAB8A /* Pods_HabitPromiss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7D1738F7379C8369754D4B8 /* Pods_HabitPromiss.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +77,7 @@
 		9343E02320B6E5C3006CCED8 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		9343E02520B6E614006CCED8 /* PromissListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromissListViewController.swift; sourceTree = "<group>"; };
 		9343E02920B6E675006CCED8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		934517A020C9B62B00DF629A /* FinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
 		93547FE020C9205800CE6775 /* IconCategoryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCategoryHeaderView.swift; sourceTree = "<group>"; };
 		93547FE120C9205800CE6775 /* IconCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconCell.xib; sourceTree = "<group>"; };
 		93547FE220C9205800CE6775 /* IconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
@@ -92,8 +92,6 @@
 		98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromissListCell.swift; sourceTree = "<group>"; };
 		98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromissDetailViewController.swift; sourceTree = "<group>"; };
 		98F50E6A20C064C400307BDD /* calendar+CelldetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "calendar+CelldetailViewController.swift"; sourceTree = "<group>"; };
-		//98E28A3C20C962D100F28A4D /* NanumPen.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumPen.ttf; sourceTree = "<group>"; };
-		//98F50E6A20C064C400307BDD /* calendar+PromissListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "calendar+PromissListViewController.swift"; sourceTree = "<group>"; };
 		98FC8C1520C0773600D11108 /* UITableView+PromissListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+PromissListViewController.swift"; sourceTree = "<group>"; };
 		ABE4DE891AC237F15389007C /* Pods_HabitPromissUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabitPromissUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAA8DEEF0F1AD16984DFA0E5 /* Pods-HabitPromissTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitPromissTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabitPromissTests/Pods-HabitPromissTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 				933D745820BEDC060006DD24 /* utility */,
 				9343DFFB20B6E54E006CCED8 /* Assets.xcassets */,
 				9343DFFD20B6E54E006CCED8 /* LaunchScreen.storyboard */,
-				98E28A3C20C962D100F28A4D /* NanumPen.ttf */,
 				9343E00020B6E54E006CCED8 /* Info.plist */,
 			);
 			path = HabitPromiss;
@@ -227,6 +224,7 @@
 				9343E02520B6E614006CCED8 /* PromissListViewController.swift */,
 				93E71CB920C925900027BAD5 /* IconCollectionViewController.swift */,
 				981B31B020C9088B002E8F27 /* CelldetailViewController.swift */,
+				934517A020C9B62B00DF629A /* FinishViewController.swift */,
 				9343E02920B6E675006CCED8 /* SettingsViewController.swift */,
 				98359C5B20C006E100F6C659 /* ClearListViewController.swift */,
 			);
@@ -380,7 +378,6 @@
 				9343DFFF20B6E54E006CCED8 /* LaunchScreen.storyboard in Resources */,
 				9343DFFC20B6E54E006CCED8 /* Assets.xcassets in Resources */,
 				93547FE420C9205800CE6775 /* IconCell.xib in Resources */,
-				98E28A3D20C962D100F28A4D /* NanumPen.ttf in Resources */,
 				9343DFFA20B6E54D006CCED8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,6 +564,7 @@
 				93547FE520C9205800CE6775 /* IconCell.swift in Sources */,
 				98AE8F5D20BBC88F001AA1EA /* PromissDetailViewController.swift in Sources */,
 				933D745C20BEDC7C0006DD24 /* Util.swift in Sources */,
+				934517A120C9B62B00DF629A /* FinishViewController.swift in Sources */,
 				9343DFF520B6E54D006CCED8 /* AppDelegate.swift in Sources */,
 				93E71CBA20C925900027BAD5 /* IconCollectionViewController.swift in Sources */,
 				9373E9CA20BD4F42001204E7 /* ChartManager.swift in Sources */,
