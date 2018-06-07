@@ -47,6 +47,7 @@ class CelldetailViewController: BaseViewController {
     super.viewDidLoad()
     drowCalendar()
     drowPieChart()
+    dismissView()
     reactiveHabitChartToken = try! Realm().objects(HabitManager.self).observe({ (change) in
         switch change {
         case .initial:
@@ -71,9 +72,6 @@ class CelldetailViewController: BaseViewController {
   }
 }
 
-
-
-
 extension CelldetailViewController {
   //Calendar를 불러올때 설정해주는 부분
   func drowCalendar() {
@@ -88,7 +86,19 @@ extension CelldetailViewController {
     pieChart.entryLabelFont = UIFont(name: "NanumPen", size: 16)
     pieChart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .linear)
     self.pieChart.data?.notifyDataChanged()
+  }
+  //CelldetailViewController Dismiss를 위한 제스처
+  func dismissView() {
+    let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+    edgePan.edges = .left
     
+    view.addGestureRecognizer(edgePan)
+  }
+  //dissmiss Action 부분
+  @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+    if recognizer.state == .recognized {
+      self.dismiss(animated: true, completion: nil)
+    }
   }
 }
 
