@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import FSCalendar
+import Charts
 
 //MARK: - Extension
 //UITableViewDelegate
@@ -26,12 +27,13 @@ extension PromissListViewController: UITableViewDataSource {
       //tableView Cell을 선택했을 때 선택 스타일
       let selectCell = tableView.cellForRow(at: indexPath)!
       selectCell.selectionStyle = .none
-      
       //pieChart Data 만들기
       ChartManager.makePieChart(indexPath: indexPath.row) { (result) in
         switch result {
         case .sucess(let value):
-          print(value)
+          let vc = self.storyboard?.instantiateViewController(withIdentifier: "CelldetailViewController") as! CelldetailViewController
+          vc.chart = value as! PieChartData
+          self.present(vc, animated: true, completion: nil)
         case .error(let error):
           print(error.localizedDescription)
         }
@@ -45,7 +47,7 @@ extension PromissListViewController: UITableViewDataSource {
     detailView.nowTableIndex = indexPath.row
     self.present(detailView, animated: true, completion: nil)
   }
-    
+
   //tableView section 표시
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return (habitList?.count)!
@@ -54,7 +56,6 @@ extension PromissListViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "promissCell", for: indexPath) as! PromissListCell
     cell.promissListText.text = habitList?[indexPath.row].habitName
-    
     return cell
   }
 }

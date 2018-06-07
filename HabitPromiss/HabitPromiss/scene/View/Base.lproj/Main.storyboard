@@ -96,37 +96,56 @@
         <!--Data Source-->
         <scene sceneID="vFw-cU-D8J">
             <objects>
-                <viewController storyboardIdentifier="CelldetailViewController" id="HTV-il-tuv" customClass="CelldetailViewController" customModule="HabitPromiss" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CelldetailViewController" hidesBottomBarWhenPushed="YES" id="HTV-il-tuv" customClass="CelldetailViewController" customModule="HabitPromiss" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d1b-cF-REe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="PieChartView" translatesAutoresizingMaskIntoConstraints="NO" id="Bfm-vW-TLO" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="20" width="375" height="269"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" restorationIdentifier="FSCalendar" translatesAutoresizingMaskIntoConstraints="NO" id="7sZ-Gx-zBd" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="470" width="375" height="197"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="FSCalendar" translatesAutoresizingMaskIntoConstraints="NO" id="7sZ-Gx-zBd" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="297" width="375" height="350"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
+                                        <color key="value" red="0.98431372549999996" green="0.0078431372550000003" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
+                                        <color key="value" red="0.98431372549999996" green="0.0078431372550000003" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <outlet property="dataSource" destination="HTV-il-tuv" id="aWB-hD-bVL"/>
-                                    <outlet property="delegate" destination="HTV-il-tuv" id="uUT-C6-AOg"/>
+                                    <outlet property="dataSource" destination="HTV-il-tuv" id="80Z-Np-n0n"/>
+                                    <outlet property="delegate" destination="HTV-il-tuv" id="qiK-8G-COD"/>
                                 </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bfm-vW-TLO" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="20" width="375" height="450"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="Iwc-Jy-DiN"/>
+                                    <constraint firstAttribute="height" constant="450" id="rJy-4L-VqQ"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7sZ-Gx-zBd" firstAttribute="top" secondItem="Bfm-vW-TLO" secondAttribute="bottom" id="2s5-Te-4fe"/>
+                            <constraint firstItem="VJh-Dv-ISJ" firstAttribute="trailing" secondItem="Bfm-vW-TLO" secondAttribute="trailing" id="4mM-8K-6Wv"/>
+                            <constraint firstItem="7sZ-Gx-zBd" firstAttribute="leading" secondItem="VJh-Dv-ISJ" secondAttribute="leading" id="B9s-wd-XQR"/>
+                            <constraint firstItem="VJh-Dv-ISJ" firstAttribute="bottom" secondItem="7sZ-Gx-zBd" secondAttribute="bottom" id="IBz-gW-F0e"/>
+                            <constraint firstItem="Bfm-vW-TLO" firstAttribute="leading" secondItem="VJh-Dv-ISJ" secondAttribute="leading" id="arH-xn-TuS"/>
+                            <constraint firstItem="7sZ-Gx-zBd" firstAttribute="trailing" secondItem="VJh-Dv-ISJ" secondAttribute="trailing" id="mwO-oM-jPd"/>
+                            <constraint firstItem="Bfm-vW-TLO" firstAttribute="top" secondItem="VJh-Dv-ISJ" secondAttribute="top" id="nmD-9D-pYW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VJh-Dv-ISJ"/>
                     </view>
+                    <navigationItem key="navigationItem" id="iLU-4Y-nBY"/>
                     <connections>
                         <outlet property="calendarView" destination="7sZ-Gx-zBd" id="I2G-W9-gQ8"/>
-                        <outlet property="pieChart" destination="Bfm-vW-TLO" id="OsP-Dp-8Pz"/>
+                        <outlet property="pieChart" destination="Bfm-vW-TLO" id="T3V-yE-D05"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uMZ-Jq-nqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1317.5999999999999" y="837.93103448275872"/>
+            <point key="canvasLocation" x="1473" y="839"/>
         </scene>
         <!--Promiss Detail View Controller-->
         <scene sceneID="z0B-fD-X7m">
@@ -413,7 +432,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XuY-CJ-cRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2572" y="609"/>
+            <point key="canvasLocation" x="3511.1999999999998" y="608.54572713643188"/>
         </scene>
         <!--설정-->
         <scene sceneID="Pin-YJ-Kpv">
@@ -499,7 +518,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BA3-RN-qXz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="JS3-fg-aAj"/>
             </objects>
-            <point key="canvasLocation" x="3292" y="609"/>
+            <point key="canvasLocation" x="4231.1999999999998" y="608.54572713643188"/>
         </scene>
         <!--목록-->
         <scene sceneID="ZIP-nz-XlB">
