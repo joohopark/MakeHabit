@@ -45,8 +45,6 @@ extension PromissListViewController: UITableViewDataSource {
         }
       }
 
-    
-
   }
 
   //tableView section 표시
