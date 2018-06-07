@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--습관 만들기-->
+        <!--티끌 List-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="PromissListViewController" id="BYZ-38-t0r" customClass="PromissListViewController" customModule="HabitPromiss" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,11 +24,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PromissListCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="promissCell" rowHeight="353" id="LpM-rK-XIt" customClass="PromissListCell" customModule="HabitPromiss" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="353"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PromissListCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="promissCell" rowHeight="78" id="LpM-rK-XIt" customClass="PromissListCell" customModule="HabitPromiss" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="78"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LpM-rK-XIt" id="svQ-rB-6dF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="353"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="물마시기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gz1-7t-9cl">
@@ -40,35 +40,16 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" restorationIdentifier="FSCalendar" translatesAutoresizingMaskIntoConstraints="NO" id="AER-U5-XjW" customClass="FSCalendar">
-                                                    <rect key="frame" x="15" y="62" width="345" height="280"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
-                                                            <color key="value" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
-                                                            <color key="value" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="titleWeekendColor">
-                                                            <color key="value" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="AER-U5-XjW" firstAttribute="leading" secondItem="svQ-rB-6dF" secondAttribute="leadingMargin" id="0SB-tJ-qWM"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="AER-U5-XjW" secondAttribute="trailing" id="FtL-it-Xzw"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="AER-U5-XjW" secondAttribute="bottom" id="HXm-rd-43V"/>
                                                 <constraint firstItem="gz1-7t-9cl" firstAttribute="leading" secondItem="svQ-rB-6dF" secondAttribute="leading" constant="15" id="lOv-Bd-P40"/>
-                                                <constraint firstItem="AER-U5-XjW" firstAttribute="top" secondItem="gz1-7t-9cl" secondAttribute="bottom" id="oML-Vg-YtK"/>
                                                 <constraint firstAttribute="trailing" secondItem="gz1-7t-9cl" secondAttribute="trailing" id="rP6-kz-Zrt"/>
                                                 <constraint firstItem="gz1-7t-9cl" firstAttribute="top" secondItem="svQ-rB-6dF" secondAttribute="top" constant="12" id="xuB-pE-tJW"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="promissListText" destination="gz1-7t-9cl" id="CKc-qs-rc3"/>
-                                            <outlet property="tableCellCalendar" destination="AER-U5-XjW" id="hX0-cE-lcv"/>
+                                            <segue destination="HTV-il-tuv" kind="show" id="j2B-oF-kbC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -87,7 +68,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="습관 만들기" id="XTu-W2-Grd">
+                    <navigationItem key="navigationItem" title="티끌 List" id="XTu-W2-Grd">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
                                 <color key="value" red="0.98431372549999996" green="0.0078431372550000003" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -106,40 +87,47 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="chartDetailView" destination="ZgN-Sy-ndF" id="sXD-8T-g1r"/>
-                        <outlet property="pieChart" destination="PPq-mA-olj" id="RvQ-0s-y1M"/>
                         <outlet property="promissTableView" destination="sJo-nC-Idc" id="wz8-yX-EZT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="ZgN-Sy-ndF">
-                    <rect key="frame" x="0.0" y="0.0" width="376" height="403"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" restorationIdentifier="PieChartView" translatesAutoresizingMaskIntoConstraints="NO" id="PPq-mA-olj" customClass="PieChartView" customModule="Charts">
-                            <rect key="frame" x="30" y="30" width="316" height="343"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </view>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1a9-zF-Zdi">
-                            <rect key="frame" x="0.0" y="0.0" width="376" height="403"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <connections>
-                                <action selector="backBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MJB-wZ-puY"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="PPq-mA-olj" firstAttribute="centerX" secondItem="6Tw-W8-69C" secondAttribute="centerX" id="Vd5-ye-EJD"/>
-                        <constraint firstItem="PPq-mA-olj" firstAttribute="centerY" secondItem="6Tw-W8-69C" secondAttribute="centerY" id="WL1-5F-ltt"/>
-                        <constraint firstItem="PPq-mA-olj" firstAttribute="leading" secondItem="6Tw-W8-69C" secondAttribute="leading" constant="30" id="byQ-WH-Wus"/>
-                        <constraint firstItem="PPq-mA-olj" firstAttribute="top" secondItem="6Tw-W8-69C" secondAttribute="top" constant="30" id="gAd-Ix-OaT"/>
-                        <constraint firstItem="6Tw-W8-69C" firstAttribute="bottom" secondItem="PPq-mA-olj" secondAttribute="bottom" constant="30" id="kYj-ni-0QB"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="6Tw-W8-69C"/>
-                </view>
             </objects>
-            <point key="canvasLocation" x="293.60000000000002" y="911.69415292353835"/>
+            <point key="canvasLocation" x="256.80000000000001" y="838.83058470764627"/>
+        </scene>
+        <!--Data Source-->
+        <scene sceneID="vFw-cU-D8J">
+            <objects>
+                <viewController storyboardIdentifier="CelldetailViewController" id="HTV-il-tuv" customClass="CelldetailViewController" customModule="HabitPromiss" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d1b-cF-REe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="PieChartView" translatesAutoresizingMaskIntoConstraints="NO" id="Bfm-vW-TLO" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="20" width="375" height="269"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="FSCalendar" translatesAutoresizingMaskIntoConstraints="NO" id="7sZ-Gx-zBd" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="297" width="375" height="350"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="HTV-il-tuv" id="aWB-hD-bVL"/>
+                                    <outlet property="delegate" destination="HTV-il-tuv" id="uUT-C6-AOg"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="VJh-Dv-ISJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="calendarView" destination="7sZ-Gx-zBd" id="I2G-W9-gQ8"/>
+                        <outlet property="pieChart" destination="Bfm-vW-TLO" id="OsP-Dp-8Pz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uMZ-Jq-nqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1317.5999999999999" y="837.93103448275872"/>
         </scene>
         <!--Promiss Detail View Controller-->
         <scene sceneID="z0B-fD-X7m">
@@ -416,7 +404,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XuY-CJ-cRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1375.2" y="608.54572713643188"/>
+            <point key="canvasLocation" x="2572" y="609"/>
         </scene>
         <!--설정-->
         <scene sceneID="Pin-YJ-Kpv">
@@ -502,7 +490,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BA3-RN-qXz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="JS3-fg-aAj"/>
             </objects>
-            <point key="canvasLocation" x="2136.8000000000002" y="604.94752623688157"/>
+            <point key="canvasLocation" x="3292" y="609"/>
         </scene>
         <!--목록-->
         <scene sceneID="ZIP-nz-XlB">

@@ -8,44 +8,37 @@
 
 import Foundation
 import UIKit
+import FSCalendar
+
 //MARK: - Extension
 //UITableViewDelegate
 extension PromissListViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 300
+    return 100
   }
 }
+
 //UITableViewDataSoure
 extension PromissListViewController: UITableViewDataSource {
   //cell이 선택된 이후
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if tableView.tag == 0 {
-      //promissTableView에 addSubview
-      let tableCell = PromissListCell()
-      self.chartDetailView.alpha = 1
-      chartDetailView.backgroundColor = UIColor.darkGray
-      tableCell.bringSubview(toFront: chartDetailView)
-//      self.promissTableView.addSubview(chartDetailView)
+      //tableView Cell을 선택했을 때 선택 스타일
+      let selectCell = tableView.cellForRow(at: indexPath)!
+      selectCell.selectionStyle = .none
+      
       //pieChart Data 만들기
       ChartManager.makePieChart(indexPath: indexPath.row) { (result) in
         switch result {
         case .sucess(let value):
-          self.pieChart.data = value
-          self.chartDetailView.addSubview(self.pieChart)
+          print(value)
         case .error(let error):
           print(error.localizedDescription)
         }
       }
-      //chart Animation 부분
-      self.chartDetailView.alpha = 0
-      self.pieChart.transform = CGAffineTransform(translationX: 0.2, y: 0.2)
-      UIView.animate(withDuration: 0.5) {
-        self.chartDetailView.alpha = 1
-        self.pieChart.transform = CGAffineTransform.identity
-      }
     }
   }
-  
+  //tableView section 표시
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return (habitList?.count)!
   }
@@ -53,6 +46,7 @@ extension PromissListViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "promissCell", for: indexPath) as! PromissListCell
     cell.promissListText.text = habitList?[indexPath.row].habitName
+    
     return cell
   }
 }

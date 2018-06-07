@@ -13,11 +13,7 @@ import FSCalendar
 class PromissListViewController: BaseViewController {
   
   // IBOutlet Hook up
-  @IBOutlet var chartDetailView: UIView!
-  @IBOutlet weak var pieChart: PieChartView!
   @IBOutlet weak var promissTableView: UITableView!
-  private var promissCell = PromissListCell()
-  
   
   // HabitManager 램 개체 컬렉션
   var habitList: Results<HabitManager>?
@@ -36,20 +32,11 @@ class PromissListViewController: BaseViewController {
     refresControl.attributedTitle = attributesTitle
     return refresControl
   }()
+  
   //화면을 끝까지 아래로 당겼을 때 실행
   @objc func giveDetailView(_ refresControl: UIRefreshControl) {
     let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "PromissDetailViewController") as! PromissDetailViewController
     self.present(nextViewController, animated: true, completion: nil)
-  }
-  
-  //MARK: -IBAction
-  //셀 누르면 챠트가 올라오고 올라온 차트를 다시 선택했을때 다시 cell로 이동
-  @IBAction func backBtn(_ sender: UIButton) {
-    UIView.animate(withDuration: 0.4, animations: {
-      self.chartDetailView.alpha = 0
-    }) { (status) in
-      self.chartDetailView.removeFromSuperview()
-    }
   }
   
   //MARK: - LifeCycle
