@@ -127,16 +127,6 @@
 			path = utility;
 			sourceTree = "<group>";
 		};
-		933D745920BEDC1B0006DD24 /* PromissListView */ = {
-			isa = PBXGroup;
-			children = (
-				98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */,
-				9343E02520B6E614006CCED8 /* PromissListViewController.swift */,
-				981B31B020C9088B002E8F27 /* CelldetailViewController.swift */,
-			);
-			path = PromissListView;
-			sourceTree = "<group>";
-		};
 		9343DFE820B6E54D006CCED8 = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				9343DFF820B6E54D006CCED8 /* Main.storyboard */,
+				98359C5C20C006E100F6C659 /* ClearListCell.swift */,
+				98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -214,8 +206,9 @@
 			children = (
 				93BCCD0220BD542B005AFB73 /* base */,
 				9343E02220B6E57D006CCED8 /* View */,
-				933D745920BEDC1B0006DD24 /* PromissListView */,
 				98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */,
+				9343E02520B6E614006CCED8 /* PromissListViewController.swift */,
+				981B31B020C9088B002E8F27 /* CelldetailViewController.swift */,
 				9343E02920B6E675006CCED8 /* SettingsViewController.swift */,
 				98359C5A20C006E100F6C659 /* ClearListView */,
 				988B845920BFBDF60090C135 /* Animation.swift */,
@@ -235,7 +228,6 @@
 			isa = PBXGroup;
 			children = (
 				98359C5B20C006E100F6C659 /* ClearListViewController.swift */,
-				98359C5C20C006E100F6C659 /* ClearListCell.swift */,
 			);
 			path = ClearListView;
 			sourceTree = "<group>";

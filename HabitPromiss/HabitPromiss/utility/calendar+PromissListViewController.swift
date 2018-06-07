@@ -24,6 +24,7 @@ extension CelldetailViewController: FSCalendarDelegate {
       }
     }
     cell.isSelected = false
+    
   }
 }
 
