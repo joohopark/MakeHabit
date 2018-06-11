@@ -24,7 +24,7 @@ class PromissListViewController: BaseViewController {
   
   //MARK: - View UI 로직
   //refresControl View UI 로직
-  var refresControl: UIRefreshControl = {
+  lazy var refresControl: UIRefreshControl = {
     let refresControl = UIRefreshControl()
     let attributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
     let attributesTitle = NSAttributedString(string: "아래로 당겨주세요", attributes: attributes)
@@ -56,9 +56,7 @@ class PromissListViewController: BaseViewController {
     
     // 뷰가 처음 띄워 질때 Habit Realm Object를 불러온다.
     habitList = HabitManager.getRealmObjectList(filterStr: "sucessPromiss == false", sortedBy: HabitManager.Property.sucessPromiss)
-    
   }
-
   
   
   override func viewWillAppear(_ animated: Bool) {
@@ -90,7 +88,6 @@ class PromissListViewController: BaseViewController {
         default:
             print("처음 실행이 아님.")
         }
-        
     }
 
 }

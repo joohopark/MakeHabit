@@ -19,13 +19,11 @@ extension PromissListViewController: UITableViewDelegate {
     return 80
   }
   
-  // ...
-  
-  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .delete {
-      //이부분에 habitList의 indexPath.row를 지우면 끝
-//      habitList
-    }
+  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    cell.layer.transform = CATransform3DMakeScale(0, 0, 0)
+    UIView.animate(withDuration: 0.5, delay: 0.2, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .transitionFlipFromTop, animations: {
+      cell.layer.transform = CATransform3DMakeScale(1.0, 1.0, 1.0)
+    }, completion: nil)
   }
 }
 
@@ -67,7 +65,6 @@ extension PromissListViewController: UITableViewDataSource {
     }
     
   }
-  
   //tableView section 표시
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return (habitList?.count)!
@@ -81,7 +78,6 @@ extension PromissListViewController: UITableViewDataSource {
     switch habitList?[indexPath.row].iConNo.components(separatedBy: "_")[0] {
     case "0":
       cell.imgView.image = UIImage(named: "health_\(habitList?[indexPath.row].iConNo.components(separatedBy: "_")[1] ?? "0")")
-      
     case "1":
       cell.imgView.image = UIImage(named: "study_\(habitList?[indexPath.row].iConNo.components(separatedBy: "_")[1] ?? "0")")
     case "2":
@@ -92,4 +88,11 @@ extension PromissListViewController: UITableViewDataSource {
     cell.imgView.layer.cornerRadius = cell.imgView.frame.height/2
     return cell
   }
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    guard editingStyle == .delete else {return}
+    
+    print("하빗리스트에서 지워야하는거 아님..?")
+  }
+  
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class PromissDetailViewController: BaseViewController {
-
+  
   //MARK: - Property
   // IBOutlet Hook up
   @IBOutlet var tap: UITapGestureRecognizer!
@@ -29,9 +29,9 @@ class PromissDetailViewController: BaseViewController {
   @IBOutlet weak var alarmTitle: UILabel!
   @IBOutlet weak var alarmTextField: UITextField!
   
-// container View Property
+  // container View Property
   var iconVC: IconCollectionViewController?
-    
+  
   //MARK: - View UI 로직
   var picker: UIDatePicker = {
     let picker = UIDatePicker()
@@ -76,24 +76,43 @@ class PromissDetailViewController: BaseViewController {
     return timeFormatter
   }()
   
-    
-
-    
+  
+  
+  
   //MARK: - Action
   // 저장 버튼( 추가 구현되야 하는것)
   // 1. Realm에 TextField에 있는 값을 저장.
   // 2. 알람 TextField에 있는 값을 기준으로 알람 시간 설정.( 알람 설정.)
   @IBAction func saveButton(_ sender: UIButton) {
     
-    guard let goalStr = goalDetailTextField.text, let startStr = startTextField.text,
+    
+    guard let goalStr = goalDetailTextField.text,
+      goalDetailTextField.text != "",
+      let startStr = startTextField.text,
+      startTextField.text != "",
       let endStr = endTextField.text,
-      let alarmStr = alarmTextField.text else {
-        // Alert 넣어주면 좋을듯.
+      endTextField.text != "",
+      let alarmStr = alarmTextField.text,
+      alarmTextField.text != "" else {
+        let alertAC = UIAlertController(title: "확인", message: "입력할 값을 확인해주세요", preferredStyle: .alert)
+        let action = UIAlertAction(title: "네", style: .cancel, handler: nil)
+        alertAC.addAction(action)
+        self.present(alertAC, animated: true, completion: nil)
+        switch "" {
+        case goalDetailTextField.text:
+          goalDetailTextField.shake()
+        case startTextField.text:
+          startTextField.shake()
+        case endTextField.text:
+          endTextField.shake()
+        case alarmTextField.text:
+          alarmTextField.shake()
+        default:
+          break
+        }
         print("TextField의 값이 제대로 안들어 감.")
         return
     }
-    
-
     // 1. Realm(Habit object)에 TextField에 있는 값을 저장.
     // 시작일과 종료일을 통해 일수를 계산 해야함. -  했고
     // 총 약속 일수 -> 총 알람 횟수임. - 했고
@@ -121,7 +140,7 @@ class PromissDetailViewController: BaseViewController {
                                                         print(error)
                                                       }
       }
-        
+      
     }
     
     
@@ -132,13 +151,13 @@ class PromissDetailViewController: BaseViewController {
     dateComponent.hour = Int(alarmStrList[0])
     dateComponent.minute = Int(alarmStrList[1])
     Util.timedNotification(date: dateComponent, identifierForAlarm: goalStr ) { (result) in
-        switch result{
-        case true:
-            print("매일 \(goalStr)에 대한 알람이\(Util.convertTo24Hour(beforeConvertTime: alarmStr))에 울립니다.")
-        case false:
-            print("===UserNotification Add fail===")
-        }
-        
+      switch result{
+      case true:
+        print("매일 \(goalStr)에 대한 알람이\(Util.convertTo24Hour(beforeConvertTime: alarmStr))에 울립니다.")
+      case false:
+        print("===UserNotification Add fail===")
+      }
+      
     }
     self.dismiss(animated: true, completion: nil)
   }
@@ -146,9 +165,9 @@ class PromissDetailViewController: BaseViewController {
   //MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.hideKeyboardWhenTappedAround()
+//    self.hideKeyboardWhenTappedAround()
     createDatePicker()
-
+    
   }
   
   override func viewWillLayoutSubviews() {
@@ -260,15 +279,25 @@ extension PromissDetailViewController{
     self.view.endEditing(true)
   }
   
-
+  
   //MARK:- Remain Job
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? IconCollectionViewController{
-            iconVC = vc
-        }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let vc = segue.destination as? IconCollectionViewController{
+      iconVC = vc
     }
+  }
 }
 
+extension PromissDetailViewController: UITextFieldDelegate {
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    let text = textField.text ?? ""
+    let replacedText = (text as NSString).replacingCharacters(in: range, with: string)
+    let _ = [NSAttributedStringKey.font: textField.font!]
+    guard replacedText.count < 14 else { return false }
+    return true
+  }
+
+}
 
 
 
