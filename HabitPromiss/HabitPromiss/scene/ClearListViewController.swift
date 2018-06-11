@@ -30,7 +30,7 @@ extension ClearListViewController: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        ChartManager.makePieChart(indexPath: indexPath.row) {(result) in
+        ChartManager.makePieChart(selectItem: clearLsit![indexPath.row]) {(result) in
 
             
             switch result{

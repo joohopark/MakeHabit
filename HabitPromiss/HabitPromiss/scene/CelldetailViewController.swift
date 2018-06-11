@@ -13,6 +13,9 @@ import FSCalendar
 
 class CelldetailViewController: BaseViewController {
   
+    var dismissDelegate: PromissListViewType?
+    var passValue: Results<HabitManager>?
+    
   @IBOutlet weak var pieChart: PieChartView!
   @IBOutlet weak var calendarView: FSCalendar!
   
@@ -43,8 +46,16 @@ class CelldetailViewController: BaseViewController {
     return f
   }()
   
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+            print("celldetailViewController viewWillDisappear")
+        reactiveHabitChartToken?.invalidate()
+    }
+    
   override func viewDidLoad() {
+    print("celldetailViewController ViewDidLoad")
     super.viewDidLoad()
+    print("현재 차트보기 뷰가 물고있는 indexPath ========== \(nowTableIndex)")
     drowCalendar()
     drowPieChart()
     dismissView()
@@ -52,18 +63,43 @@ class CelldetailViewController: BaseViewController {
         switch change {
         case .initial:
                 self.drowPieChart()
+
         case .update(_,let deletions, let insertions, let modifications):
-            self.drowPieChart()
-            self.pieChart.data?.notifyDataChanged()
-            print("차트 업뎃 탓어")
-            ChartManager.makePieChart(indexPath: self.nowTableIndex!, completion: { (result) in
+            print("차트 업뎃 탓어", self.selectHabit.promissDate.count, self.selectHabit.totalCount)
+            
+            print(deletions,insertions,modifications,"업뎃 찍어보기")
+
+            ChartManager.makePieChart(selectItem: self.selectHabit, completion: { (result) in
                 switch result{
                 case .sucess(let val):
                     self.chart = val as! PieChartData
+
+
                 case .error(let err):
                     print(err)
                 }
             })
+            self.drowPieChart()
+            print(self.selectHabit,"현재 선택된 습관 노티 토큰 안입니다")
+            print("asdflkjsadlfjasdlfjsdalkfjsadlfjdsalkjf")
+            // 이 if 안에서 realm에 업뎃 접근하면 크래쉬. 동일 트랜잭션에서 또 쓰면 안됨.
+//            if self.selectHabit.goalDate.count == 0{
+//                let realm = try! Realm()
+//                let item = self.selectHabit
+//
+//                do{
+//                    try realm.write {
+//                        item?.sucessPromiss = true
+//                        realm.add(item!)
+//                    }
+//                    Thread.sleep(forTimeInterval: 1)
+//                }catch{
+//                    print(error.localizedDescription)
+//                }
+//                self.dismiss(animated: true, completion: nil)
+//            }
+//            print("asdflkjsadlfjasdlfjsdalkfjsadlfjdsalkjf=================")
+            
         case .error:
             break
         }
@@ -82,7 +118,6 @@ extension CelldetailViewController {
   //Chart를 불러올때 설정해주는 부분
   func drowPieChart() {
     pieChart.data = chart
-//    pieChart.backgroundColor = UIColor(named: "iosColor")
     pieChart.entryLabelFont = UIFont(name: "NanumPen", size: 16)
     pieChart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .linear)
     self.pieChart.data?.notifyDataChanged()
@@ -91,6 +126,7 @@ extension CelldetailViewController {
   func dismissView() {
     let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
     edgePan.edges = .left
+    
     
     view.addGestureRecognizer(edgePan)
   }

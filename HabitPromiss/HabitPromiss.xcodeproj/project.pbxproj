@@ -19,6 +19,11 @@
 		9343E02420B6E5C3006CCED8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9343E02320B6E5C3006CCED8 /* BaseViewController.swift */; };
 		9343E02620B6E614006CCED8 /* PromissListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9343E02520B6E614006CCED8 /* PromissListViewController.swift */; };
 		9343E02A20B6E675006CCED8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9343E02920B6E675006CCED8 /* SettingsViewController.swift */; };
+		9343FD0020CACBD000EC4971 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9343FCFF20CACBD000EC4971 /* KakaoOpenSDK.framework */; };
+		9343FD0320CACC7400EC4971 /* kakaobridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 9343FD0220CACC7400EC4971 /* kakaobridge.m */; };
+		9343FD0520CACF9000EC4971 /* KakaoMessageTemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9343FD0420CACF9000EC4971 /* KakaoMessageTemplate.framework */; };
+		9343FD0920CADD6500EC4971 /* KakaoLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9343FD0820CADD6500EC4971 /* KakaoLink.framework */; };
+		9343FD0B20CADD8300EC4971 /* KakaoCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9343FD0A20CADD8200EC4971 /* KakaoCommon.framework */; };
 		934517A120C9B62B00DF629A /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934517A020C9B62B00DF629A /* FinishViewController.swift */; };
 		93547FE320C9205800CE6775 /* IconCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93547FE020C9205800CE6775 /* IconCategoryHeaderView.swift */; };
 		93547FE420C9205800CE6775 /* IconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93547FE120C9205800CE6775 /* IconCell.xib */; };
@@ -77,6 +82,12 @@
 		9343E02320B6E5C3006CCED8 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		9343E02520B6E614006CCED8 /* PromissListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromissListViewController.swift; sourceTree = "<group>"; };
 		9343E02920B6E675006CCED8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		9343FCFF20CACBD000EC4971 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
+		9343FD0120CACC7400EC4971 /* HabitPromiss-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HabitPromiss-Bridging-Header.h"; sourceTree = "<group>"; };
+		9343FD0220CACC7400EC4971 /* kakaobridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kakaobridge.m; sourceTree = "<group>"; };
+		9343FD0420CACF9000EC4971 /* KakaoMessageTemplate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoMessageTemplate.framework; sourceTree = "<group>"; };
+		9343FD0820CADD6500EC4971 /* KakaoLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoLink.framework; sourceTree = "<group>"; };
+		9343FD0A20CADD8200EC4971 /* KakaoCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoCommon.framework; sourceTree = "<group>"; };
 		934517A020C9B62B00DF629A /* FinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
 		93547FE020C9205800CE6775 /* IconCategoryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCategoryHeaderView.swift; sourceTree = "<group>"; };
 		93547FE120C9205800CE6775 /* IconCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconCell.xib; sourceTree = "<group>"; };
@@ -104,7 +115,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9343FD0B20CADD8300EC4971 /* KakaoCommon.framework in Frameworks */,
+				9343FD0920CADD6500EC4971 /* KakaoLink.framework in Frameworks */,
 				A9F634B39460CEC3DEBEAB8A /* Pods_HabitPromiss.framework in Frameworks */,
+				9343FD0520CACF9000EC4971 /* KakaoMessageTemplate.framework in Frameworks */,
+				9343FD0020CACBD000EC4971 /* KakaoOpenSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +242,8 @@
 				934517A020C9B62B00DF629A /* FinishViewController.swift */,
 				9343E02920B6E675006CCED8 /* SettingsViewController.swift */,
 				98359C5B20C006E100F6C659 /* ClearListViewController.swift */,
+				9343FD0220CACC7400EC4971 /* kakaobridge.m */,
+				9343FD0120CACC7400EC4971 /* HabitPromiss-Bridging-Header.h */,
 			);
 			path = scene;
 			sourceTree = "<group>";
@@ -242,6 +259,10 @@
 		A06B86EFC985946DA844999C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9343FD0A20CADD8200EC4971 /* KakaoCommon.framework */,
+				9343FD0820CADD6500EC4971 /* KakaoLink.framework */,
+				9343FD0420CACF9000EC4971 /* KakaoMessageTemplate.framework */,
+				9343FCFF20CACBD000EC4971 /* KakaoOpenSDK.framework */,
 				C7D1738F7379C8369754D4B8 /* Pods_HabitPromiss.framework */,
 				039DFA5EF51E1313DF22D483 /* Pods_HabitPromissTests.framework */,
 				ABE4DE891AC237F15389007C /* Pods_HabitPromissUITests.framework */,
@@ -339,6 +360,7 @@
 				TargetAttributes = {
 					9343DFF020B6E54D006CCED8 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 					};
 					9343E00420B6E54E006CCED8 = {
 						CreatedOnToolsVersion = 9.3;
@@ -573,6 +595,7 @@
 				9373E9C920BD4F42001204E7 /* HabitManager.swift in Sources */,
 				98FC8C1620C0773600D11108 /* UITableView+PromissListViewController.swift in Sources */,
 				98359C5D20C006E200F6C659 /* ClearListViewController.swift in Sources */,
+				9343FD0320CACC7400EC4971 /* kakaobridge.m in Sources */,
 				981B31B120C9088B002E8F27 /* CelldetailViewController.swift in Sources */,
 				93547FE320C9205800CE6775 /* IconCategoryHeaderView.swift in Sources */,
 				9343E02420B6E5C3006CCED8 /* BaseViewController.swift in Sources */,
@@ -684,11 +707,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-all_load";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "HabitPromiss-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -738,10 +763,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-all_load";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "HabitPromiss-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -752,9 +779,14 @@
 			baseConfigurationReference = 91E1C09AF9AFBDA163496A1B /* Pods-HabitPromiss.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M979J82YX7;
+				DEVELOPMENT_TEAM = V4LDP442XN;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = HabitPromiss/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -763,6 +795,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jhbob.HabitPromiss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HabitPromiss/scene/HabitPromiss-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -773,9 +807,14 @@
 			baseConfigurationReference = 1AF784762C32821272068E44 /* Pods-HabitPromiss.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M979J82YX7;
+				DEVELOPMENT_TEAM = V4LDP442XN;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = HabitPromiss/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -784,6 +823,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jhbob.HabitPromiss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HabitPromiss/scene/HabitPromiss-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

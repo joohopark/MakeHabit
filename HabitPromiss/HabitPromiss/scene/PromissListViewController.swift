@@ -10,8 +10,14 @@ import Charts
 import RealmSwift
 import FSCalendar
 
-class PromissListViewController: BaseViewController {
-  
+protocol PromissListViewType{
+//    func pass(data: Results<HabitManager>)
+    func pass(completion: (() -> Void))
+}
+
+
+class PromissListViewController: BaseViewController{//},PromissListViewType {
+
   // IBOutlet Hook up
   @IBOutlet weak var promissTableView: UITableView!
   
@@ -44,6 +50,7 @@ class PromissListViewController: BaseViewController {
   //MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
+
     
     // 사용자 이름 없으면 ... 알랏으로 결정
     initializeUserInfoRealm()
@@ -55,15 +62,24 @@ class PromissListViewController: BaseViewController {
     }
     
     // 뷰가 처음 띄워 질때 Habit Realm Object를 불러온다.
-    habitList = HabitManager.getRealmObjectList(filterStr: "sucessPromiss == false", sortedBy: HabitManager.Property.sucessPromiss)
-    
+    // 여기선 false인게 맞아 이게 1번임.
+    habitList = HabitManager.getRealmObjectListWithoutSorted(filterStr: "sucessPromiss == false")
+
   }
 
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        print("viewDidAppear")
+//        habitList = HabitManager.getRealmObjectListWithoutSorted(filterStr: "sucessPromiss == false")
+//        self.promissTableView.reloadData()
+//    }
   
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    
+    print("viewWillAppear")
+    habitList = HabitManager.getRealmObjectListWithoutSorted(filterStr: "sucessPromiss == false")
+
     // 뷰가 다시 띄워질때 테이블 뷰를 리로드 한다.
     // 리프레시 컨트롤을 끝낸다.
     // 불러와진 램 개체를 불러와 출력. 에러일때는 에러 출력.
@@ -75,11 +91,15 @@ class PromissListViewController: BaseViewController {
         self.refresControl.endRefreshing()
         print(self.habitList ?? "realm Habit object Load failed")
       case .update(_,let deletions, let insertions, let modifications):
+         self.promissTableView.reloadData()
         break
       case .error(let err):
         print("reactive Habit List Token occur err : \(err)")
       }
     })
+    
+    
+            print("asdflkjsadlfjasdlfjsdalkfjsadlfjdsalkjf=============123123123123===232131=")
   }
     private func initializeUserInfoRealm() {
         let realm = try! Realm()

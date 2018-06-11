@@ -97,7 +97,7 @@ class PromissDetailViewController: BaseViewController {
     // 1. Realm(Habit object)에 TextField에 있는 값을 저장.
     // 시작일과 종료일을 통해 일수를 계산 해야함. -  했고
     // 총 약속 일수 -> 총 알람 횟수임. - 했고
-    // 종료일이 입력되는 시점(didPushDoneButtonOnEnd()) 에 목표 기간이 10일이 넘으면 Realm에 저장한다.
+    // 종료일이 입력되는 시점(didPushDoneButtonOnEnd()) 에 목표 기간이 30일이 넘으면 Realm에 저장한다.
     
     // 1-1. 시작일과 종료일을 통해 목표일수와 10일 미만에 대한 계산을 통해 String, Bool 값을 반환 받는다.
     let (goalDay, isUpperTenDay) = HabitManager.getScheduledDay(startDay: startStr, endDay: endStr)

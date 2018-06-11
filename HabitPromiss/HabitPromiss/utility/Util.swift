@@ -32,7 +32,25 @@ class Util {
         //    let root = UIApplication.shared.keyWindow?.rootViewController
         parentController.present(alertController, animated: true, completion: nil)
     }
-    
+ 
+    static func performActionAfterAlert(title: String, message: String? = nil,
+                                        parentController: UIViewController, afterAction: UIAlertAction) {
+        
+        let alertController: UIAlertController = UIAlertController(title: title,
+                                                                   message: message,
+                                                                   preferredStyle: .alert)
+        
+//        let alertAction: UIAlertAction = UIAlertAction(title: "확인", style: .default)
+//        DispatchQueue.global().async {
+            alertController.addAction(afterAction)
+//        }
+//        alertController.addAction(afterAction)
+        
+        // present
+        // 알랏 컨트롤러는 항상 부모 컨트롤러 가 존재 해야한다.
+        //    let root = UIApplication.shared.keyWindow?.rootViewController
+        parentController.present(alertController, animated: true, completion: nil)
+    }
     // 문자열로 되어있는 연월일에 대한 리스트를 받아서 총 일수를 반환해줌.
     static func calculateTotalDate(dateList: [String]) -> Int{
         if dateList.count != 3 { return 0 }
@@ -106,6 +124,26 @@ class Util {
         }))
         
         parentController.present(alert, animated: true, completion: nil)
+    }
+    
+    static func completeAlert(){
+        
+    }
+    
+    static func showMessage(_ message: String) {
+        showAlert(title: "", message: message, actions: [UIAlertAction(title: "OK", style: .cancel, handler: nil)])
+    }
+    
+    static func showAlert(title: String?, message: String?, actions: [UIAlertAction]) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            for action in actions {
+                alert.addAction(action)
+            }
+            if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController, let presenting = navigationController.topViewController {
+                presenting.present(alert, animated: true, completion: nil)
+            }
+        }
     }
 }
 

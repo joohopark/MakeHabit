@@ -116,8 +116,17 @@ extension HabitManager{
     static func getRealmObjectList(filterStr: String, sortedBy: Property, in realm: Realm = try! Realm()) -> Results<T>{
         return realm.objects(T.self).filter(filterStr).sorted(byKeyPath: sortedBy.rawValue)
     }
+    static func getRealmObjectListWithoutSorted(filterStr: String, in realm: Realm = try! Realm()) -> Results<T>{
+        return realm.objects(T.self).filter(filterStr)
+    }
     
-    
+    static func updateSucessPromiss(realmItem: HabitManager, in realm: Realm = try! Realm()){
+        let item = realmItem
+        try! realm.write {
+            item.sucessPromiss = true
+            realm.add(item)
+        }
+    }
     
     // 알람시간을 초로 바꿔 반환한다. ------------ 안씀.
     static func alarmTimeConvertSecond(inSeconds: String) -> Double{
@@ -140,9 +149,22 @@ extension HabitManager{
         // MARK:- Remain Job
         
         // 결과값, 결과값이 30일 초과일 경우..
-        return ("\(totalEndDay-totalStartDay)", totalEndDay-totalStartDay > 30 ? true : false)
+        // +1 한 이유는 약속을 생성한 그 당일 또한 추가를 해야 되기 때문임...
+        
+        return ("\(totalEndDay-totalStartDay+1)", totalEndDay-totalStartDay > 30 ? true : false)
+        
+//        switch totalEndDay-totalStartDay {
+//        case 30...:
+//            return ("\(totalEndDay-totalStartDay)",false)
+//        case 0:
+//            return
+//        default:
+//            return ("\(totalEndDay-totalStartDay)",true)
+//        }
     }
     
+    // goalDate 리스트는 켈린더를ㄹ 눌렀을때 생성된다.. 첫 실행시 문제가됨.
+    // 
     static func shouldPerFormAppendDatePromissList(index: Int, passDateList: [Date], goalDateList: [Date],in realm: Realm = try! Realm()){
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -154,12 +176,14 @@ extension HabitManager{
                 for date in goalDateList{// 다 지우고 들어온애들을 다시 넣어줘
                    list.goalDate.append(formatter.string(from: date))
                 }
-            list.promissDate.removeAll()
-            for date in passDateList{
-                list.promissDate.append(formatter.string(from: date))
+                list.totalCount = list.goalDate.count
+                list.promissDate.removeAll()
+                for date in passDateList{
+                    list.promissDate.append(formatter.string(from: date))
+                }
+                list.currentCount = list.promissDate.count
             }
-            
-            }
+            print(list.goalDate, list.promissDate, "왜그러눈고야!!!!")
         }catch let error{
             print(error.localizedDescription)
         }

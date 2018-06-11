@@ -41,8 +41,10 @@ extension PromissListViewController: UITableViewDataSource {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy-MM-dd"
     
+//    print("\(habitList![indexPath.row])에 대한 차트가 그려질거에여========")
+//    print(habitList,"습관 불러온거에요 이건 false에 대한거임")
     //pieChart Data 만들기
-    ChartManager.makePieChart(indexPath: indexPath.row) { (result) in
+    ChartManager.makePieChart(selectItem: habitList![indexPath.row]) { (result) in
       switch result {
       case .sucess(let value):
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CelldetailViewController") as! CelldetailViewController
@@ -60,6 +62,9 @@ extension PromissListViewController: UITableViewDataSource {
         }
         
         vc.nowTableIndex = indexPath.row
+//        vc.dismissDelegate = self
+//        print("테이블에서 물고들어가는 인덱스 패스 \(indexPath.row)")
+//        print("\(self.habitList![indexPath.row].habitName) 물고 들어가는 습관이름")
         self.present(vc, animated: true, completion: nil)
       case .error(let error):
         print(error.localizedDescription)
@@ -68,15 +73,29 @@ extension PromissListViewController: UITableViewDataSource {
     
   }
   
-  //tableView section 표시
+  //tableView section당 로우갯수 표시
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return (habitList?.count)!
+
+
+    habitList =  HabitManager.getRealmObjectListWithoutSorted(filterStr: "sucessPromiss == false")
+
+    if habitList?.count == 0{
+        return 1
+    }
+        return (habitList?.count)!
+    
+
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "promissCell", for: indexPath) as! PromissListCell
+
+    
+    if habitList?.count == 0{
+        cell.promissListText.text = "현재 등록된 습관이 없습니다."
+    }else{
     cell.promissListText.text = habitList?[indexPath.row].habitName
-    cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
+
     
     switch habitList?[indexPath.row].iConNo.components(separatedBy: "_")[0] {
     case "0":
@@ -89,7 +108,10 @@ extension PromissListViewController: UITableViewDataSource {
     default:
       print("cannot present img ...")
     }
+    cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
     cell.imgView.layer.cornerRadius = cell.imgView.frame.height/2
+
+    }
     return cell
   }
 }

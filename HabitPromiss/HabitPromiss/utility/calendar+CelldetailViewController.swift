@@ -8,7 +8,7 @@
 
 import Foundation
 import FSCalendar
-
+import RealmSwift
 
 extension CelldetailViewController: FSCalendarDelegate {
   
@@ -17,6 +17,8 @@ extension CelldetailViewController: FSCalendarDelegate {
     
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy-MM-dd"
+    
+    
     switch formatter.string(from: date) {
     case formatter.string(from: calendar.today!):
       for index in 0..<goalDateList.count{
@@ -34,13 +36,30 @@ extension CelldetailViewController: FSCalendarDelegate {
       }
       // index, goalDateList, passDayList
       HabitManager.shouldPerFormAppendDatePromissList(index: self.nowTableIndex!, passDateList: self.passDayList, goalDateList: self.goalDateList)
-      //램에 오늘 성공했으면 날짜를 추가해!
-      HabitManager.add(addedHabit: selectHabit) { (result) in
-        self.selectHabit.currentCount = self.selectHabit.promissDate.count
+      // 메모리의 리스트를 렘에 썻음..
+      
+      do{
+        selectHabit =  try Realm().objects(HabitManager.self)[self.nowTableIndex!]
+      }catch{
+        print(error)
       }
       
+//      // 렘에 쓴걸 렘에 반영
+//      HabitManager.add(addedHabit: selectHabit) { (result) in
+//        switch result{
+//        case .sucess(let value):
+//            print("렘 반영 후",value)
+//        case .error(let err):
+//            print(err)
+//        }
+//      }
+      
+
+      
+      print("asdflkjsadlfjasdlfjsdalkfjsadlfjdsalkjf=================")
       print("promiss suc : \(passDayList),,,,,, \(goalDateList)")
-      print("날짜 선택했어:\(selectHabit.currentCount)")
+      print("check selectHabit\(selectHabit.promissDate).,,,,,,,,\(selectHabit.goalDate)")
+      print("날짜 선택했어:\(selectHabit.promissDate.count)")
       
       
 
@@ -120,7 +139,9 @@ extension CelldetailViewController: FSCalendarDelegateAppearance{
             goalDateList.append(date)
         }
     default:
-      print("약속 날짜 어펜드 완료")
+//      print("약속 날짜 어펜드 완료")
+        break
+        
     }
 
     if goalDateList.contains(date){// 전체 날짜
