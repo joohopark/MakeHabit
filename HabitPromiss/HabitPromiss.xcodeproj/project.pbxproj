@@ -35,6 +35,7 @@
 		981B31B120C9088B002E8F27 /* CelldetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981B31B020C9088B002E8F27 /* CelldetailViewController.swift */; };
 		98359C5D20C006E200F6C659 /* ClearListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98359C5B20C006E100F6C659 /* ClearListViewController.swift */; };
 		98359C5E20C006E200F6C659 /* ClearListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98359C5C20C006E100F6C659 /* ClearListCell.swift */; };
+		987907A520CEA17A00F9F726 /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987907A420CEA17A00F9F726 /* AlertExtension.swift */; };
 		988B845A20BFBDF60090C135 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988B845920BFBDF60090C135 /* Animation.swift */; };
 		98AE8F5B20BBC713001AA1EA /* PromissListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */; };
 		98AE8F5D20BBC88F001AA1EA /* PromissDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */; };
@@ -99,6 +100,7 @@
 		981B31B020C9088B002E8F27 /* CelldetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelldetailViewController.swift; sourceTree = "<group>"; };
 		98359C5B20C006E100F6C659 /* ClearListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearListViewController.swift; sourceTree = "<group>"; };
 		98359C5C20C006E100F6C659 /* ClearListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearListCell.swift; sourceTree = "<group>"; };
+		987907A420CEA17A00F9F726 /* AlertExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertExtension.swift; sourceTree = "<group>"; };
 		988B845920BFBDF60090C135 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		98AE8F5A20BBC713001AA1EA /* PromissListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromissListCell.swift; sourceTree = "<group>"; };
 		98AE8F5C20BBC88F001AA1EA /* PromissDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromissDetailViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				988B845920BFBDF60090C135 /* Animation.swift */,
 				98F50E6A20C064C400307BDD /* calendar+CelldetailViewController.swift */,
 				98FC8C1520C0773600D11108 /* UITableView+PromissListViewController.swift */,
+				987907A420CEA17A00F9F726 /* AlertExtension.swift */,
 			);
 			path = utility;
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 				9343E02620B6E614006CCED8 /* PromissListViewController.swift in Sources */,
 				9373E9C920BD4F42001204E7 /* HabitManager.swift in Sources */,
 				98FC8C1620C0773600D11108 /* UITableView+PromissListViewController.swift in Sources */,
+				987907A520CEA17A00F9F726 /* AlertExtension.swift in Sources */,
 				98359C5D20C006E200F6C659 /* ClearListViewController.swift in Sources */,
 				9343FD0320CACC7400EC4971 /* kakaobridge.m in Sources */,
 				981B31B120C9088B002E8F27 /* CelldetailViewController.swift in Sources */,
@@ -707,7 +711,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
@@ -763,7 +767,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-all_load";
 				SDKROOT = iphoneos;
@@ -782,7 +786,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V4LDP442XN;
+				DEVELOPMENT_TEAM = M979J82YX7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -810,7 +814,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V4LDP442XN;
+				DEVELOPMENT_TEAM = M979J82YX7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

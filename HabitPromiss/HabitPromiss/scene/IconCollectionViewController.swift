@@ -144,7 +144,7 @@ extension IconCollectionViewController: UICollectionViewDataSource{
         cell.imgView.alpha = 0.3
 
         
-        print(indexPath)
+        print(indexPath, "아이콘 선택!")
         
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

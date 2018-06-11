@@ -11,89 +11,108 @@ import Charts
 import RealmSwift
 
 class FinishViewController: UIViewController {
-
+  
+  fileprivate var documentController: UIDocumentInteractionController?
+  
+  @IBOutlet weak var userName: UILabel!
+  @IBOutlet weak var habitName: UILabel!
+  @IBOutlet weak var persent: UILabel!
+  
+  
+  @IBOutlet weak var pieChart: PieChartView!
+  var chart:PieChartData!
+  
+  var userData: UserInfo!
+  var clearData: HabitManager!
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var habitName: UILabel!
-    @IBOutlet weak var persent: UILabel!
+    documentController?.delegate = self as! UIDocumentInteractionControllerDelegate
+    print("넘어왔어",userData?.nickName, clearData?.habitName)
     
-    @IBOutlet weak var pieChart: PieChartView!
-      var chart:PieChartData!
-    
-    var userData: UserInfo!
-    var clearData: HabitManager!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-        print("넘어왔어",userData?.nickName, clearData?.habitName)
-        
-        if let unUserData = userData, let unClearData = clearData{
-            userName.text = unUserData.nickName
-            habitName.text = unClearData.habitName
-        }
-        persent.text = "\(clearData.currentCount/clearData.totalCount*100)%"
+    if let unUserData = userData, let unClearData = clearData{
+      userName.text = unUserData.nickName
+      habitName.text = unClearData.habitName
+    }
+    persent.text = "\(clearData.currentCount/clearData.totalCount*100)%"
     print(clearData.currentCount/clearData.totalCount*100)
-        
-    }
     
-    
-
-    @IBAction func didTapDissMiss(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func didPushedSharedButton(_ sender: UIButton) {
-//        takeScreenshot()
-        sendLinkCustom() 
+    func didPushedSharedButton(_ sender: UIButton) {
+      //        takeScreenshot()
+      sendLinkCustom()
     }
     
     // 스샷을 photo App으로 보냄.
     // 리턴으로 뺄수도 있고 해서
     // 저장 완료후 카톡으로 보내기 가능.
     func takeScreenshot(_ shouldSave: Bool = true){//} -> UIImage? {
-        // 결과 저장 프로퍼티
-        var screenshotImage :UIImage?
-        // 사이즈
-        let layer = UIApplication.shared.keyWindow!.layer
-        let scale = UIScreen.main.scale
-        
-        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
-        guard let context = UIGraphicsGetCurrentContext() else {return }//nil}
-        layer.render(in:context)
-        screenshotImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        if let image = screenshotImage, shouldSave {
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-        }
-//        return screenshotImage
+      // 결과 저장 프로퍼티
+      var screenshotImage :UIImage?
+      // 사이즈
+      let layer = UIApplication.shared.keyWindow!.layer
+      let scale = UIScreen.main.scale
+      
+      UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
+      guard let context = UIGraphicsGetCurrentContext() else {return }//nil}
+      layer.render(in:context)
+      screenshotImage = UIGraphicsGetImageFromCurrentImageContext()
+      UIGraphicsEndImageContext()
+      if let image = screenshotImage, shouldSave {
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+      }
+      //        return screenshotImage
     }
     
     func sendLinkCustom() -> Void {
+      
+      // 템플릿 ID
+      let templateId = MessageTemplateConstants.customTemplateID
+      // 템플릿 Arguments
+      let templateArgs = ["title": "제목 영역입니다.",
+                          "description": "설명 영역입니다."]
+      
+      KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templateId, templateArgs: templateArgs, success: { (warningMsg, argumentMsg) in
         
-        // 템플릿 ID
-        let templateId = MessageTemplateConstants.customTemplateID
-        // 템플릿 Arguments
-        let templateArgs = ["title": "제목 영역입니다.",
-                            "description": "설명 영역입니다."]
+        // 성공
+        print("warning message: \(String(describing: warningMsg))")
+        print("argument message: \(String(describing: argumentMsg))")
         
-        KLKTalkLinkCenter.shared().sendCustom(withTemplateId: templateId, templateArgs: templateArgs, success: { (warningMsg, argumentMsg) in
-            
-            // 성공
-            print("warning message: \(String(describing: warningMsg))")
-            print("argument message: \(String(describing: argumentMsg))")
-            
-        }, failure: { (error) in
-            
-            // 실패
-            Util.showMessage(error.localizedDescription)
-            print("error \(error)")
-            
-        })
+      }, failure: { (error) in
+        
+        // 실패
+        Util.showMessage(error.localizedDescription)
+        print("error \(error)")
+        
+      })
     }
 }
-
-struct MessageTemplateConstants {
-    static let customTemplateID = "3135"
 }
+  struct MessageTemplateConstants {
+    static let customTemplateID = "3135"
+    
+}
+
+//extension FinishViewController {
+//
+//  func showChooseSharingFile() {
+//    UIAlertController.showAlert(title: "", message: "공유 파일?", actions: [
+//      UIAlertAction(title: "Cancel", style: .cancel, handler: nil),
+//      UIAlertAction(title: "JPG", style: .default, handler: { (alertAction) in
+//        self.shareFile(Bundle.main.url(forResource: "test_img", withExtension: "jpg"))
+//      })
+//      ])
+//  }
+//
+//  func shareFile(_ localPath: URL?) {
+//    if let localPath = localPath {
+//      documentController = UIDocumentInteractionController(url: localPath)
+//      documentController?.presentOptionsMenu(from: self.view.frame, in: self.view, animated: true)
+//    }
+//  }
+//
+//  func documentInteractionControllerDidDismissOptionsMenu(_ controller: UIDocumentInteractionController) {
+//    self.documentController = nil
+//  }
+//}
+
