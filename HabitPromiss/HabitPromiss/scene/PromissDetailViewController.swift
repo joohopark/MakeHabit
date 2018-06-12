@@ -165,8 +165,9 @@ class PromissDetailViewController: BaseViewController {
   //MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-//    self.hideKeyboardWhenTappedAround()
+    self.hideKeyboardWhenTappedAround()
     createDatePicker()
+    dismissView()
     
   }
   
@@ -180,6 +181,20 @@ class PromissDetailViewController: BaseViewController {
 
 
 extension PromissDetailViewController{
+  
+  //PromissDetailViewController Dismiss를 위한 제스처
+  func dismissView() {
+    let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+    edgePan.edges = .left
+    view.addGestureRecognizer(edgePan)
+  }
+  //dissmiss Action 부분
+  @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+    if recognizer.state == .recognized {
+      self.dismiss(animated: true, completion: nil)
+    }
+  }
+  
   enum ToolbarType{
     case start
     case end
@@ -296,7 +311,6 @@ extension PromissDetailViewController: UITextFieldDelegate {
     guard replacedText.count < 14 else { return false }
     return true
   }
-
 }
 
 

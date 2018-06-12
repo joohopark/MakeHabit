@@ -26,7 +26,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 }
 
-
+extension UIViewController {
+  func hideKeyboardWhenTappedAround() {
+    let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+    tap.cancelsTouchesInView = false
+    view.addGestureRecognizer(tap)
+  }
+  
+  @objc func dismissKeyboard() {
+    view.endEditing(true)
+  }
+}
 
 extension AppDelegate: UNUserNotificationCenterDelegate{
   // 로컬 노티를 띄우기 위해서 확인 알랏을 띄우는 거임.

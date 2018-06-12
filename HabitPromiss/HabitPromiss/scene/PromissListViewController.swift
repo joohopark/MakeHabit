@@ -50,8 +50,6 @@ class PromissListViewController: BaseViewController{//},PromissListViewType {
   //MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    
     // 사용자 이름 없으면 ... 알랏으로 결정
     initializeUserInfoRealm()
     //버전별 refresControl addSubView
@@ -62,10 +60,8 @@ class PromissListViewController: BaseViewController{//},PromissListViewType {
     }
     
     // 뷰가 처음 띄워 질때 Habit Realm Object를 불러온다.
-
     // 여기선 false인게 맞아 이게 1번임.
     habitList = HabitManager.getRealmObjectListWithoutSorted(filterStr: "sucessPromiss == false")
-
   }
 
   

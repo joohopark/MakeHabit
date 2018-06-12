@@ -113,7 +113,6 @@ extension CelldetailViewController: FSCalendarDataSource {
   // 목표일로 잡은 주기
   //calendar 날짜가 시작되는 시점
   func minimumDate(for calendar: FSCalendar) -> Date {
-
     return self.convertDate.date(from: firstDate!)!
   }
   //MARK: TodayMaximumDate
@@ -121,7 +120,6 @@ extension CelldetailViewController: FSCalendarDataSource {
   //calendar 마지막날짜 표시
   func maximumDate(for calendar: FSCalendar) -> Date {
     return self.convertDate.date(from: lastDate!)!
-    
   }
 }
 

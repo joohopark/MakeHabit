@@ -20,6 +20,9 @@ class FinishViewController: UIViewController {
   
   
   @IBOutlet weak var pieChart: PieChartView!
+  @IBAction func kakaoLinkButton(_ sender: UIButton) {
+    showChooseSharingFile()
+  }
   var chart:PieChartData!
   
   var userData: UserInfo!
@@ -27,7 +30,6 @@ class FinishViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     documentController?.delegate = self as! UIDocumentInteractionControllerDelegate
     print("넘어왔어",userData?.nickName, clearData?.habitName)
     
@@ -35,8 +37,8 @@ class FinishViewController: UIViewController {
       userName.text = unUserData.nickName
       habitName.text = unClearData.habitName
     }
-    persent.text = "\(clearData.currentCount/clearData.totalCount*100)%"
-    print(clearData.currentCount/clearData.totalCount*100)
+//    persent.text = "\(clearData.currentCount/clearData.totalCount*100)%"
+//    print(clearData.currentCount/clearData.totalCount*100)
     
     func didPushedSharedButton(_ sender: UIButton) {
       //        takeScreenshot()
@@ -93,26 +95,26 @@ class FinishViewController: UIViewController {
     
 }
 
-//extension FinishViewController {
-//
-//  func showChooseSharingFile() {
-//    UIAlertController.showAlert(title: "", message: "공유 파일?", actions: [
-//      UIAlertAction(title: "Cancel", style: .cancel, handler: nil),
-//      UIAlertAction(title: "JPG", style: .default, handler: { (alertAction) in
-//        self.shareFile(Bundle.main.url(forResource: "test_img", withExtension: "jpg"))
-//      })
-//      ])
-//  }
-//
-//  func shareFile(_ localPath: URL?) {
-//    if let localPath = localPath {
-//      documentController = UIDocumentInteractionController(url: localPath)
-//      documentController?.presentOptionsMenu(from: self.view.frame, in: self.view, animated: true)
-//    }
-//  }
-//
-//  func documentInteractionControllerDidDismissOptionsMenu(_ controller: UIDocumentInteractionController) {
-//    self.documentController = nil
-//  }
-//}
+extension FinishViewController {
+
+  func showChooseSharingFile() {
+    UIAlertController.showAlert(title: "", message: "공유 파일?", actions: [
+      UIAlertAction(title: "Cancel", style: .cancel, handler: nil),
+      UIAlertAction(title: "JPG", style: .default, handler: { (alertAction) in
+        self.shareFile(Bundle.main.url(forResource: "screen", withExtension: "png"))
+      })
+      ])
+  }
+
+  func shareFile(_ localPath: URL?) {
+    if let localPath = localPath {
+      documentController = UIDocumentInteractionController(url: localPath)
+      documentController?.presentOptionsMenu(from: self.view.frame, in: self.view, animated: true)
+    }
+  }
+
+  func documentInteractionControllerDidDismissOptionsMenu(_ controller: UIDocumentInteractionController) {
+    self.documentController = nil
+  }
+}
 
