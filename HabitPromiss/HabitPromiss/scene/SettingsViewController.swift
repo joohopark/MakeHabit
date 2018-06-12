@@ -24,6 +24,18 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    // 뷰가 사라질때 Realm에 사용자 이름 업데이트
+    override func viewWillDisappear(_ animated: Bool) {
+        UserInfo.didChangedAlarmValue(text: userTextField.text!) { (result) in
+            switch result{
+            case .sucess(let val):
+                print(val)
+            case .error(let err):
+                print(err)
+            }
+        }
+    }
+    
     @IBAction func didChangeAlarmSwitch(_ sender: UISwitch) {
         
         // 이미 알람이 설정된 상태에서 넘어오기때문에 중복 설정되는것은 막아진다. ( 스위치.isOn 은 첨에 true니까..)
