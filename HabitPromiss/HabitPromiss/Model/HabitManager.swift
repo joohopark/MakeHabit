@@ -143,24 +143,16 @@ extension HabitManager{
         // 달이 다를 경우를 대비해서 아싸리 일단위로 계산하자
         let totalStartDay = Util.calculateTotalDate(dateList: startSeparateList)
         let totalEndDay = Util.calculateTotalDate(dateList: endSeparateList)
-        
-        print(totalStartDay, totalEndDay)
+
         // 연이 틀릴경우에는 ??
         // MARK:- Remain Job
         
         // 결과값, 결과값이 30일 초과일 경우..
         // +1 한 이유는 약속을 생성한 그 당일 또한 추가를 해야 되기 때문임...
         
-        return ("\(totalEndDay-totalStartDay+1)", totalEndDay-totalStartDay > 30 ? true : false)
+        // 1~ 
+        return ("\(totalEndDay-totalStartDay+1)", totalEndDay-totalStartDay > 30 || totalEndDay-totalStartDay == 0 ? true : false)
         
-//        switch totalEndDay-totalStartDay {
-//        case 30...:
-//            return ("\(totalEndDay-totalStartDay)",false)
-//        case 0:
-//            return
-//        default:
-//            return ("\(totalEndDay-totalStartDay)",true)
-//        }
     }
     
     // goalDate 리스트는 켈린더를ㄹ 눌렀을때 생성된다.. 첫 실행시 문제가됨.

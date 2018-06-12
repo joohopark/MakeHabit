@@ -11,6 +11,7 @@ import UIKit
 import FSCalendar
 import Charts
 import RealmSwift
+import UserNotifications
 
 //MARK: - Extension
 //UITableViewDelegate
@@ -41,8 +42,6 @@ extension PromissListViewController: UITableViewDataSource {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy-MM-dd"
     
-//    print("\(habitList![indexPath.row])에 대한 차트가 그려질거에여========")
-//    print(habitList,"습관 불러온거에요 이건 false에 대한거임")
     //pieChart Data 만들기
     
     ChartManager.makePieChart(selectItem: habitList![indexPath.row]) { (result) in
@@ -63,9 +62,6 @@ extension PromissListViewController: UITableViewDataSource {
         }
         print("넘어갑니다~ 차트만들면서~ \(self.habitList![indexPath.row].goalDate) 목표일 / \(self.habitList![indexPath.row].promissDate) 달성일")
         vc.nowTableIndex = indexPath.row
-//        vc.dismissDelegate = self
-//        print("테이블에서 물고들어가는 인덱스 패스 \(indexPath.row)")
-//        print("\(self.habitList![indexPath.row].habitName) 물고 들어가는 습관이름")
         self.present(vc, animated: true, completion: nil)
       case .error(let error):
         print(error.localizedDescription)
@@ -89,7 +85,7 @@ extension PromissListViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "promissCell", for: indexPath) as! PromissListCell
     
-    
+    // 테이블에 습관을 모두 성공으로 이관했을때 예외처리.
     if habitList?.count == 0 {
       cell.promissListText.text = "현재 등록된 습관이 없습니다."
       cell.imgView.image = #imageLiteral(resourceName: "check")
@@ -114,6 +110,7 @@ extension PromissListViewController: UITableViewDataSource {
   }
   
   //PromissListViewController에서 만든 리스트를 스와이프할 수 있는 코드
+// 악세사리들을 추가하고 해당 엑션을 정의
   func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
     let realm = try! Realm()
     //habitList count가 0일때 스와이프 예외처리
@@ -135,6 +132,8 @@ extension PromissListViewController: UITableViewDataSource {
         realm.beginWrite()
         let habitIndex = self.habitList?[indexPath.row]
         habitIndex?.sucessPromiss = true
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [(habitIndex?.habitName)!])
+        print("\(habitIndex?.habitName ?? "현재 선택된 습관이 없어요")에 대한 알람 해제")
         self.promissTableView.reloadData()
         try! realm.commitWrite()
         print("공유")

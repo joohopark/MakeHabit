@@ -276,7 +276,7 @@ extension PromissDetailViewController{
           }else{
             self.startTextField.shake()
             self.startTextField.becomeFirstResponder()
-            Util.toNotifyUserAlert(title: "기간 설정 오류", message: "기간을 30일 미만만로 설정해주세요",
+            Util.toNotifyUserAlert(title: "기간 설정 오류", message: "기간을 1일 이상 30일 미만만로 설정해주세요",
                                    parentController: self)
           }
         }
