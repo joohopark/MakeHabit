@@ -438,17 +438,11 @@
                                 <rect key="frame" x="307" y="33" width="52" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="자랑하기"/>
-                                <connections>
-                                    <action selector="didPushedSharedButton:" destination="tAb-77-Xy0" eventType="touchUpInside" id="ED6-FJ-dmD"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sak-zj-t40">
                                 <rect key="frame" x="172" y="33" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="뒤로"/>
-                                <connections>
-                                    <action selector="didTapDissMiss:" destination="tAb-77-Xy0" eventType="touchUpInside" id="OFK-DN-dx5"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2zC-Kj-Yua" customClass="PieChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="123" width="375" height="544"/>
@@ -461,7 +455,6 @@
                     </view>
                     <connections>
                         <outlet property="habitName" destination="mdy-0k-0fe" id="fFo-hQ-Z87"/>
-                        <outlet property="kakaoLinkButton" destination="0HT-54-8An" id="s82-cQ-f7M"/>
                         <outlet property="persent" destination="SqZ-jk-htZ" id="nST-3Y-XYG"/>
                         <outlet property="pieChart" destination="2zC-Kj-Yua" id="Utv-B3-XXd"/>
                         <outlet property="userName" destination="oy6-i4-Uhj" id="8en-rw-E7M"/>

@@ -165,7 +165,7 @@ class PromissDetailViewController: BaseViewController {
   //MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-//    self.hideKeyboardWhenTappedAround()
+    self.hideKeyboardWhenTappedAround()
     createDatePicker()
     
   }

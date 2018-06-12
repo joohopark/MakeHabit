@@ -42,6 +42,7 @@ extension PromissListViewController: UITableViewDataSource {
 //    print("\(habitList![indexPath.row])에 대한 차트가 그려질거에여========")
 //    print(habitList,"습관 불러온거에요 이건 false에 대한거임")
     //pieChart Data 만들기
+    
     ChartManager.makePieChart(selectItem: habitList![indexPath.row]) { (result) in
       switch result {
       case .sucess(let value):
@@ -58,7 +59,7 @@ extension PromissListViewController: UITableViewDataSource {
         for promissDate in (self.habitList?[indexPath.row].promissDate)!{
           vc.passDayList.append(formatter.date(from: promissDate)!)
         }
-        
+        print("넘어갑니다~ 차트만들면서~ \(self.habitList![indexPath.row].goalDate) 목표일 / \(self.habitList![indexPath.row].promissDate) 달성일")
         vc.nowTableIndex = indexPath.row
 //        vc.dismissDelegate = self
 //        print("테이블에서 물고들어가는 인덱스 패스 \(indexPath.row)")

@@ -9,6 +9,7 @@
 import Foundation
 import FSCalendar
 import RealmSwift
+import Charts
 
 extension CelldetailViewController: FSCalendarDelegate {
   
@@ -21,6 +22,7 @@ extension CelldetailViewController: FSCalendarDelegate {
     
     switch formatter.string(from: date) {
     case formatter.string(from: calendar.today!):
+        
       for index in 0..<goalDateList.count{
         print(goalDateList.count)
         if date == goalDateList[index] && index < goalDateList.count{
@@ -35,14 +37,15 @@ extension CelldetailViewController: FSCalendarDelegate {
         passDayList.append(date)
       }
       // index, goalDateList, passDayList
-      HabitManager.shouldPerFormAppendDatePromissList(index: self.nowTableIndex!, passDateList: self.passDayList, goalDateList: self.goalDateList)
+//      HabitManager.shouldPerFormAppendDatePromissList(index: self.nowTableIndex!, passDateList: self.passDayList, goalDateList: self.goalDateList)
+      HabitManager.shouldPerFormAppendDatePromissList(promis: selectHabit, passDateList: self.passDayList, goalDateList: self.goalDateList)
       // 메모리의 리스트를 렘에 썻음..
       
-      do{
-        selectHabit =  try Realm().objects(HabitManager.self)[self.nowTableIndex!]
-      }catch{
-        print(error)
-      }
+//      do{
+//        selectHabit =  try Realm().objects(HabitManager.self).filter("sucessPromiss==false")[self.nowTableIndex!]
+//      }catch{
+//        print(error)
+//      }
       
 //      // 렘에 쓴걸 렘에 반영
 //      HabitManager.add(addedHabit: selectHabit) { (result) in
@@ -57,12 +60,24 @@ extension CelldetailViewController: FSCalendarDelegate {
 
       
       print("asdflkjsadlfjasdlfjsdalkfjsadlfjdsalkjf=================")
+//      #if DEBUG
       print("promiss suc : \(passDayList),,,,,, \(goalDateList)")
       print("check selectHabit\(selectHabit.promissDate).,,,,,,,,\(selectHabit.goalDate)")
-      print("날짜 선택했어:\(selectHabit.promissDate.count)")
+      print("날짜 선택했어:\(selectHabit.promissDate.count),,,,, count \(selectHabit.currentCount)")
       
-      
+   
 
+    
+            ChartManager.makePieChart(selectItem: selectHabit, completion: { (result) in
+                switch result{
+                case .sucess(let val):
+                    self.chart = val as! PieChartData
+                    
+                case .error(let err):
+                    print(err)
+                }
+            })
+      self.drowPieChart()
       return true// 오늘을 제외하면 선택되지 않는다.
     default:
       return false
@@ -91,7 +106,7 @@ extension CelldetailViewController: FSCalendarDelegate {
       }else{
         goalDateList.append(date)
       }
-      HabitManager.shouldPerFormAppendDatePromissList(index: self.nowTableIndex!, passDateList: self.passDayList, goalDateList: self.goalDateList)
+      HabitManager.shouldPerFormAppendDatePromissList(promis: selectHabit, passDateList: self.passDayList, goalDateList: self.goalDateList)
       //램에 선택된 데이터를 빼!
       HabitManager.add(addedHabit: selectHabit) { (result) in
         self.selectHabit.currentCount = self.selectHabit.promissDate.count
@@ -99,7 +114,16 @@ extension CelldetailViewController: FSCalendarDelegate {
       
       print("promiss cancel : \(passDayList),,,,,, \(goalDateList)")
       print("날짜선택 취소했어:\(selectHabit.currentCount)")
-      
+      ChartManager.makePieChart(selectItem: selectHabit, completion: { (result) in
+        switch result{
+        case .sucess(let val):
+            self.chart = val as! PieChartData
+            
+        case .error(let err):
+            print(err)
+        }
+      })
+      self.drowPieChart()
       return true// 오늘을 제외하면 선택되지 않는다.
     default:
       return false

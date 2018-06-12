@@ -16,6 +16,10 @@ import UIKit
 // CollectionView를 부모 위에 올리기위해 만듦.
 class IconCollectionViewController: BaseViewController {
 
+    var prevIndexPath:[Int] = [0,0]
+    var prevCell: IconCell?
+ 
+    
     enum Category: Int{
         case health = 0
         case study
@@ -106,7 +110,13 @@ extension IconCollectionViewController: UICollectionViewDataSource{
         default:
             print("chack cellForItemAt")
         }
-        print(indexPath)
+        
+        if !cell.isSelected{
+            cell.isSelected = true
+            cell.imgView.alpha = 1
+        }
+        print(indexPath,"왜 범위 밖???")
+
         return cell
     }
     
@@ -132,32 +142,77 @@ extension IconCollectionViewController: UICollectionViewDataSource{
             return header
 
     }
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        print("didDeselected\(indexPath)")
+        
+//            let cell = collectionView.cellForItem(at: indexPath) as? IconCell
+//            
+//            if (cell?.isSelected)!{
+//                cell?.isSelected = false
+//                cell?.imgView.alpha = 0.3
+//            }else{
+//                cell?.isSelected = true
+//                cell?.imgView.alpha = 1
+//            }
+        
+        print("didDeselected End")
+    }
+ 
+    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+        print("shouldDeSelected")
+        
+        return true
+    }
+    
+    // 처음에는 isSelected값은 false , Cell 들
+    // 눌리면 true
+    // 다른게 눌리면 자동적으로 false로 이전 값이 바뀌어야 한다.
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        print("shouldSelectItemAt")
+        let cell = collectionView.cellForItem(at: indexPath) as! IconCell
+        
+        return true
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // section, item 을 통해 iconNo를 표시해야한다.
+        print("didSelectItemAt")
+//        // section, item 을 통해 iconNo를 표시해야한다.
         selectCategoryNo = indexPath.section
         selectItemNo = indexPath.row
         
         let cell = collectionView.cellForItem(at: indexPath) as! IconCell
-        cell.isSelected = true
-//        cell.backgroundColor = UIColor.blue
-        cell.imgView.alpha = 0.3
 
+        if !cell.isSelected{
+            cell.isSelected = true
+            cell.imgView.alpha = 1
+        }else{
+            cell.isSelected = false
+            cell.imgView.alpha = 0.3
+        }
+        for index in 0..<indexPath.count{
+            prevIndexPath[index] = indexPath[index]
+        }
+        if prevCell != nil{
+            switch prevCell?.isSelected{
+            case true:
+                prevCell?.isSelected = false
+                prevCell?.imgView.alpha = 0.3
+            case false:
+                prevCell?.isSelected = true
+                prevCell?.imgView.alpha = 1
+            case .none:
+                print("none?")
+            case .some(_):
+                print("some?")
+            }
+        }
+//
+//        print(indexPath, "선택됨")
         
-        print(indexPath, "아이콘 선택!")
-        
+        prevCell = cell
+        print("didSelected End")
     }
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        selectCategoryNo = 0
-        selectItemNo = 0
-        
-        let cell = collectionView.cellForItem(at: indexPath) as! IconCell
-        cell.isSelected = false
-//        cell.backgroundColor = UIColor.clear
-        cell.imgView.alpha = 1
-        print(indexPath)
-    }
-    
+
 }
 
 //MARK: - extension UICollectionViewDelegateFlowLayout
