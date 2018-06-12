@@ -639,6 +639,63 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="개발자정보" id="ZKh-y6-GnM">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="192" id="GNj-6z-CgZ">
+                                        <rect key="frame" x="0.0" y="193" width="375" height="192"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GNj-6z-CgZ" id="Kjl-To-qqX">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="192"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="박주호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YW2-Cf-UYr">
+                                                    <rect key="frame" x="14" y="14" width="60" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="9Ds-76-TAX"/>
+                                                        <constraint firstAttribute="height" constant="36" id="DZJ-k4-jeX"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bobplease88@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8i-0c-zL1">
+                                                    <rect key="frame" x="14" y="56" width="195" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배지호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIy-Kn-iTe">
+                                                    <rect key="frame" x="14" y="100" width="60" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="qaF-Xa-OFi"/>
+                                                        <constraint firstAttribute="width" constant="60" id="tnN-GC-8rc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hcw53590@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qw5-mn-lAn">
+                                                    <rect key="frame" x="14" y="142" width="177" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hIy-Kn-iTe" firstAttribute="leading" secondItem="YW2-Cf-UYr" secondAttribute="leading" id="9ov-vn-Lft"/>
+                                                <constraint firstItem="YW2-Cf-UYr" firstAttribute="top" secondItem="Kjl-To-qqX" secondAttribute="top" constant="14" id="Kr1-oy-jCX"/>
+                                                <constraint firstItem="hIy-Kn-iTe" firstAttribute="top" secondItem="G8i-0c-zL1" secondAttribute="bottom" constant="23.5" id="Sq6-iP-FTM"/>
+                                                <constraint firstItem="Qw5-mn-lAn" firstAttribute="top" secondItem="hIy-Kn-iTe" secondAttribute="bottom" constant="6" id="ZJj-o5-fsX"/>
+                                                <constraint firstItem="Qw5-mn-lAn" firstAttribute="leading" secondItem="hIy-Kn-iTe" secondAttribute="leading" id="dA7-0C-LBv"/>
+                                                <constraint firstAttribute="trailing" secondItem="YW2-Cf-UYr" secondAttribute="trailing" constant="301" id="exV-Cr-bMM"/>
+                                                <constraint firstItem="G8i-0c-zL1" firstAttribute="top" secondItem="YW2-Cf-UYr" secondAttribute="bottom" constant="6" id="kUB-Nu-HbD"/>
+                                                <constraint firstItem="G8i-0c-zL1" firstAttribute="leading" secondItem="YW2-Cf-UYr" secondAttribute="leading" id="ttI-Tz-wFe"/>
+                                                <constraint firstItem="YW2-Cf-UYr" firstAttribute="leading" secondItem="Kjl-To-qqX" secondAttribute="leading" constant="14" id="xVp-xG-WdB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="oKC-db-IrF" id="pbh-fX-OgO"/>
