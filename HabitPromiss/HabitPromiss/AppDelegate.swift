@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     lazy var launchView = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateInitialViewController()
     
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -56,5 +57,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
         completionHandler(.alert)
     }
 }
+
+
+  
 
 
