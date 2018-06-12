@@ -32,44 +32,49 @@ extension PromissListViewController: UITableViewDelegate {
 extension PromissListViewController: UITableViewDataSource {
   //cell이 선택된 이후
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-    
-    //tableView Cell을 선택했을 때 선택 스타일
-    let selectCell = tableView.cellForRow(at: indexPath)!
-    selectCell.selectionStyle = .none
-    
-    let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-dd"
-    
-//    print("\(habitList![indexPath.row])에 대한 차트가 그려질거에여========")
-//    print(habitList,"습관 불러온거에요 이건 false에 대한거임")
-    //pieChart Data 만들기
-    
-    ChartManager.makePieChart(selectItem: habitList![indexPath.row]) { (result) in
-      switch result {
-      case .sucess(let value):
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CelldetailViewController") as! CelldetailViewController
-        vc.chart = value as! PieChartData
-        vc.selectHabit = self.habitList![indexPath.row]
-        vc.firstDate = self.habitList?[indexPath.row].startDate
-        vc.lastDate = self.habitList?[indexPath.row].endDate
-        
-        for goalDate in (self.habitList?[indexPath.row].goalDate)!{
-          vc.goalDateList.append(formatter.date(from: goalDate)!)
+    if habitList?.count == 0 {
+      //tableView Cell을 선택했을 때 선택안되게
+      let selectCell = tableView.cellForRow(at: indexPath)!
+      selectCell.selectionStyle = .none
+      selectCell.isSelected = false
+    } else {
+      //tableView Cell을 선택했을 때 선택 스타일
+      let selectCell = tableView.cellForRow(at: indexPath)!
+      selectCell.selectionStyle = .none
+      
+      let formatter = DateFormatter()
+      formatter.dateFormat = "yyyy-MM-dd"
+      
+      //    print("\(habitList![indexPath.row])에 대한 차트가 그려질거에여========")
+      //    print(habitList,"습관 불러온거에요 이건 false에 대한거임")
+      //pieChart Data 만들기
+      
+      ChartManager.makePieChart(selectItem: habitList![indexPath.row]) { (result) in
+        switch result {
+        case .sucess(let value):
+          let vc = self.storyboard?.instantiateViewController(withIdentifier: "CelldetailViewController") as! CelldetailViewController
+          vc.chart = value as! PieChartData
+          vc.selectHabit = self.habitList![indexPath.row]
+          vc.firstDate = self.habitList?[indexPath.row].startDate
+          vc.lastDate = self.habitList?[indexPath.row].endDate
+          
+          for goalDate in (self.habitList?[indexPath.row].goalDate)!{
+            vc.goalDateList.append(formatter.date(from: goalDate)!)
+          }
+          
+          for promissDate in (self.habitList?[indexPath.row].promissDate)!{
+            vc.passDayList.append(formatter.date(from: promissDate)!)
+          }
+          print("넘어갑니다~ 차트만들면서~ \(self.habitList![indexPath.row].goalDate) 목표일 / \(self.habitList![indexPath.row].promissDate) 달성일")
+          vc.nowTableIndex = indexPath.row
+          //        vc.dismissDelegate = self
+          //        print("테이블에서 물고들어가는 인덱스 패스 \(indexPath.row)")
+          //        print("\(self.habitList![indexPath.row].habitName) 물고 들어가는 습관이름")
+          self.present(vc, animated: true, completion: nil)
+        case .error(let error):
+          print(error.localizedDescription)
+          
         }
-        
-        for promissDate in (self.habitList?[indexPath.row].promissDate)!{
-          vc.passDayList.append(formatter.date(from: promissDate)!)
-        }
-        print("넘어갑니다~ 차트만들면서~ \(self.habitList![indexPath.row].goalDate) 목표일 / \(self.habitList![indexPath.row].promissDate) 달성일")
-        vc.nowTableIndex = indexPath.row
-//        vc.dismissDelegate = self
-//        print("테이블에서 물고들어가는 인덱스 패스 \(indexPath.row)")
-//        print("\(self.habitList![indexPath.row].habitName) 물고 들어가는 습관이름")
-        self.present(vc, animated: true, completion: nil)
-      case .error(let error):
-        print(error.localizedDescription)
-
       }
     }
     

@@ -24,6 +24,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UNUserNotificationCenter.current().delegate = self
     return true
   }
+  
+  func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+    if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
+      let params = url.query
+      UIAlertController.showMessage("카카오링크 메시지 액션\n\(params ?? "파라미터 없음")")
+      return true
+    }
+    return false
+  }
+  
+  func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
+      let params = url.query
+      UIAlertController.showMessage("카카오링크 메시지 액션\n\(params ?? "파라미터 없음")")
+      return true
+    }
+    return false
+  }
 }
 
 extension UIViewController {
@@ -43,16 +61,4 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
   func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
     completionHandler(.alert)
   }
-}
-
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
 }

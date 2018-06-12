@@ -2,25 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>LSApplicationQueriesSchemes</key>
-  <array>
-    <string>kakao8af801b16fd96ecbe81590fe66a56216</string>
-    <string>kakaolink</string>
-    <string>kakaotalk-5.9.7</string>
-  </array>
-  <key>CFBundleURLTypes</key>
-  <array>
-    <dict>
-      <key>CFBundleTypeRole</key>
-      <string>Editor</string>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>kakao8af801b16fd96ecbe81590fe66a56216</string>
-      </array>
-    </dict>
-  </array>
-	<key>KAKAO_APP_KEY</key>
-	<string>8af801b16fd96ecbe81590fe66a56216</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -44,12 +25,20 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>kakaocf3e659999b1c2d4488553abf614d16e</string>
+				<string>kakao8af801b16fd96ecbe81590fe66a56216</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>KAKAO_APP_KEY</key>
+	<string>8af801b16fd96ecbe81590fe66a56216</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>kakao8af801b16fd96ecbe81590fe66a56216</string>
+		<string>kakaolink</string>
+		<string>kakaotalk-5.9.7</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
