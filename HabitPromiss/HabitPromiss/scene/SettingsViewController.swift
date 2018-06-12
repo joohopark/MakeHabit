@@ -16,7 +16,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var alarmSwitch: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.hideKeyboardWhenTappedAround()
+        self.hideKeyboardWhenTappedAround()
       
 	let user = UserInfo.getRealmObjectList(sortedBy: UserInfo.Property.nickName)
         if user != nil && user[0].nickName != ""{

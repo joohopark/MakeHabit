@@ -27,7 +27,8 @@ class ChartManager: ChartManagerType{
 //        let currentCount = getCurrentCountDataBase(indexPath: indexPath)
         print(selectItem, "makePieChart" )
         
-        let dataEntry = PieChartDataEntry(value: Double(selectItem.promissDate.count))
+//        let dataEntry = PieChartDataEntry(value: Double(selectItem.promissDate.count))
+        let dataEntry = PieChartDataEntry(value: Double(selectItem.currentCount))
         dataEntry.label = "현재까지의 습관 이행 횟수"
         
         let totalDataEntery = PieChartDataEntry(value: Double(selectItem.totalCount))

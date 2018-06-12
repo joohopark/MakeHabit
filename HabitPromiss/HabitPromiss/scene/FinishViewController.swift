@@ -37,8 +37,14 @@ class FinishViewController: UIViewController {
       userName.text = unUserData.nickName
       habitName.text = unClearData.habitName
     }
-//    persent.text = "\(clearData.currentCount/clearData.totalCount*100)%"
-//    print(clearData.currentCount/clearData.totalCount*100)
+
+    if clearData.currentCount != 0{
+    persent.text = "\(clearData.currentCount/clearData.totalCount*100)%"
+    }else{
+    persent.text = "0%"
+    }
+    print(clearData.currentCount/clearData.totalCount*100)
+
     
     func didPushedSharedButton(_ sender: UIButton) {
       //        takeScreenshot()

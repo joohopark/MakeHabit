@@ -55,55 +55,12 @@ class CelldetailViewController: BaseViewController {
   override func viewDidLoad() {
     print("celldetailViewController ViewDidLoad")
     super.viewDidLoad()
+    print("현재 뷰가 불리면서 \(selectHabit) 을 물고있어요")
     print("현재 차트보기 뷰가 물고있는 indexPath ========== \(nowTableIndex)")
     drowCalendar()
     drowPieChart()
     dismissView()
-    reactiveHabitChartToken = try! Realm().objects(HabitManager.self).observe({ (change) in
-      switch change {
-      case .initial:
-        self.drowPieChart()
-        
-      case .update(_,let deletions, let insertions, let modifications):
-        print("차트 업뎃 탓어", self.selectHabit.promissDate.count, self.selectHabit.totalCount)
-        
-        print(deletions,insertions,modifications,"업뎃 찍어보기")
-        
-        ChartManager.makePieChart(selectItem: self.selectHabit, completion: { (result) in
-          switch result{
-          case .sucess(let val):
-            self.chart = val as! PieChartData
-            
-            
-          case .error(let err):
-            print(err)
-          }
-        })
-        self.drowPieChart()
-        print(self.selectHabit,"현재 선택된 습관 노티 토큰 안입니다")
-        print("asdflkjsadlfjasdlfjsdalkfjsadlfjdsalkjf")
-        // 이 if 안에서 realm에 업뎃 접근하면 크래쉬. 동일 트랜잭션에서 또 쓰면 안됨.
-        //            if self.selectHabit.goalDate.count == 0{
-        //                let realm = try! Realm()
-        //                let item = self.selectHabit
-        //
-        //                do{
-        //                    try realm.write {
-        //                        item?.sucessPromiss = true
-        //                        realm.add(item!)
-        //                    }
-        //                    Thread.sleep(forTimeInterval: 1)
-        //                }catch{
-        //                    print(error.localizedDescription)
-        //                }
-        //                self.dismiss(animated: true, completion: nil)
-        //            }
-        //            print("asdflkjsadlfjasdlfjsdalkfjsadlfjdsalkjf=================")
-        
-      case .error:
-        break
-      }
-    })
+
     
   }
 }
@@ -126,13 +83,35 @@ extension CelldetailViewController {
   func dismissView() {
     let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
     edgePan.edges = .left
-    
-    
     view.addGestureRecognizer(edgePan)
   }
+    
   //dissmiss Action 부분
   @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
     if recognizer.state == .recognized {
+        
+        //    self.selectHabit을 저장해야됨
+//        do{
+//            try Realm().write {
+//                try Realm().beginWrite()
+//                try Realm().add(self.selectHabit)
+//                try! Realm().commitWrite()
+//            }
+//        }catch{
+//            print(error.localizedDescription)
+//        }
+        do{
+            try Realm().safeWrite {
+//                                try Realm().beginWrite()
+                    try Realm().add(self.selectHabit)
+//                                try! Realm().commitWrite()
+            
+            }
+        }catch{
+            print(error.localizedDescription)
+        }
+        print("dimiss detail View")
+        print("dismiss 될때 \(selectHabit)")
       self.dismiss(animated: true, completion: nil)
     }
   }

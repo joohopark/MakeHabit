@@ -165,25 +165,27 @@ extension HabitManager{
     
     // goalDate 리스트는 켈린더를ㄹ 눌렀을때 생성된다.. 첫 실행시 문제가됨.
     // 
-    static func shouldPerFormAppendDatePromissList(index: Int, passDateList: [Date], goalDateList: [Date],in realm: Realm = try! Realm()){
+    static func shouldPerFormAppendDatePromissList(promis: T, passDateList: [Date], goalDateList: [Date],in realm: Realm = try! Realm()){
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         
-        let list = realm.objects(T.self)[index]
+//        let list = realm.objects(T.self)
         do{
         try realm.write {
-            list.goalDate.removeAll()
+            promis.goalDate.removeAll()
                 for date in goalDateList{// 다 지우고 들어온애들을 다시 넣어줘
-                   list.goalDate.append(formatter.string(from: date))
+                   promis.goalDate.append(formatter.string(from: date))
                 }
-                list.totalCount = list.goalDate.count
-                list.promissDate.removeAll()
+                promis.totalCount = promis.goalDate.count
+            print("totalCount : \(promis.goalDate.count)들어갔어~")
+                promis.promissDate.removeAll()
                 for date in passDateList{
-                    list.promissDate.append(formatter.string(from: date))
+                    promis.promissDate.append(formatter.string(from: date))
                 }
-                list.currentCount = list.promissDate.count
+                promis.currentCount = promis.promissDate.count
+            print("currentCount : \(promis.promissDate.count) 들어갔어~")
             }
-            print(list.goalDate, list.promissDate, "왜그러눈고야!!!!")
+            print(promis.goalDate, promis.promissDate, "왜그러눈고야!!!!")
         }catch let error{
             print(error.localizedDescription)
         }
@@ -209,4 +211,13 @@ extension HabitManager{
 //    }
 }
 
+extension Realm {
+    public func safeWrite(_ block: (() throws -> Void)) throws {
+        if isInWriteTransaction {
+            try block()
+        } else {
+            try write(block)
+        }
+    }
+}
 
