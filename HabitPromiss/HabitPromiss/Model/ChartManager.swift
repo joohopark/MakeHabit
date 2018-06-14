@@ -26,17 +26,30 @@ class ChartManager: ChartManagerType{
         var dataEntries: [PieChartDataEntry] = []
 
         print(selectItem, "makePieChart" )
-
-        let dataEntry = PieChartDataEntry(value: Double(selectItem.currentCount))
-        dataEntry.label = "현재까지의 습관 이행 횟수"
-        
+        var dataEntry:PieChartDataEntry!
         let totalDataEntery = PieChartDataEntry(value: Double(selectItem.totalCount))
         totalDataEntery.label = "남은 습관 이행 횟수"
+        var colors: [UIColor]!
         
-        dataEntries.append(contentsOf: [dataEntry, totalDataEntery])
         
+        switch selectItem.currentCount {
+        case 0:
+            dataEntries.append(contentsOf: [totalDataEntery])
+            colors = [UIColor.blue]
+        default:
+            dataEntry = PieChartDataEntry(value: Double(selectItem.currentCount))
+            dataEntry.label = "현재까지의 습관 이행 횟수"
+            dataEntries.append(contentsOf: [dataEntry, totalDataEntery])
+            colors = [UIColor.red, UIColor.blue]
+        }
+       
+
+        
+        
+
+
         let chartDataSet = PieChartDataSet(values: dataEntries, label: "\(selectItem.habitName)")// 여기에 무슨 약속에 대한 내용인지가 들어가면 좋을것 같다.
-        let colors = [UIColor.red, UIColor.blue]
+ 
         chartDataSet.colors = colors
         let chartData = PieChartData(dataSet: chartDataSet)
         completion(.sucess(chartData))

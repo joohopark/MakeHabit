@@ -90,16 +90,7 @@ extension CelldetailViewController {
   @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
     if recognizer.state == .recognized {
         
-        //    self.selectHabit을 저장해야됨
-//        do{
-//            try Realm().write {
-//                try Realm().beginWrite()
-//                try Realm().add(self.selectHabit)
-//                try! Realm().commitWrite()
-//            }
-//        }catch{
-//            print(error.localizedDescription)
-//        }
+  
         do{
             try Realm().safeWrite {
 //                                try Realm().beginWrite()

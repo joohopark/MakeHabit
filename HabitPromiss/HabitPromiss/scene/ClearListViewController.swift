@@ -21,7 +21,13 @@ class ClearListViewController: BaseViewController {
     // REalm의 HabitManager Object를 통해서 successPromiss 필드의 값이 true인 아이들만 컬렉션으로 불러옴. ( viewDidload)
     clearLsit = HabitManager.getRealmObjectList(filterStr: "sucessPromiss == true", sortedBy: HabitManager.Property.sucessPromiss)
     userInfo = UserInfo.getRealmObjectList(sortedBy: UserInfo.Property.nickName)
+    clearListTableView.reloadData()
+    print(clearLsit)
   }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        clearListTableView.reloadData()
+    }
 }
 
 extension ClearListViewController: UITableViewDelegate {
