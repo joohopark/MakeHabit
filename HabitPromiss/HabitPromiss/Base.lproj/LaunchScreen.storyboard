@@ -31,8 +31,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="티끌모아 습관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0V-N0-yWm">
-                                <rect key="frame" x="141" y="427" width="93" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="티끌 모아 습관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0V-N0-yWm">
+                                <rect key="frame" x="141" y="427" width="97.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,7 +41,6 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="B0V-N0-yWm" secondAttribute="bottom" constant="219" id="0gO-7q-FWJ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="B0V-N0-yWm" secondAttribute="trailing" constant="141" id="812-hA-nKh"/>
                             <constraint firstItem="in9-6H-i7c" firstAttribute="top" secondItem="GME-FN-zLo" secondAttribute="bottom" constant="39.5" id="HFj-RQ-GTo"/>
                             <constraint firstItem="in9-6H-i7c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="98" id="IiI-ff-ghD"/>
                             <constraint firstItem="B0V-N0-yWm" firstAttribute="top" secondItem="in9-6H-i7c" secondAttribute="bottom" constant="14" id="UM2-5b-rzX"/>
