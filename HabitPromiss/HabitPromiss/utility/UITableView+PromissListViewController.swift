@@ -146,6 +146,8 @@ extension PromissListViewController: UITableViewDataSource {
         print("\(habitIndex?.habitName ?? "현재 선택된 습관이 없어요")에 대한 알람 해제")
         self.promissTableView.reloadData()
         try! realm.commitWrite()
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ClearListViewController") as! ClearListViewController
+//        vc.clearListTableView.reloadData()
         print("공유")
       }
       shareAction.backgroundColor = UIColor.orange

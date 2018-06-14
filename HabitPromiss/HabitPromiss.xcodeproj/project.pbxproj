@@ -784,8 +784,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = M979J82YX7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -796,9 +796,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jhbob.HabitPromiss;
+				PRODUCT_BUNDLE_IDENTIFIER = jhbob.HabitPromiss.CollectionHabit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "0ca4757c-69a1-42c3-a7bc-68c9ac50a8c1";
+				PROVISIONING_PROFILE_SPECIFIER = baejiho;
 				SWIFT_OBJC_BRIDGING_HEADER = "HabitPromiss/scene/HabitPromiss-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -812,8 +813,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = M979J82YX7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -824,9 +825,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jhbob.HabitPromiss;
+				PRODUCT_BUNDLE_IDENTIFIER = jhbob.HabitPromiss.CollectionHabit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "0ca4757c-69a1-42c3-a7bc-68c9ac50a8c1";
+				PROVISIONING_PROFILE_SPECIFIER = baejiho;
 				SWIFT_OBJC_BRIDGING_HEADER = "HabitPromiss/scene/HabitPromiss-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
