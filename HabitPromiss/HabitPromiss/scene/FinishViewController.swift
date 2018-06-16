@@ -10,6 +10,7 @@ import UIKit
 import Charts
 import RealmSwift
 
+// 자랑 하기 , clear List 들에 detail View임.
 class FinishViewController: UIViewController {
     
     fileprivate var documentController: UIDocumentInteractionController?
@@ -19,23 +20,6 @@ class FinishViewController: UIViewController {
 
     @IBOutlet weak var pieChart: PieChartView!
 
-    @IBAction func didTapDismiss(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func didTapedShared(_ sender: UIButton) {
-        
-        let imageToShare = takeScreenshot()
-        
-        let activityItems : NSMutableArray = []
-        activityItems.add(imageToShare!)
-        
-        
-        let activityVC = UIActivityViewController(activityItems:activityItems as [AnyObject] , applicationActivities: nil)
-        self.present(activityVC, animated: true, completion: nil)
-        
-    }
-    
     var chart:PieChartData!
     
     var userData: UserInfo!
@@ -77,34 +61,34 @@ class FinishViewController: UIViewController {
         }
         return screenshotImage
     }
-}
-struct MessageTemplateConstants {
-    static let customTemplateID = "3135"
     
+    
+  
 }
 
+// MARK:- IBACtion Extension
+extension FinishViewController{
+    @IBAction func didTapDismiss(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func didTapedShared(_ sender: UIButton) {
+        // 스샷을 사진첩에 저장 및 UIImage를 들고있는다.
+        let imageToShare = takeScreenshot()
+        
+        let activityItems : NSMutableArray = []
+        activityItems.add(imageToShare!)
+        
+        // 앱 표준 서비스 컨트롤러 생성 및 프레젠트를 통해 공유
+        let activityVC = UIActivityViewController(activityItems:activityItems as [AnyObject] , applicationActivities: nil)
+        self.present(activityVC, animated: true, completion: nil)
+        
+    }
+}
+
+
 extension FinishViewController {
-    
-    func showChooseSharingFile() {
-        UIAlertController.showAlert(title: "", message: "공유 파일?", actions: [
-            UIAlertAction(title: "Cancel", style: .cancel, handler: nil),
-            UIAlertAction(title: "JPG", style: .default, handler: { (alertAction) in
-                self.shareFile(Bundle.main.url(forResource: "screen", withExtension: "png"))
-            })
-            ])
-    }
-    
-    func shareFile(_ localPath: URL?) {
-        if let localPath = localPath {
-            documentController = UIDocumentInteractionController(url: localPath)
-            documentController?.presentOptionsMenu(from: self.view.frame, in: self.view, animated: true)
-        }
-    }
-    
-    func documentInteractionControllerDidDismissOptionsMenu(_ controller: UIDocumentInteractionController) {
-        self.documentController = nil
-    }
-    
+    // 이거 프로토콜로 하나 묶어서 처리하든지 해야됨. 중복됨.
     func drowPieChart() {
         pieChart.data = chart
         pieChart.entryLabelFont = UIFont(name: "NanumPen", size: 16)

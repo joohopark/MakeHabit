@@ -19,19 +19,7 @@ class CelldetailViewController: BaseViewController {
   @IBOutlet weak var pieChart: PieChartView!
   @IBOutlet weak var calendarView: FSCalendar!
   
-  @IBAction func dismissButton(_ sender: UIButton) {
-    do{
-      try Realm().safeWrite {
-        //                                try Realm().beginWrite()
-        try Realm().add(self.selectHabit)
-        //                                try! Realm().commitWrite()
-        
-      }
-    }catch{
-      print(error.localizedDescription)
-    }
-    self.dismiss(animated: true, completion: nil)
-  }
+
   var firstDate: String?
   var lastDate: String?
   var nowTableIndex: Int?
@@ -58,7 +46,10 @@ class CelldetailViewController: BaseViewController {
     f.dateFormat = "yyyy. MM. dd."
     return f
   }()
-  
+}
+
+//MARK:- ViewLifeCycle
+extension CelldetailViewController{
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillAppear(animated)
     print("celldetailViewController viewWillDisappear")
@@ -69,13 +60,27 @@ class CelldetailViewController: BaseViewController {
     print("celldetailViewController ViewDidLoad")
     super.viewDidLoad()
     print("현재 뷰가 불리면서 \(selectHabit) 을 물고있어요")
-    print("현재 차트보기 뷰가 물고있는 indexPath ========== \(nowTableIndex)")
+    print("현재 차트보기 뷰가 물고있는 indexPath ========== \(nowTableIndex ?? 0)")
     drowCalendar()
     drowPieChart()
     dismissView()
-
-    
   }
+    
+}
+
+//MARK:- IBAction Extension
+extension CelldetailViewController{
+    // dismiss 되기전에 REalm에 현재 상황을 저장.
+    @IBAction func dismissButton(_ sender: UIButton) {
+        do{
+            try Realm().safeWrite {
+                try Realm().add(self.selectHabit)
+            }
+        }catch{
+            print(error.localizedDescription)
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension CelldetailViewController {
