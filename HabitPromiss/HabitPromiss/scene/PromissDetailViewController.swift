@@ -33,6 +33,7 @@ class PromissDetailViewController: BaseViewController {
   var iconVC: IconCollectionViewController?
   
   //MARK: - View UI 로직
+    // 클로져로 View UI에 대한 것들을 구성하는것이 유지보수에 과연,.?
   var picker: UIDatePicker = {
     let picker = UIDatePicker()
     let today = Date()
@@ -83,6 +84,7 @@ class PromissDetailViewController: BaseViewController {
   // 저장 버튼( 추가 구현되야 하는것)
   // 1. Realm에 TextField에 있는 값을 저장.
   // 2. 알람 TextField에 있는 값을 기준으로 알람 시간 설정.( 알람 설정.)
+    
   @IBAction func saveButton(_ sender: UIButton) {
     
     
@@ -98,6 +100,8 @@ class PromissDetailViewController: BaseViewController {
         let action = UIAlertAction(title: "네", style: .cancel, handler: nil)
         alertAC.addAction(action)
         self.present(alertAC, animated: true, completion: nil)
+        
+        // 빈 값이 들어가게 될때 예외처리.
         switch "" {
         case goalDetailTextField.text:
           goalDetailTextField.shake()
@@ -122,7 +126,6 @@ class PromissDetailViewController: BaseViewController {
     let (goalDay, isUpperTenDay) = HabitManager.getScheduledDay(startDay: startStr, endDay: endStr)
     // 목표일수 정해짐. 이 값은 종료일 입력 후 변경되야 함. 시점 변경 필요.
     if !isUpperTenDay{
-      
       // 알람값 오후일경우 + 12로 넘겨줘야됨.
       HabitManager.add(addedHabit: HabitManager.init(goalStr,
                                                      totalCount: Int(goalDay)!,
@@ -165,8 +168,11 @@ class PromissDetailViewController: BaseViewController {
   //MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    // 키보드 tap 제스쳐 처리.
     self.hideKeyboardWhenTappedAround()
+    // 뷰가 불리면서 데이트 피커에 타깃 - 액션 부여
     createDatePicker()
+    // 가장 자리 스와이프 했을때도 디스 미스 되도록.. HIG에 그렇게 좋지는..해보고 싶었따.
     dismissView()
     
   }
@@ -182,6 +188,12 @@ class PromissDetailViewController: BaseViewController {
 
 extension PromissDetailViewController{
   
+    enum ToolbarType{
+        case start
+        case end
+        case alarm
+    }
+    
   //PromissDetailViewController Dismiss를 위한 제스처
   func dismissView() {
     let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
@@ -193,12 +205,6 @@ extension PromissDetailViewController{
     if recognizer.state == .recognized {
       self.dismiss(animated: true, completion: nil)
     }
-  }
-  
-  enum ToolbarType{
-    case start
-    case end
-    case alarm
   }
   
   func createDatePicker() {
@@ -296,6 +302,7 @@ extension PromissDetailViewController{
   
   
   //MARK:- Remain Job
+    //container View를 사용할때 prepare로 뷰를 넘긴 셈이 되고, 오버라이드를 통해 부모 뷰컨(?)에서 관리를 할수 있도록!
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let vc = segue.destination as? IconCollectionViewController{
       iconVC = vc
@@ -303,7 +310,7 @@ extension PromissDetailViewController{
   }
 }
 
-extension PromissDetailViewController: UITextFieldDelegate {
+extension PromissDetailViewController: UITextFieldDelegate {// 텍필에 수정 진행될때 글자수 제한 
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     let text = textField.text ?? ""
     let replacedText = (text as NSString).replacingCharacters(in: range, with: string)

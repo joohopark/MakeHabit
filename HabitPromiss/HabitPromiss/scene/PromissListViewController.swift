@@ -11,7 +11,6 @@ import RealmSwift
 import FSCalendar
 
 protocol PromissListViewType{
-//    func pass(data: Results<HabitManager>)
     func pass(completion: (() -> Void))
 }
 
@@ -60,7 +59,7 @@ class PromissListViewController: BaseViewController{//},PromissListViewType {
     }
     
     // 뷰가 처음 띄워 질때 Habit Realm Object를 불러온다.
-    // 여기선 false인게 맞아 이게 1번임.
+    // 여기선 false인게 맞아 이게 REalm에서 불른 첫번째 데이터 뭉치
     habitList = HabitManager.getRealmObjectListWithoutSorted(filterStr: "sucessPromiss == false")
   }
 
@@ -80,7 +79,7 @@ class PromissListViewController: BaseViewController{//},PromissListViewType {
         self.promissTableView.reloadData()
         self.refresControl.endRefreshing()
         print(self.habitList ?? "realm Habit object Load failed")
-      case .update(_,let deletions, let insertions, let modifications):
+      case .update(_, _,  _,  _):
          self.promissTableView.reloadData()
         break
       case .error(let err):
@@ -89,10 +88,8 @@ class PromissListViewController: BaseViewController{//},PromissListViewType {
     })
     
     
-            print("asdflkjsadlfjasdlfjsdalkfjsadlfjdsalkjf=============123123123123===232131=")
   }
-    private func initializeUserInfoRealm() {
-        let realm = try! Realm()
+    private func initializeUserInfoRealm() {// 이 앱을 처음 실행했을때 사용자의 닉네임을 불러 Realm에 저장한다. 
         let checkEmptyUserIfo = UserInfo.getRealmObjectList(sortedBy: UserInfo.Property.nickName)
         switch checkEmptyUserIfo.count {
         case 0:// 사용자가 app에 지정 안되어있을경우

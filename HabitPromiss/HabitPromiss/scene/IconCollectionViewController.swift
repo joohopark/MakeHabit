@@ -9,9 +9,6 @@
 import UIKit
 
 //MARK:- Description
-//protocol IconCollectionViewType:class {
-//    func setIconNo(selectCategory: Int, selectItem: Int)
-//}
 //PromissDetailViewController 가 부모인 Container View ,
 // CollectionView를 부모 위에 올리기위해 만듦.
 class IconCollectionViewController: BaseViewController {
@@ -19,7 +16,7 @@ class IconCollectionViewController: BaseViewController {
     var prevIndexPath:[Int] = [0,0]
     var prevCell: IconCell?
  
-    
+    // icon 컬렉션 뷰 enum
     enum Category: Int{
         case health = 0
         case study
@@ -69,6 +66,7 @@ class IconCollectionViewController: BaseViewController {
         collectionView.register(UINib(nibName: "IconCell", bundle: nil),
                                 forCellWithReuseIdentifier: "IconCell")
         
+        // section header 위로 밀어내기값 true
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionHeadersPinToVisibleBounds = true
     }
@@ -138,23 +136,11 @@ extension IconCollectionViewController: UICollectionViewDataSource{
         headerImageName = headerName+"_\(indexPath.section+1)"
         header.headerImgae.image = UIImage(named: headerImageName)
         header.headerName.text = headerName
-            print("여길 타긴함????")
             return header
 
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         print("didDeselected\(indexPath)")
-        
-//            let cell = collectionView.cellForItem(at: indexPath) as? IconCell
-//            
-//            if (cell?.isSelected)!{
-//                cell?.isSelected = false
-//                cell?.imgView.alpha = 0.3
-//            }else{
-//                cell?.isSelected = true
-//                cell?.imgView.alpha = 1
-//            }
-        
         print("didDeselected End")
     }
  
@@ -206,9 +192,6 @@ extension IconCollectionViewController: UICollectionViewDataSource{
                 print("some?")
             }
         }
-//
-//        print(indexPath, "선택됨")
-        
         prevCell = cell
         print("didSelected End")
     }
@@ -255,7 +238,7 @@ extension IconCollectionViewController: UICollectionViewDelegateFlowLayout {
 }
 
 private struct Metric {
-    // collectionView
+    // collectionView 사이즈 구조체
     static let numberOfItem: CGFloat = 3
 
     static let leftPadding: CGFloat = 10.0

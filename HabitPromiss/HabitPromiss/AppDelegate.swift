@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
+    func hideKeyboardWhenTappedAround() {// tap 제스쳐 발생시 keyboard dismiss
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)

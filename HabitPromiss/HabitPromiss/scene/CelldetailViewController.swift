@@ -90,13 +90,10 @@ extension CelldetailViewController {
   @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
     if recognizer.state == .recognized {
         
-  
+        // 날짜 선택 했든 안했던 현재 상태를 REalm에 쓰고 넘어가도록 
         do{
             try Realm().safeWrite {
-//                                try Realm().beginWrite()
                     try Realm().add(self.selectHabit)
-//                                try! Realm().commitWrite()
-            
             }
         }catch{
             print(error.localizedDescription)
