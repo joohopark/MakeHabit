@@ -141,6 +141,24 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bfm-vW-TLO" customClass="PieChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="20" width="375" height="450"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i01-cr-Oqx">
+                                        <rect key="frame" x="8" y="8" width="69" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="69" id="MsT-cT-rK7"/>
+                                        </constraints>
+                                        <state key="normal" title="돌아가기">
+                                            <color key="titleColor" red="0.98431372549999996" green="0.0078431372550000003" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dismissButton:" destination="HTV-il-tuv" eventType="touchUpInside" id="f6q-J8-i1k"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="i01-cr-Oqx" firstAttribute="top" secondItem="Bfm-vW-TLO" secondAttribute="top" constant="8" id="rbr-tx-YvW"/>
+                                    <constraint firstItem="i01-cr-Oqx" firstAttribute="leading" secondItem="Bfm-vW-TLO" secondAttribute="leading" constant="8" id="tF4-BY-QDT"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -163,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uMZ-Jq-nqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1473" y="839"/>
+            <point key="canvasLocation" x="1472.8" y="838.83058470764627"/>
         </scene>
         <!--Promiss Detail View Controller-->
         <scene sceneID="z0B-fD-X7m">

@@ -19,6 +19,19 @@ class CelldetailViewController: BaseViewController {
   @IBOutlet weak var pieChart: PieChartView!
   @IBOutlet weak var calendarView: FSCalendar!
   
+  @IBAction func dismissButton(_ sender: UIButton) {
+    do{
+      try Realm().safeWrite {
+        //                                try Realm().beginWrite()
+        try Realm().add(self.selectHabit)
+        //                                try! Realm().commitWrite()
+        
+      }
+    }catch{
+      print(error.localizedDescription)
+    }
+    self.dismiss(animated: true, completion: nil)
+  }
   var firstDate: String?
   var lastDate: String?
   var nowTableIndex: Int?
