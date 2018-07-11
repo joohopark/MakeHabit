@@ -40,12 +40,9 @@ class Util {
                                                                    message: message,
                                                                    preferredStyle: .alert)
         
-//        let alertAction: UIAlertAction = UIAlertAction(title: "확인", style: .default)
-//        DispatchQueue.global().async {
+
             alertController.addAction(afterAction)
-//        }
-//        alertController.addAction(afterAction)
-        
+
         // present
         // 알랏 컨트롤러는 항상 부모 컨트롤러 가 존재 해야한다.
         //    let root = UIApplication.shared.keyWindow?.rootViewController
@@ -125,10 +122,7 @@ class Util {
         
         parentController.present(alert, animated: true, completion: nil)
     }
-    
-    static func completeAlert(){
-        
-    }
+
     
     static func showMessage(_ message: String) {
         showAlert(title: "", message: message, actions: [UIAlertAction(title: "OK", style: .cancel, handler: nil)])

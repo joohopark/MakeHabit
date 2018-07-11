@@ -7,6 +7,9 @@ target 'HabitPromiss' do
   pod 'RealmSwift'
   pod 'Charts'
   pod 'FSCalendar'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RxRealm'
   # Pods for HabitPromiss
 
   target 'HabitPromissTests' do

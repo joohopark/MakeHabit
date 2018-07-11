@@ -28,6 +28,7 @@
 		93547FE320C9205800CE6775 /* IconCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93547FE020C9205800CE6775 /* IconCategoryHeaderView.swift */; };
 		93547FE420C9205800CE6775 /* IconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93547FE120C9205800CE6775 /* IconCell.xib */; };
 		93547FE520C9205800CE6775 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93547FE220C9205800CE6775 /* IconCell.swift */; };
+		937279BF20F605BF00C9B20D /* RxChartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937279BE20F605BF00C9B20D /* RxChartManager.swift */; };
 		9373E9C920BD4F42001204E7 /* HabitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9373E9C620BD4F41001204E7 /* HabitManager.swift */; };
 		9373E9CA20BD4F42001204E7 /* ChartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9373E9C720BD4F42001204E7 /* ChartManager.swift */; };
 		9373E9CB20BD4F42001204E7 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9373E9C820BD4F42001204E7 /* UserInfo.swift */; };
@@ -93,6 +94,7 @@
 		93547FE020C9205800CE6775 /* IconCategoryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCategoryHeaderView.swift; sourceTree = "<group>"; };
 		93547FE120C9205800CE6775 /* IconCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconCell.xib; sourceTree = "<group>"; };
 		93547FE220C9205800CE6775 /* IconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
+		937279BE20F605BF00C9B20D /* RxChartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxChartManager.swift; sourceTree = "<group>"; };
 		9373E9C620BD4F41001204E7 /* HabitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitManager.swift; sourceTree = "<group>"; };
 		9373E9C720BD4F42001204E7 /* ChartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartManager.swift; sourceTree = "<group>"; };
 		9373E9C820BD4F42001204E7 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				9373E9C720BD4F42001204E7 /* ChartManager.swift */,
+				937279BE20F605BF00C9B20D /* RxChartManager.swift */,
 				9373E9C620BD4F41001204E7 /* HabitManager.swift */,
 				9373E9C820BD4F42001204E7 /* UserInfo.swift */,
 			);
@@ -298,7 +301,6 @@
 				9343DFEE20B6E54D006CCED8 /* Frameworks */,
 				9343DFEF20B6E54D006CCED8 /* Resources */,
 				98239FB96076FD25218BEA40 /* [CP] Embed Pods Frameworks */,
-				C4B6BC67B12E0CED1E1B488F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -317,8 +319,6 @@
 				9343E00120B6E54E006CCED8 /* Sources */,
 				9343E00220B6E54E006CCED8 /* Frameworks */,
 				9343E00320B6E54E006CCED8 /* Resources */,
-				FB3EFB97ACE3D2EE810579C2 /* [CP] Embed Pods Frameworks */,
-				50E77624BE62EBDB7F58325D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -338,8 +338,6 @@
 				9343E00C20B6E54E006CCED8 /* Sources */,
 				9343E00D20B6E54E006CCED8 /* Frameworks */,
 				9343E00E20B6E54E006CCED8 /* Resources */,
-				73CDAF9A438FE60961C76206 /* [CP] Embed Pods Frameworks */,
-				C62DB3BABD91E5C33B6C189D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -442,21 +440,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		50E77624BE62EBDB7F58325D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabitPromissTests/Pods-HabitPromissTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5EE426D304A38B6DB1CB004D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -475,21 +458,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		73CDAF9A438FE60961C76206 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabitPromissUITests/Pods-HabitPromissUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		98239FB96076FD25218BEA40 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -501,6 +469,9 @@
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -508,40 +479,13 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabitPromiss/Pods-HabitPromiss-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C4B6BC67B12E0CED1E1B488F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabitPromiss/Pods-HabitPromiss-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C62DB3BABD91E5C33B6C189D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabitPromissUITests/Pods-HabitPromissUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D98F7A2B1C4F35004AD50A3F /* [CP] Check Pods Manifest.lock */ = {
@@ -560,21 +504,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FB3EFB97ACE3D2EE810579C2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabitPromissTests/Pods-HabitPromissTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -599,6 +528,7 @@
 				98FC8C1620C0773600D11108 /* UITableView+PromissListViewController.swift in Sources */,
 				987907A520CEA17A00F9F726 /* AlertExtension.swift in Sources */,
 				98359C5D20C006E200F6C659 /* ClearListViewController.swift in Sources */,
+				937279BF20F605BF00C9B20D /* RxChartManager.swift in Sources */,
 				9343FD0320CACC7400EC4971 /* kakaobridge.m in Sources */,
 				981B31B120C9088B002E8F27 /* CelldetailViewController.swift in Sources */,
 				93547FE320C9205800CE6775 /* IconCategoryHeaderView.swift in Sources */,
